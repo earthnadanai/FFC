@@ -1,0 +1,41 @@
+h1.card-title{
+    text-align: center;
+    font-size: 300%;
+    font-family: 'Kanit', sans-serif;
+}
+
+.col{
+    text-align:center;
+}
+
+h3.card-title2{
+    text-align: center;
+    font-size: 500%;
+    font-family: 'Kanit', sans-serif;
+}
+
+.ex1{
+    text-align: center;
+    font-size: 300%;
+    font-family: 'Kanit', sans-serif;
+}
+
+.card1 {
+    width: 120px;
+	height: 120px;
+	margin: 65px;
+    float: left;
+}
+
+.card2{
+    width: 120px;
+	height: 120px;
+	margin: 65px;
+	float: left;
+}
+.card3{
+    width: 120px;
+	height: 120px;
+	margin: 65px;
+	float: left;
+}
