@@ -85,7 +85,9 @@
       </td>
       <td align="center">
       <form action="./tradingfood_admin" method="POST">
-    <input type="text" name="id" value="<?php echo $x->id_order; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $x->id_orderhistory; ?>" hidden>
+    <input type="text" name="id_p" value="<?php echo $x->id_p; ?>" hidden>
+    <input type="text" name="id_shop" value="<?php echo $x->id_shop; ?>" hidden>
     <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียดอาหาร"></form>
       </td>
 
@@ -97,7 +99,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">ภาพสลิปโอนเงิน</h5>
@@ -107,21 +109,22 @@
         
       <form action="<?= site_url('Welcome/adding');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group col  col-md-5">
-          <label>ภาพสลิปโอนเงิน</label>
-          <input type="file" name="P_img_shop" class="form-control"  accept="image/*" >
+          <label>ภาพสลิปโอนเงิน</label><br>
+          <h5>เลขบัญชีทางร้าน : <?php echo $x->number_bank; ?><h5>
+          <input type="file" name="P_img_shop" class="form-control"  accept="image/*" required>
         </div>
         <div class="form-group col col-md-5">
         <?php foreach ($query as $x){ ?>
-        <input type="int" name="id" value="<?php echo $x->id; ?>" hidden>
-        <button type="submit" class="btn btn-primary" >SAVE</button>
+        <input type="int" name="id" value="<?php echo $x->id_p; ?>" hidden>
+        <button type="submit" class="btn btn-success" >SAVE</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <?php } ?>
         </div>
       </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        
       </div>
     </div>
   </div>

@@ -60,6 +60,7 @@
     <p class="card-text"><?php echo $x->info;?></p>
   </div>
 </div>
+<br>
     </div>
     <?php }; ?>
     </div>
@@ -96,28 +97,88 @@
 
     </div>
   <div class="col-sm-9">
-      
   <div class="row">
-    <?php foreach ($query as $x){ ?>
-    <div class="col-6"align="center">
-    <div class="card mb-3" style="max-width: 700px;">
-  <div class="row g-0">
-    <div class="col-md-3">
-    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->p_img;?>" style="width: 160px; height: 170px;  alt="..." >
+
+
+    <div class="alert alert-danger" role="alert">
+    อาหารคาว
     </div>
-    <div class="col-md-9">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo $x->nameProduct;?></h5>
-        <h3>
-        <i class="bi bi-bag-plus-fill"> <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."></i>
-        </h3>
-      </div>
+    <?php foreach ($ve as $x){ ?>
+    <div class="col" align="center">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->p_img;?>"  alt="..." >
+  <div class="card-body">
+    <h4><?php echo $x->nameProduct;?></h4>
+    <p class="card-text"><?php echo $x->info;?></p>
+  </div>
+  <br>
+</div>
+<br>
     </div>
+    <br>
+    <?php }; ?>
+    <br>
+    <?php foreach ($xe as $x){ ?>
+    <div class="col" align="center">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->p_img;?>"  alt="..." >
+  <div class="card-body">
+    <h4><?php echo $x->nameProduct;?></h4>
+    <p class="card-text"><?php echo $x->info;?></p>
+  </div>
+  <br>
+</div>
+<br>
+    </div>
+    <br>
+    <?php }; ?>
+    <?php foreach ($qe as $x){ ?>
+    <div class="col" align="center">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->p_img;?>"  alt="..." >
+  <div class="card-body">
+    <h4><?php echo $x->nameProduct;?></h4>
+    <p class="card-text"><?php echo $x->info;?></p>
+  </div>
+  <br>
+</div>
+<br>
+    </div>
+    <br>
+    <?php }; ?>
+    <?php foreach ($te as $x){ ?>
+    <div class="col" align="center">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->p_img;?>"  alt="..." >
+  <div class="card-body">
+    <h4><?php echo $x->nameProduct;?></h4>
+    <p class="card-text"><?php echo $x->info;?></p>
+  </div>
+  <br>
+</div>
+<br>
+    </div>
+    <br>
+    <?php }; ?>
+
+    <div class="alert alert-danger" role="alert">
+    ของหวาน
+    </div>
+    <?php foreach ($re as $x){ ?>
+    <div class="col" align="center">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->p_img;?>"  alt="..." >
+  <div class="card-body">
+    <h4><?php echo $x->nameProduct;?></h4>
+    <p class="card-text"><?php echo $x->info;?></p>
+    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2" value="" aria-label="...">
   </div>
 </div>
-
     </div>
     <?php }; ?>
+    <br>
+
+    
     </div>
     </div>
   </div>

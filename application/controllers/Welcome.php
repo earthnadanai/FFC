@@ -166,7 +166,6 @@ class Welcome extends CI_Controller {
     function showapproval_shop()
     {
         $data['query'] = $this->ffc->showapprovals_shop();
-        $data['qu'] = $this->ffc->showapprovals_shops();
         $this->load->view('showapproval_shop', $data);
     }
 
@@ -207,6 +206,10 @@ class Welcome extends CI_Controller {
     function tradingfood_admin()
     {
         $a = $this->input->post('id');
+        $b = $this->input->post('id_p');
+        $c = $this->input->post('id_shop');
+        $data['ve'] = $this->ffc->tradings_admin4($c);
+        $data['qu'] = $this->ffc->tradings_admin3($b);
         $data['query'] = $this->ffc->tradings_admin2($a);
         $this->load->view('tradingfood_admin', $data);
     }
@@ -216,6 +219,11 @@ class Welcome extends CI_Controller {
         $a = $this->input->post('id');
         $data['query'] = $this->ffc->showfood($a);
         $data['qu'] = $this->ffc->showfood1($a);
+        $data['re'] = $this->ffc->showfood2($a);
+        $data['ve'] = $this->ffc->showfood3($a);
+        $data['xe'] = $this->ffc->showfood4($a);
+        $data['qe'] = $this->ffc->showfood5($a);
+        $data['te'] = $this->ffc->showfood6($a);
         $this->load->view('showfood', $data);
     }
 
@@ -308,6 +316,7 @@ class Welcome extends CI_Controller {
 
     public function adding()
 	{
+              $a = $this->input->post('id');
 			  $data = array();
 			  $config['upload_path'] = 'img_bank/';
 			  $config['allowed_types'] = 'jpg|png';
@@ -324,40 +333,24 @@ class Welcome extends CI_Controller {
 			    $P_img_shop= $data['P_img_shop'] = $fileData['file_name'];
 			  }
 
-			//insert to table
-			                $datatotable = array(
-                                
-                                'id'=> $this->input->post("id"),
-			                    'P_img_shop' => $P_img_shop
-			                );
-                            $a = $this->input->post('id');
-                            $this->db->where('id', $a);
-			                $result = $this->db->update('payment', $datatotable);
-
-                            
+                $this->db->set('P_img_shop', $P_img_shop);
+                $this->db->where('id_p', $a);
+			    $result = $this->db->update('payment');
+ 
 			  if ($result) {
 			    echo "<script language='JavaScript'>";
-                echo "alert('อับโหลดสำเร็จ')";
+                echo "alert('อับโหลดสำเร็จ $P_img_shop')";
                 echo "</script>";
+                $data1['query'] = $this->ffc->tradings_admin();
+                $this->load->view('trading_admin', $data1);
 			  } else {
-			    echo 'wrong';
+                echo "<script language='JavaScript'>";
+                echo "alert('อับโหลดไม่สำเร็จ')";
+                echo "</script>";
+                $data['query'] = $this->ffc->tradings_admin1();
+                $this->load->view('tradinginfo_admin', $data);
 			  }
-                  /*$a = $this->input->post('id');
-                  $data = array(
-                      
-                      'id'=> $this->input->post("id"),
-                      'id_cuss'=> $this->input->post("id_cuss"),
-                      'id_shops'=> $this->input->post("id_shops"),
-                      'id_order'=> $this->input->post("id_order"),
-                      'P_img_cus'=> $this->input->post("P_img_cus"),
-                      'total'=> $this->input->post("total"),
-                      'nameBang'=> $this->input->post("nameBang"),
-                      'P_img_shop'=> $this->input->post("P_img_shop")
-                  );
-                  $this->ffc->update($data);
-                  echo "<script language='JavaScript'>";
-                  echo "alert('อับโหลดสำเร็จ')";
-                  echo "</script>";*/
+
               
 	}
  

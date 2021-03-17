@@ -116,14 +116,7 @@ class Model extends CI_Model
         $query = $this->db->get();
         return $query->result();*/
     }
-
-    function showapprovals_shops()
-    {   
-        $query = $this->db->get('user');
-        return $query->result();
-    }
-
-
+    
     function showapprovals_shop1($a)
     {
         $this->db->select('*')
@@ -170,7 +163,6 @@ class Model extends CI_Model
         $this->db->select('*')
         ->from('payment')
         ->join('user', ' payment.id_cuss = user.id ')
-        //->join('product_set', ' payment.id_set = product_set.id_set')
         ->join('confirmation', ' payment.id_con = confirmation.id_conn')
         ->join('shop', 'payment.id_shops = shop.id_shop')
         ->where('id_cuss',$a);
@@ -180,8 +172,22 @@ class Model extends CI_Model
 
     function tradings_admin2($a)
     {   
-        $this->db->where('id',$a);
+        $this->db->where('id_ostory',$a);
         $query = $this->db->get('orderhistory');
+        return $query->result();
+    }
+
+    function tradings_admin3($b)
+    {   
+        $this->db->where('id_p',$b);
+        $query = $this->db->get('payment');
+        return $query->result();
+    }
+
+    function tradings_admin4($c)
+    {   
+        $this->db->where('id_shop',$c);
+        $query = $this->db->get('shop');
         return $query->result();
     }
 
@@ -228,6 +234,49 @@ class Model extends CI_Model
     {
        $this->db->where('id_sett',$a);
        $query = $this->db->get('product');
+       return $query->result();
+    }
+
+    function showfood2($a)
+    {
+       $b = "ของหวาน";
+       $this->db->where('type',$b);
+       $this->db->where('id_set',$a);
+       $query = $this->db->get('product_set');
+       return $query->result();
+    }
+
+    function showfood3($a)
+    {
+       $b = "ต้ม";
+       $this->db->where('type', $b);
+       $this->db->where('id_set',$a);
+       $query = $this->db->get('product_set');
+       return $query->result();
+    }
+    function showfood4($a)
+    {
+       $c = "ผัด";
+       $this->db->where('type', $c);
+       $this->db->where('id_set',$a);
+       $query = $this->db->get('product_set');
+       return $query->result();
+    }
+
+    function showfood5($a)
+    {
+       $d = "แกง";
+       $this->db->where('type', $d);
+       $this->db->where('id_set',$a);
+       $query = $this->db->get('product_set');
+       return $query->result();
+    }
+    function showfood6($a)
+    {
+       $e = "ทอด";
+       $this->db->where('type', $e);
+       $this->db->where('id_set',$a);
+       $query = $this->db->get('product_set');
        return $query->result();
     }
 
@@ -295,12 +344,6 @@ class Model extends CI_Model
 	    $update_pass=$this->db->query("UPDATE user set password='$new_pass'  where id='$session_id'");
 	}
 
-    function update($data , $a)
-    {
-        $this->db->where('id', $a);
-        $query =$this->db->update('payment', $data);
-        return $query->result();
-    }
 
 }
 

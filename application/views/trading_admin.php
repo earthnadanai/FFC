@@ -51,7 +51,7 @@
   <?php foreach ($query as $x){ ?>
     <tr>
 
-      <td align="center"><?php echo $x->id;?></td>
+      <td align="center"><?php echo $x->id_p;?></td>
       <td align="center"><?php echo $x->date_cus;?></td>
 
       <td align="center">

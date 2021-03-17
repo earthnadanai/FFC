@@ -88,7 +88,7 @@
 
       <td align="center"> 
       <button type="button" class="btn btn-success">อนุมัติ</button>
-        <button type="button" class="btn btn-danger">ไม่อนุมัติ</button>
+      <button type="button" class="btn btn-danger">ไม่อนุมัติ</button>
       </td>
 
     </tr>

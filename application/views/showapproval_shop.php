@@ -36,7 +36,7 @@
     <br>
     
     
-    <?php foreach ($qu as $x){ 
+    <?php foreach ($query as $x){ 
     $a = $x->img_id_card_number;
     };
     $b = "dc.png";
