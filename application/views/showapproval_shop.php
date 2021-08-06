@@ -21,10 +21,10 @@
     
   <div class="d-grid gap-2">
     
-  <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
-  <a href="<?php echo site_url('Welcome/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
+  <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
+  <a href="<?php echo site_url('Admin/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
+  <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
+  <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
   </div>
   </div>
 </div>
@@ -35,12 +35,9 @@
     <h1>รอการอนุมัติเปิดร้านค้า</h1>
     <br>
     
+
+
     
-    <?php foreach ($query as $x){ 
-    $a = $x->img_id_card_number;
-    };
-    $b = "dc.png";
-    if((!strcmp($a,$b)))  {  }else{?>
     <table class="table table-hover table-light" >
     <thead>
     <tr>
@@ -52,12 +49,11 @@
     
   <tbody>
   <?php foreach ($query as $x){ ?>
-    <tr>
-    
+    <tr> 
       <td align="center"><?php echo $x->username;?></td>
       
       <td align="center"> 
-      <form action="./showapprovalinfo_shop" method="POST">
+      <form action="<?php echo site_url('Admin/showapprovalinfo_shop'); ?>" method="POST">
       <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
       <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด"></form>
       </td>
@@ -67,7 +63,7 @@
     <?php }; ?>
   </tbody>
   </table>
-<?php } ?>
+
 
  
   </div>

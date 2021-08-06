@@ -18,10 +18,10 @@
     
   <div class="d-grid gap-2">
     
-  <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
-  <a href="<?php echo site_url('Welcome/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
+  <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
+  <a href="<?php echo site_url('Admin/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
+  <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
+  <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
   -------------
   <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModal1">
   โอนเงินให้ทางร้าน
@@ -36,7 +36,7 @@
       </div>
       <div class="modal-body">
         
-      <form action="<?= site_url('Welcome/adding');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+      <form action="<?= site_url('Payment/adding');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group col  col-md-5">
         
           <label class="text-dark">ภาพสลิปโอนเงิน</label>

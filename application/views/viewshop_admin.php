@@ -15,10 +15,10 @@
     <div class="card text-white bg-danger">
   <div class="card-body">
   <div class="d-grid  gap-2">
-  <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
-  <a href="<?php echo site_url('Welcome/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
+  <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
+  <a href="<?php echo site_url('Admin/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
+  <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
+  <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
   </div>
   </div>
 </div>
@@ -44,16 +44,16 @@
       <br><br>
         <h5 class="card-title">&nbsp&nbsp&nbsp&nbsp<?php echo $x->firstname;?></h5>
         <br>
-      <form action="./info_shop" method="POST">
+      <form action="<?php echo site_url('Admin/info_shop'); ?>" method="POST">
       <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
       <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด"></form>
       </div>
     </div>
-    
+    <br>
   </div>
   
 </div>
-<br>
+
     </div>
     <?php }; ?>
   </div>

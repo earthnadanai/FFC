@@ -17,10 +17,10 @@
     
   <div class="d-grid gap-2">
     
-  <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
-  <a href="<?php echo site_url('Welcome/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
+  <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
+  <a href="<?php echo site_url('Admin/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
+  <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
+  <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
   </div>
   </div>
 </div>
@@ -34,7 +34,7 @@
     <div class="row">
     <?php foreach ($query as $x){ ?>
     <div class="col-6">
-    <div class="card mb-6" style="max-width: 900px;">
+    <div class="card mb-3" style="max-width: 900px;">
   
   <div class="row g-0">
   
@@ -46,7 +46,7 @@
       <br><br>
         <h5 class="card-title"><?php echo $x->username;?></h5>
         <br>
-    <form action="./info_customer" method="POST">
+    <form action="<?php echo site_url('Admin/info_customer'); ?>" method="POST">
     <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
     <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด"></form>
     
@@ -54,20 +54,24 @@
       </div>
       
     </div>
-    
+    <br>
   </div>
   
 </div>
-<br>
+
     </div>
     
     <?php }; ?>
   </div>
   
   </div>
+  
 </div>
+
     </div>
+    
   </div>
+  
     </div>
 </body>
 <?php $this->load->view('footer'); ?>

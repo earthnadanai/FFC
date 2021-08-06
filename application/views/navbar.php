@@ -16,23 +16,23 @@
     $c = "2";
     $d = "3";
     if((!strcmp($a,$b)))  { ?>
-    <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>" class="logo">
+    <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
     FootForCatering
     </a>
     <?php } 
     elseif ((!strcmp($a,$c))) {?>
-      <a href="<?php echo site_url('Welcome/index'); ?>" class="logo">
+      <a href="<?php echo site_url('Customer/index'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
     FootForCatering 
     </a>
     <?php } elseif ((!strcmp($a,$d))) {?>
-      <a href="<?php echo site_url('Welcome/show_customer'); ?>" class="logo">
+      <a href="<?php echo site_url('Product/page_shop'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
     FootForCatering 
     </a>
     <?php } else { ?>
-      <a href="<?php echo site_url('Welcome/index'); ?>" class="logo">
+      <a href="<?php echo site_url('Customer/index'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
     FootForCatering 
     </a>
@@ -42,13 +42,13 @@
     
 
   <?php if ((!strcmp($a,$b))) { ?>
-    <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
   <?php } else if ((!strcmp($a,$c))) {?>
-    <a href="<?php echo site_url('Welcome/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
   <?php } else if ((!strcmp($a,$d))) {?>
-    <a href="<?php echo site_url('Welcome/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Product/page_shop'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
   <?php } else { ?>
-    <a href="<?php echo site_url('Welcome/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
     <?php } ?>
 
 <!-- Button trigger modal -->
@@ -82,10 +82,10 @@
 
     <?php 
     if (isset($this->session->userdata['firstname'])) { ?>
-    <a class="active" href="#"><i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata['firstname'];?></a>
-    <a href="<?php echo site_url('Welcome/logout'); ?>"><i class="fa fa-sign-in"></i> Logout</a>
+    <a class="active" href="<?php echo site_url('Customer/page_edit'); ?>"><i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata['firstname'];?></a>
+    <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-sign-in"></i> Logout</a>
     <?php } else{ ?>
-        <a href="<?php echo site_url('Welcome/page_login'); ?>"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a href="<?php echo site_url('User/page_login'); ?>"><i class="fa fa-fw fa-user"></i> Login</a>
     <?php } ?>
 
     

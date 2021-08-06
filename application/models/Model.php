@@ -6,6 +6,21 @@ class Model extends CI_Model
         parent::__construct();
     }
 
+    function regis_cus($data)
+    {
+        $a = $data['username'];
+        $this->db->where('username',$a);
+        $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            $message = false;
+            return $message;
+        } else {
+            $this->db->insert('user',$data);
+            $message = true;  
+            return $message;
+        }      
+    }
+
     function regis($data)
     {
         $a = $data['username'];
@@ -36,7 +51,7 @@ class Model extends CI_Model
         }      
     }
 
-    function regis2($data)
+    /*function regis2($data)
     {
         $c = $data['password'];
         $this->db->where('password',$c);
@@ -49,7 +64,7 @@ class Model extends CI_Model
             $message = true;  
             return $message;
         }      
-    }
+    }*/
     
     function login($username, $password)
     {
@@ -108,15 +123,8 @@ class Model extends CI_Model
         $this->db->where('status',$status);
         $query = $this->db->get('user');
         return $query->result();
-
-        /*$this->db->select('*')
-        ->from('shop')
-        ->join('user', ' shop.id_cus = user.id')
-        ->where('id_cus');
-        $query = $this->db->get();
-        return $query->result();*/
     }
-    
+
     function showapprovals_shop1($a)
     {
         $this->db->select('*')
@@ -164,7 +172,7 @@ class Model extends CI_Model
         ->from('payment')
         ->join('user', ' payment.id_cuss = user.id ')
         ->join('confirmation', ' payment.id_con = confirmation.id_conn')
-        ->join('shop', 'payment.id_shops = shop.id_shop')
+        ->join('shop', 'payment.id_shopsp = shop.id_shops')
         ->where('id_cuss',$a);
         $query = $this->db->get();
         return $query->result();
@@ -186,7 +194,7 @@ class Model extends CI_Model
 
     function tradings_admin4($c)
     {   
-        $this->db->where('id_shop',$c);
+        $this->db->where('id_shops',$c);
         $query = $this->db->get('shop');
         return $query->result();
     }
@@ -223,7 +231,7 @@ class Model extends CI_Model
         $this->db->select('*')
         ->from('product')
         ->join('product_set', 'product.id_sett  = product_set.id_set ')
-        ->join('shop', 'product.id_shops = shop.id_shop')
+        ->join('shop', 'product.id_shopss = shop.id_shops')
         ->where('id_sett',$a);
        //$this->db->where('id',$a);
        $query = $this->db->get();
@@ -293,8 +301,8 @@ class Model extends CI_Model
         $this->db->select('*')
         ->from('product')
         //->join('product_set', ' product.id_set = product_set.id_set')
-        ->join('shop', 'product.id_shops = shop.id_shop')
-        ->where('id_shops',$a);
+        ->join('shop', 'product.id_shopss = shop.id_shops')
+        ->where('id_shopss',$a);
         $query = $this->db->get();
         return $query->result();
     }
@@ -305,6 +313,8 @@ class Model extends CI_Model
         $query = $this->db->get('product');
         return $query->result();
     }
+
+
 
     function forget($email)
     {
@@ -343,6 +353,96 @@ class Model extends CI_Model
 	{
 	    $update_pass=$this->db->query("UPDATE user set password='$new_pass'  where id='$session_id'");
 	}
+
+    //----------------เดทำ--------------
+
+    function showproductinfos($a)
+    {
+        $this->db->where('id_shopss',$a);
+        $query = $this->db->get('product');
+        return $query->result();
+    }
+
+    function showproductfoods($a)
+    {
+        $this->db->where('id_set',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
+
+    function showproducteditfoods($a)
+    {
+        $this->db->where('id_set',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
+
+    function showeditfoods($a)
+    {
+        $this->db->where('id',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
+
+    function showproductaddfoods($a)
+    {
+        $this->db->where('id_set',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
+
+    function showproductaddfoods1($b)
+    {
+        $this->db->where('id_sizes',$b);
+        $query = $this->db->get('product_size');
+        return $query->result();
+    }
+
+    function showproductaddfoods2($c)
+    {
+        $this->db->where('id_shops',$c);
+        $query = $this->db->get('shop');
+        return $query->result();
+    }
+
+    function showproductdeletefoods($a)
+    {
+        $this->db->where('id_set',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
+
+    function showproductaddsetfoods($a)
+    {
+        $this->db->where('id_shops',$a);
+        $query = $this->db->get('shop');
+        return $query->result();
+    }
+
+    function insertset($add){
+        $this->db->insert('product',$add);
+    }
+
+    function insertproduct($add){
+        $this->db->insert('product_set',$add);
+    }
+
+    function updateproduct($add,$edit){
+        $this->db->where('id',$edit);
+        $this->db->update('product_set',$add);
+    }
+
+    
+    function deleteproduct($id){
+        $this->db->where('id',$id);
+        $this->db->delete('product_set');
+    }
+    
+    function menu_delete($id){
+        $this->db->where('id', $id);
+        $this->db->delete('product_set');  
+    }
+
 
 
 }

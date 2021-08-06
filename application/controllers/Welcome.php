@@ -18,7 +18,7 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+ 	/*public function index()
 	{       
         $data['re'] = $this->ffc->show_customershop();
 		$this->load->view('viewindex',$data);
@@ -40,7 +40,8 @@ class Welcome extends CI_Controller {
         if ($this->input->post('login')) {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-            $check = $this->ffc->login($username, $password);
+            $passwordenc = md5($password);
+            $check = $this->ffc->login($username, $passwordenc);
 
            if ($check['message'] == true) {
 				if ($check['status'] == 1){
@@ -108,12 +109,48 @@ class Welcome extends CI_Controller {
 		$this->load->view('showproduct',$data);
     }
 
+    public function Register_cus()
+    {
+        $data = array(
+            
+            'username'=> $this->input->post("username"),
+            'password'=> md5($this->input->post("password")),
+            'email'=> $this->input->post("email"),
+            'firstname'=> $this->input->post("firstname"),
+            'lastname'=> $this->input->post("lastname"),
+			'tell'=> $this->input->post("tell"),
+            'status'=> $this->input->post("status"),
+            'numhome'=> $this->input->post("numhome"),
+            'province'=> $this->input->post("province"),
+            'district'=> $this->input->post("district"),
+            'parish'=> $this->input->post("parish"),
+
+        );
+
+        $a = $this->ffc->regis_cus($data);
+        if($a = 1){ 
+            echo "<script language='JavaScript'>";
+            echo "alert('คุณกรอกข้อมูลซ้ำ')";
+            echo "</script>";
+            $this->load->view('bootstap');
+            $this->load->view('register');
+        }else{
+            echo "<script language='JavaScript'>";
+            echo "alert('คุณลงทะเบียนสำเร็จ')";
+            echo "</script>";
+            $this->load->view('bootstap');
+            $this->load->view('login');
+        }
+            
+
+	}
+
 	public function Register()
     {
         $data = array(
             
             'username'=> $this->input->post("username"),
-            'password'=> $this->input->post("password"),
+            'password'=> md5($this->input->post("password")),
             'email'=> $this->input->post("email"),
             'firstname'=> $this->input->post("firstname"),
             'lastname'=> $this->input->post("lastname"),
@@ -130,8 +167,9 @@ class Welcome extends CI_Controller {
 
         $a = $this->ffc->regis($data);
         $b = $this->ffc->regis1($data);
-        $c = $this->ffc->regis2($data);
-        if($a = 1 && $b = 1 && $c = 1){ 
+        /* $c = $this->ffc->regis2($data);
+        if($a = 1 && $b = 1 && $c = 1){ *//*
+            if($a = 1 && $b = 1){ 
             echo "<script language='JavaScript'>";
             echo "alert('คุณกรอกข้อมูลซ้ำ')";
             echo "</script>";
@@ -181,7 +219,7 @@ class Welcome extends CI_Controller {
         $data['query'] = $this->ffc->showapprovals_cus();
         $data['qu'] = $this->ffc->showapprovals_cuss();
         $this->load->view('showapproval_customer', $data);
-    }*/
+    }*/ /*
 
     function showapprovalinfo_customer()
     {
@@ -240,7 +278,6 @@ class Welcome extends CI_Controller {
         $this->load->view('bootstap');
         //$this->load->view('header');
         $this->load->view('login');
-        $this->load->view('footer');
     }
 
     public function page_forget()
@@ -353,5 +390,233 @@ class Welcome extends CI_Controller {
 
               
 	}
+
+    function ok_shop()
+    {
+        $id = $this->input->post('id');
+        $Waiting_status = $this->input->post('Waiting_status');
+        $this->db->set('Waiting_status', $Waiting_status);
+        $this->db->where('id', $id);
+        $result =$this->db->update('user');
+        
+        if ($result) {
+            echo "<script language='JavaScript'>";
+            echo "alert('อนุมัติให้เปิดร้าน')";
+            echo "</script>";
+            $data['query'] = $this->ffc->showapprovals_shop();
+            $this->load->view('showapproval_shop', $data);
+        } else {
+            echo "<script language='JavaScript'>";
+            echo "alert('ไม่สำเร็จ')";
+            echo "</script>";
+        }
+	}
+
+    function page_shop()
+    {
+        $a = $this->session->userdata('id');
+        $data['pe'] = $this->ffc->shop($a);
+        $this->load->view('view_shop', $data);
+    }              
+    
+    //----------------------เดทำ------------------------
+    public function showproductinfo()
+    {
+        $a = $this->input->post('id');
+        $data['query']= $this->ffc->showproductinfos($a);
+        $this->load->view('showproductinfo',$data);
+    }
+
+    public function showproductfood(){
+        $a = $this->input->post('id');
+        $data['query']= $this->ffc->showproductfoods($a);
+        $this->load->view('showproductfood',$data);
+    }
+    public function showproducteditfood(){
+        $a = $this->input->post('id');
+        $data['query']= $this->ffc->showproducteditfoods($a);
+        $this->load->view('editProduct',$data);  
+    }
+
+    public function showeditfood(){
+        $a = $this->input->post('id');
+        $data['query']= $this->ffc->showeditfoods($a);
+        $this->load->view('editfood',$data);  
+    }
+
+    public function showproductaddfood(){
+        $a = $this->input->post('id');
+        $b = $this->input->post('id_shop');
+        $c = $this->input->post('id_size');
+        $data['query']= $this->ffc->showproductaddfoods($a);
+        $data['query1']= $this->ffc->showproductaddfoods2($b);
+        $data['query2']= $this->ffc->showproductaddfoods1($c);
+        $this->load->view('AddProduct',$data);  
+    }
+
+    public function showproductdeletefood(){
+        $a = $this->input->post('id');
+        $data['query']= $this->ffc->showproductdeletefoods($a);
+        $this->load->view('DeleteProduct',$data);  
+    }
+
+    public function showproductaddsetfood()
+    {
+        $a = $this->input->post('id');
+        $data['query']= $this->ffc->showproductaddsetfoods($a);
+        $this->load->view('Addsetfood',$data);  
+    }
+
+    public function addsetfood()
+	{
+              
+			  $data = array();
+			  $config['upload_path'] = 'img/';
+			  $config['allowed_types'] = 'jpg|png';
+			  $config['max_size'] = 5024;
+			  $config['encrypt_name'] = true;  
+
+			  $this->load->library('upload', $config);
+
+			//img1
+			  if (!$this->upload->do_upload('img_product')) {
+			      $img_product='';
+			  } else {
+			    $fileData = $this->upload->data();
+			    $img_product= $data['img_product'] = $fileData['file_name'];
+			  }
+
+              $add = array(
+                'id_shopss'=> $this->input->post("id_shops"),
+                'name_set'=> $this->input->post("name_set"),
+                'img_product'=> $img_product    
+                
+            );
+			    echo "<script language='JavaScript'>";
+                echo "alert('เพิ่่มเซ็ตอาหารสำเร็จ $img_product')";
+                echo "</script>";
+                $this->ffc->insertset($add);
+                $a = $this->input->post('id');
+                $data1['query'] = $this->ffc->showproductinfos($a);
+                $this->load->view('showproductinfo', $data1);
+		
+	}
+
+    public function addfood()
+	{
+              
+			  $data = array();
+			  $config['upload_path'] = 'img/';
+			  $config['allowed_types'] = 'jpg|png';
+			  $config['max_size'] = 5024;
+			  $config['encrypt_name'] = true;  
+
+			  $this->load->library('upload', $config);
+
+			//img1
+			  if (!$this->upload->do_upload('p_img')) {
+			      $p_img='';
+			  } else {
+			    $fileData = $this->upload->data();
+			    $p_img= $data['p_img'] = $fileData['file_name'];
+			  }
+
+              $add = array(
+
+                'id_set'=> $this->input->post("id_set"),
+                'id_shop'=> $this->input->post("id_shop"),
+                'nameProduct'=> $this->input->post("nameProduct") ,
+                'p_img'=> $p_img,
+                'info'=> $this->input->post("info"),
+                'type'=> $this->input->post("type"),
+                'id_size'=> $this->input->post("id_size")
+            );
+			    echo "<script language='JavaScript'>";
+                echo "alert('เพิ่่มอาหารสำเร็จ $p_img')";
+                echo "</script>";
+                $this->ffc->insertproduct($add);
+                $a = $this->input->post('id');
+                $data1['query'] = $this->ffc->showproductaddfoods($a);
+                $this->load->view('showproductfood', $data1);     
+	}
+
+    function editfood()
+    {
+        $data = array();
+        $config['upload_path'] = 'img/';
+        $config['allowed_types'] = 'jpg|png';
+        $config['max_size'] = 5024;
+        $config['encrypt_name'] = true;  
+
+        $this->load->library('upload', $config);
+
+      //img1
+        if (!$this->upload->do_upload('p_img')) {
+            $p_img='';
+        } else {
+          $fileData = $this->upload->data();
+          $p_img= $data['p_img'] = $fileData['file_name'];
+        }
+
+        $add = array(
+          'nameProduct'=> $this->input->post("nameProduct") ,
+          'p_img'=> $p_img,
+          'info'=> $this->input->post("info"),
+          'type'=> $this->input->post("type"),
+          
+          
+      );
+      $edit = $this->input->post("id");
+          echo "<script language='JavaScript'>";
+          echo "alert('แก้ไขสำเร็จอาหารสำเร็จ $p_img')";
+          echo "</script>";
+          $this->ffc->updateproduct($add,$edit);
+          $a = $this->input->post('id');
+          $data1['query'] = $this->ffc->showproductaddfoods($a);
+          $this->load->view('showproductfood', $data1);  
+    }
+
+    public function deletedata()
+    {
+    $id=$this->input->get('id');
+    $this->ffc->deleteproduct($id);
+    echo "<script language='JavaScript'>";
+          echo "alert('แก้ไขสำเร็จอาหารสำเร็จ $p_img')";
+          echo "</script>";
+          $a = $this->input->post('id');
+          $data1['query'] = $this->ffc->showproductaddfoods($a);
+          $this->load->view('showproductfood', $data1);  
+    }
+
+
+    public function delete_menu()
+	{
+		$delete_mid = $this->input->get("id");
+		//echo $delete_mid;
+		$this->ffc->menu_delete($delete_mid);
+        echo "<script language='JavaScript'>";
+        echo "alert('ลบสำเร็จอาหารสำเร็จ $delete_mid')";
+        echo "</script>";
+        $a = $this->input->post('id_set');
+        $data1['query'] = $this->ffc->showproductaddfoods($a);
+		$this->load->view('showproductfood', $data1);
+	}
+        //------------ภูริทำนะ-------------
+        function how_to_order(){
+        
+            $this->load->view('how_to_order');
+        }
+        function how_to_sell(){
+    
+            $this->load->view('how_to_sell');
+        }
+        function how_to_pay(){
+    
+            $this->load->view('how_to_pay');
+        }
+        function team_bdep(){
+    
+            $this->load->view('team_bdep');
+        } */
  
 }

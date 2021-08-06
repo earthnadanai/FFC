@@ -25,9 +25,9 @@
                         <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                             <h3 class="f-title f_600 t_color f_size_18">ศูนย์ช่วยเหลือ</h3>
                             <ul class="list-unstyled f_list">
-                                <li><a href="#">สั่งสินค้าอย่างไร</a></li>
-                                <li><a href="#">เริ่มขายสินค้าอย่างไร</a></li>
-                                <li><a href="#">ช่องทางการชำระเงินใน FFC</a></li>
+                                <li><a href="<?php echo site_url('Welcome/how_to_order'); ?>">สั่งสินค้าอย่างไร</a></li>
+                                <li><a href="<?php echo site_url('Welcome/how_to_sell'); ?>">เริ่มขายสินค้าอย่างไร</a></li>
+                                <li><a href="<?php echo site_url('Welcome/how_to_pay'); ?>">ช่องทางการชำระเงินใน FFC</a></li>
                                 
                             </ul>
                         </div>
@@ -70,7 +70,7 @@
                         <p class="mb-0 f_400">Nakhon Pathom Rajabhat University</p>
                     </div>
                     <div class="col-lg-6 col-sm-5 text-right">
-                        <p>Made with <i class="icon_heart"></i> in <a href="#">BDEP Team</a></p>
+                        <p>Made with <i class="icon_heart"></i> in <a href="<?php echo site_url('Welcome/team_bdep'); ?>">BDEP Team</a></p>
                     </div>
                 </div>
             </div>

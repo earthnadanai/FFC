@@ -28,7 +28,7 @@
   </div>
   <br>
   <input type="submit" name="forget"  class="button" value="ตกลก" />
-  <a href="<?php echo site_url('Welcome/page_login'); ?>" class="button">ยกเลิก</a>
+  <a href="<?php echo site_url('User/page_login'); ?>" class="button">ยกเลิก</a>
   
 </form>
 </div>

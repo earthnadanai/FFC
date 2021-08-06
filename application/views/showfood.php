@@ -91,6 +91,9 @@
   <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="...">
     ขนาดใหญ่
   </li>
+  <form action="./ok_shop" method="POST" class="d-grid gap-2">
+    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
+    <input type="submit" class="btn btn-success" name="Waiting_status" value="กดเพื่อซื้ออาหาร"></form>
   </div>
 </div>
 </div>

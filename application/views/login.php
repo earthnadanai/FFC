@@ -30,10 +30,10 @@
     <input type="password"  name="password" placeholder="Password" required>
   </div>
   <br>
-  <a class="text-white text-decoration-none"  align="end" href="<?php echo site_url('Welcome/page_forget'); ?>">Forget Password</a><br>
+  <a class="text-white text-decoration-none"  align="end" href="<?php echo site_url('User/page_forget'); ?>">Forget Password</a><br>
   <br>
   <input type="submit" name="login"  class="button" value="Login" />
-  <a href="<?php echo site_url('Welcome/page_register'); ?>" class="button">Go to register</a>
+  <a href="<?php echo site_url('User/page_register'); ?>" class="button">Go to register</a>
   
 </form>
 </div>

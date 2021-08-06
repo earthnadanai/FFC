@@ -53,8 +53,8 @@
     <h5 class="card-title">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >
     <?php echo $x->nameShop;?></h5>
-    <form action="./showproduct_customer" method="POST">
-      <input type="text" name="id" value="<?php echo $x->id_shop; ?>" hidden>
+    <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
+      <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden><?php echo $x->id_shops; ?>
       <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด"></form>
   </div>
 </div>

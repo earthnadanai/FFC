@@ -21,10 +21,10 @@
     
   <div class="d-grid gap-2">
     
-  <a href="<?php echo site_url('Welcome/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
-  <a href="<?php echo site_url('Welcome/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
-  <a href="<?php echo site_url('Welcome/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
+  <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="btn btn-light">ข้อมูลลูกค้า</a>
+  <a href="<?php echo site_url('Admin/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
+  <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
+  <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
   </div>
   </div>
 </div>
@@ -87,8 +87,10 @@
 </td> 
 
       <td align="center"> 
-      <button type="button" class="btn btn-success">อนุมัติ</button>
-      <button type="button" class="btn btn-danger">ไม่อนุมัติ</button>
+      <form action="<?php echo site_url('Admin/ok_shop'); ?>" method="POST">
+    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
+    <input type="submit" class="btn btn-success" name="Waiting_status" value="อนุมัติ">
+    <input type="submit" class="btn btn-danger" name="Waiting_status" value="ไม่อนุมัติ"></form>
       </td>
 
     </tr>

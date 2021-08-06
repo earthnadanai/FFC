@@ -11,7 +11,7 @@
 
     
 
-    <a href="<?php echo site_url('Welcome/logout'); ?>" class="logo">
+    <a href="<?php echo site_url('User/logout'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
     FootForCatering 
     </a>
@@ -20,7 +20,7 @@
   <div class="header-right">
     
   <?php  ?>
-    <a href="<?php echo site_url('Welcome/logout'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
     <?php  ?>
 
 <!-- Button trigger modal -->
