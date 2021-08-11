@@ -12,8 +12,29 @@
     <title>เลือกอาหาร</title>
 </head>
 <body>
+<br>
+
+<div class="container" align="left">
+<div class="row">
+    <div class="col">
+    <div class="card bg-dark">
+    <div class="card-body">
+    <input type="submit" class="btn btn-secondary" name="secondary" value="1">
+    
+    <input type="submit" class="btn btn-secondary" name="secondary" value="2">
+    
+    <input type="submit" class="btn btn-secondary" name="secondary" value="3">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
 
 <br>
+
 <div class="container" align="center">
 <div class="row">
     <div class="col">
@@ -32,6 +53,10 @@
     <p class="card-text">
     ประเภทอาหาร : <?php echo $x->type; ?><br>
     <?php echo $x->info; ?>
+  <br>
+
+   
+  
     </p>
   </div>
 </div>
@@ -39,14 +64,20 @@
     <?php } ?>
     </div>
 </div>
-
+<div class="container" align="right">
 <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
 <?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden><?php echo $x->id_shops; ?>
-    <?php };?>
-      <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ"></form>
-
+    
+    <h4> <img src="../../img/paid.png" style="width: 20px; height:20;"> <font color="red"> ราคา 3000 บาท </font></h4>
+  
+    
+    <button type="submit" class="btn btn-outline-success btn" name="submit"><img src="../../img/shoppingicon.png" style="width: 25px; height:25;"> สั่งซื้อ</button>
+    <button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
+      
+      <?php };?>
     </div>
     </div>
+</div>
 </div>
 </div>
 <br>
