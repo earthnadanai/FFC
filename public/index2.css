@@ -1,3 +1,7 @@
+.bg {
+    background-image: url("../img/bg.png");
+}
+
 h1.card-title{
     text-align: center;
     font-size: 300%;
@@ -44,4 +48,8 @@ h3.card-title2{
     text-align: center;
     font-size: 185%;
     font-family: 'Kanit', sans-serif;
+}
+
+#myid1 {
+    background-color: rgba(0, 0, 0, 0.363);
 }
