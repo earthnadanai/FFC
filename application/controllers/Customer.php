@@ -103,4 +103,10 @@ class Customer extends CI_Controller {
         $this->load->view('view_payment');
     }
 
+    public function set_product()
+    {
+        $this->load->view('bootstap');
+		$this->load->view('set_product');
+    }
+
 }
