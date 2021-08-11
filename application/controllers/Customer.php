@@ -100,7 +100,7 @@ class Customer extends CI_Controller {
     public function lalalapayment()
     {
         $this->load->view('bootstap');
-        $this->load->view('view_search');
+        $this->load->view('view_payment');
     }
 
 }
