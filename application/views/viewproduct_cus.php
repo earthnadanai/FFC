@@ -5,13 +5,22 @@
 <html>
 <head>
 <title>view Product</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="<?php echo base_url('public'); ?>/index.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <h1>shop</h1>
+<body> 
+
     <br>
     <div class="container" align="center">
+    <?php foreach ($viewShop as $x){ ?>
+      <div class="ex1"><?php echo $x->nameShop; ?></div><br>
+    <?php };?>
   <div class="row">
+
   <?php foreach ($re as $x){ ?>
     <div class="col-12">
       

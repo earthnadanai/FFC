@@ -27,7 +27,7 @@
         <div class="col-3">
         </div>
             <div class="col-5" >
-                <input  class="form-control" type="text" placeholder="ค้นหาโดยใช้ รหัส" name="search" />
+                <input  class="form-control" type="text" placeholder="ค้นหาร้านอาหาร ประเภทอาหาร อาหาร" name="search" />
         </div>
             <div class="col-4" >
                 <input type="submit" class="btn btn-block btn-primary" style="width:100px" name="submit" value="ค้นหา">

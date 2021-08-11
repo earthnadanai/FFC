@@ -211,10 +211,7 @@ class User extends CI_Controller {
 		}
 			
 	}
-    public function lalala()
-    {
-        $this->load->view('bootstap');
-        $this->load->view('view_search');
-    }
+    
+
 
 }
