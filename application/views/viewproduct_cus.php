@@ -5,50 +5,78 @@
 <html>
 <head>
 <title>view Product</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="<?php echo base_url('public'); ?>/index.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <h1>shop</h1>
+<body> 
+
     <br>
+    <div class="container" align="center">
+    <?php foreach ($viewShop as $x){ ?>
+      <div class="ex1"><?php echo $x->nameShop; ?></div><br>
+    <?php };?>
+  <div class="row">
+
+  <?php foreach ($re as $x){ ?>
+    <div class="col-12">
+      
+    
+    <div class="card mb-3" style="max-width: 800px; max-hight: 800" >
+  <div class="row g-0">
+
+    <div class="col-md-6">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title">
+        <?php echo $x->name_set;?><br>
+        </h5>
+        <p class="card-text">
+        ราคา: <?php echo $x->price;?>
+        </p>
+        <p class="card-text">
+        ขนาด: <?php echo $x->size;?></p>
+
+        <form action="<?= site_url('...');?>" method="POST">
     
       
-    <div class="container" align="center">
-    <div class="row" >
-  <?php foreach ($re as $x){ ?>
-    <div class="col-sm-4" align="center">
-    
-    <div class="card text-dark bg-light mb-3" style="width: 16rem;" >
-    
-  <div class="card-body">
-    <h5 class="card-title">
-    <?php echo $x->name_set;?><br>
-    <p class="card-text">ราคา: <?php echo $x->price;?>
-     <br>ขนาด: <?php echo $x->size;?></p>
-    
-    </h5>
-    <br>
-    
-    <form action="<?= site_url('Customer/showproduct');?>" method="POST">
-    
-      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-      <?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-    <?php };?>
-      <input type="submit" class="btn btn-primary" name="primary" value="ดูอาหารของทางร้าน"></form>
+      
+      <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
+      
 
+      
+      <form action="<?= site_url('Customer/showproduct');?>" method="POST">
+    
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+  <?php };?>
+    <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>"></form>
+      
+
+        </p>
+      </div>
+    </div>
   </div>
 </div>
-    </div> 
-  <?php };?>
-    </div>
-    
 </div>
-<br><br><br><br><br>
+<?php };?>
+</div>
+</div>
+      
+   
+
 <?php
 $conn = null;
 ?>
 </body>
 <?php $this->load->view('footer'); ?>
 </html>
+
 
 
 

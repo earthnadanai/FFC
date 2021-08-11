@@ -92,5 +92,15 @@ class Customer extends CI_Controller {
         $this->load->view('edituser',$data);
         
     }
+    public function lalala()
+    {
+        $this->load->view('bootstap');
+        $this->load->view('view_search');
+    }
+    public function lalalapayment()
+    {
+        $this->load->view('bootstap');
+        $this->load->view('view_search');
+    }
 
 }

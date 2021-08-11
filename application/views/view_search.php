@@ -8,13 +8,13 @@
     <title>Welcome to FFC</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="<?php echo base_url('public'); ?>/index2.css">
+        <link rel="stylesheet" href="<?php echo base_url('public'); ?>/index.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 
     </head>
 <body>
-  <div class="bg">
+  
     <div class="card bg-dark text-white" >
         <img src="../../img/tum-yum-goong-005.jpg" width="1000" height="700" class="card-img" alt="...">
         <div class="card-img-overlay" >
@@ -41,37 +41,42 @@
     </div>
     <br><br>
     <div class="container">
-      <div class="ex1">ร้านค้าที่เปิดให้บริการอยู่</div><br>
-      
-  <div class="row" >
-  <?php foreach ($re as $x){ ?>
+    <div class="ex1">ค้นหาร้าน</div><br>
+  <div class="row">
+  
     <div class="col-sm-4" align="center">
 
-    <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
-   
-    <div id="myid1" class="card" style="width: 23rem;" >
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." >
+    <form action="<?= site_url('...');?>" method="POST">
+    <div class="card" style="width: 23rem;" >
+    <img src="..รูป."  alt="..รูป." >
   <div class="card-body">
     <h5 class="card-title">
-    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >
-    <input type="submit" class="btn btn-lg text-light " value="<?php echo $x->nameShop;?>"></h5>
     
-      <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <input type="submit" class="btn btn-lg btn-link-dark" value="..ชื่อร้าน."></h5>
+    
+      <input type="text" name="id" value="..." hidden>
       <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด">  
   </div>
 </div>
-</div> 
+    </div> 
     </form> 
-  <?php };?>
+ 
     </div>
-  </div>
-</div>
+
+      
+    
+      
+    
+    
+    </div>
+    <br>
+    </div>
 
 
 
 </div> 
-
-</div> 
+<br>
+      
 </body>
 <?php $this->load->view('footer');  ?>
 </html>
