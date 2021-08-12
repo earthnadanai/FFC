@@ -73,6 +73,7 @@ class Customer extends CI_Controller {
         $email= $this->input->post('email');
         $tell= $this->input->post('tell');
         $province= $this->input->post('province');
+        $numhome= $this->input->post('numhome');
         $district= $this->input->post('district');
         $parish= $this->input->post('parish');
 
@@ -80,6 +81,7 @@ class Customer extends CI_Controller {
         $this->db->set('lastname', $lastname);
         $this->db->set('email', $email);
         $this->db->set('tell', $tell);
+        $this->db->set('numhome', $numhome);
         $this->db->set('province', $province);
         $this->db->set('district', $district);
         $this->db->set('parish', $parish);
@@ -110,5 +112,16 @@ class Customer extends CI_Controller {
         $data['searchs'] = $this->ffc_product->show_searchs($search);
         $this->load->view('view_search', $data);
     }
+
+    public function buy_product()
+    {
+        $a = $this->input->post('id');
+        $data["buypro"]=$this->ffc_product->buy_product($a);
+        $this->load->view("set_product",$data);
+    }
+
+    
+   
+
 
 }

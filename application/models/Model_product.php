@@ -241,17 +241,23 @@ class Model_product extends CI_Model
        return $query->result();
     }
 
-    function show_search($search)
+    public function show_search($search)
     {
         $this->db->or_like('product' . "." . 'nameProduct', $search);
         $this->db->or_like('product' . "." . 'type', $search);
         $result = $this->db->get('product');
     }
-    function show_searchs($search)
+    public function show_searchs($search)
     {
         $this->db->or_like('shop' . "." . 'nameShop', $search);
         $result = $this->db->get('shop');
     }
 
+    public function buy_product($a)
+    {
+        $this->db->where('id_set',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
     
 }

@@ -19,7 +19,7 @@
 </head>
 <body>
     <br>
-<div class="ex1">ข้อมูลส่วนตัว</div>
+
 <div class="container" align="center">
 <div class="row">
 <div class="col">
