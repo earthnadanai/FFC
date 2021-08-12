@@ -43,12 +43,23 @@
     <div class="container">
     <div class="ex1">ค้นหาร้าน</div><br>
   <div class="row">
-  <?php foreach ($searchs as $x){ ?>
+       
+<?php if ($xe!= null)
+  foreach ($xe as $x){ ?>
+<img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." style="width: 287px; height: 200px;">
+<h3><?php echo $x->nameProduct; ?><h3>
+<h3><?php echo $x->type; ?><h3>
+    <?php };?>
+    <?php if ($xx!= null)
+  foreach ($xx as $x){ ?>
+  <h3><?php echo $x->nameShop; ?><h3>
+<?php };?>
+
     <div class="col-sm-4" align="center">
 
     <form action="<?= site_url('...');?>" method="POST">
     <div class="card" style="width: 23rem;" >
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." >
+
   <div class="card-body">
     <h5 class="card-title">
     
@@ -60,7 +71,7 @@
 </div>
     </div> 
     </form> 
-    <?php };?>
+    
     </div>
 
       

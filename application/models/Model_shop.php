@@ -119,6 +119,11 @@ class Model_shop extends CI_Model
         $query = $this->db->get('shop',$b);
         return $query->result();
     }
-
+    public function show_searchs($search)
+    {
+        $this->db->like('shop' . "." . 'nameShop', $search);
+        $result = $this->db->get('shop');
+        return $result->result();
+    }
 
 }
