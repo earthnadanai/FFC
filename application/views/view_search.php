@@ -43,24 +43,27 @@
     <div class="container">
     <div class="ex1">ค้นหาร้าน</div><br>
   <div class="row">
-  <?php foreach ($searchs as $x){ ?>
+  
     <div class="col-sm-4" align="center">
 
     <form action="<?= site_url('...');?>" method="POST">
     <div class="card" style="width: 23rem;" >
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." >
+    <?php foreach ($phu as $x){ ?>
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." >
+    
+    
   <div class="card-body">
     <h5 class="card-title">
     
-    <input type="submit" class="btn btn-lg btn-link-dark" value="..ชื่อร้าน."></h5>
-    
+    <input type="submit" class="btn btn-lg btn-link-dark" value="?>/<?php echo $x->nameShop;?>"></h5>
+    <?php };?>
       <input type="text" name="id" value="..." hidden>
       <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด">  
   </div>
 </div>
     </div> 
     </form> 
-    <?php };?>
+    
     </div>
 
       
