@@ -22,7 +22,7 @@
           <h1 class="card-title">ยินดีต้อนรับเข้าสู่</h1>
           <h3 class="card-title2">FOOD FOR CATERING</h3>
 
-          <form method="post" action="<?php echo site_url('Welcome/search'); ?>" >
+          <form method="post" action="<?php echo site_url('Customer/search'); ?>" >
         <div class="row" >
         <div class="col-3">
         </div>
