@@ -22,7 +22,7 @@
           <h1 class="card-title">ยินดีต้อนรับเข้าสู่</h1>
           <h3 class="card-title2">FOOD FOR CATERING</h3>
 
-          <form method="post" action="<?php echo site_url('Welcome/search'); ?>" >
+          <form method="post" action="<?php echo site_url('Customer/search'); ?>" >
         <div class="row" >
         <div class="col-3">
         </div>
@@ -43,7 +43,7 @@
     <div class="container">
     <div class="ex1">ค้นหาร้าน</div><br>
   <div class="row">
-  
+  <?php foreach ($search as $x){ ?>
     <div class="col-sm-4" align="center">
 
     <form action="<?= site_url('...');?>" method="POST">
@@ -60,7 +60,7 @@
 </div>
     </div> 
     </form> 
- 
+    <?php };?>
     </div>
 
       
