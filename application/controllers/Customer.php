@@ -111,7 +111,7 @@ class Customer extends CI_Controller {
 
     public function buy_product()
     {
-        $a = $this->input->post('id');
+        $a = $this->input->post('id_sets');
         $data['re'] = $this->ffc_product->buy_product($a);
         $data["buypro"]=$this->ffc_product->buy_product($a);
         $this->load->view("set_product",$data);
