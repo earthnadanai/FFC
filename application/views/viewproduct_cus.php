@@ -43,9 +43,7 @@
         ขนาด: <?php echo $x->size;?></p>
 
         <form action="<?= site_url('Customer/buy_product');?>" method="POST">
-    
-      
-      
+        <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
       <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
       
 
