@@ -8,7 +8,7 @@
     <title>Welcome to FFC</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="<?php echo base_url('public'); ?>/index.css">
+        <link rel="stylesheet" href="<?php echo base_url('public'); ?>/index2.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 
@@ -43,12 +43,12 @@
     <div class="container">
     <div class="ex1">ค้นหาร้าน</div><br>
   <div class="row">
-  <?php foreach ($search as $x){ ?>
+  <?php foreach ($searchs as $x){ ?>
     <div class="col-sm-4" align="center">
 
     <form action="<?= site_url('...');?>" method="POST">
     <div class="card" style="width: 23rem;" >
-    <img src="..รูป."  alt="..รูป." >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." >
   <div class="card-body">
     <h5 class="card-title">
     
