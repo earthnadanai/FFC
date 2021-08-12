@@ -22,44 +22,67 @@
   <div class="col">
   <div class="card">
   <div class="card">
+
   
-  <div class="card-body" align="left">
-  <blockquote class="blockquote mb-0">
-  <p><img src="../../img/baseline_location_on_black_36dp.png" alt="...">
   <form action="<?= site_url('...');?>" method="POST"> 
-      จอร์นชาวไร่</p>
+  <div class="card-body" align="left">
+  <div class="row">
+    <div class="col-1">
+    <img src="../../img/baseline_location_on_black_36dp.png" alt="...">
+    </div>
+    
+    <div class="col">
+      <h3 align="left">lala</h3>
+    </div>
+  
       
-    </blockquote>
+  </div>
   </div>
 </div>
 </div>
   </div>
   </div>
+  
+  
   <br>
   
   <div class="row">
   <div class="col">
   <div class="card">
+    
+      
   <div class="card-header"align="left">
     ดึงชื่อร้าน
   </div>
+  
   <div class="card-body" align="left">
-    <blockquote class="blockquote mb-0">
-      <p>
+    
+  <div class="row">
+  <div class="col">
       <img src="ดึงรูปชุดเซ็ต" alt="...">
-      ดึงชื่อชุดอาหาร
+      </div>
+      <div class="col">
+        ดึงชื่อชุดอาหาร
+      </div>
+      <div class="col">
       <h5 >ดึงราคา</h5>
+      </div> 
+      <div class="col">
       <h5 >ดึงราคา2</h5>
+      </div> 
+      <div class="col">
       <form action="<?= site_url('...');?>" method="POST">
     
       
-      
       <input type="submit" class="btn btn-danger" name="danger" value="ลบ"></form>
-    </p>
-
-    </blockquote>
+      </div> 
+      </div>
+      
+      
+      
+    
   </div>
-</div>
+  </div>
       
   </div>
   </div>  
@@ -69,48 +92,72 @@
   <div class="card">
   
   <div class="card-body" align="left">
-    <blockquote class="blockquote mb-0">
-      <p>From</p>
+    
+  <div class="row">
+  <div class="col-3">
       <h5>กำหนดวันส่งอาหาร</h5>
-      
-      <input type="date" id="startorder" name="startorder"><br>
-      <p class="text-danger">*หมายเหตุ สั่งก่อนวันที่สั่งล่วงหน้าอย่าน้อย 3 วัน และตรวจสอบเมื่อใส่ข้อมูลเสร็จสิ้น</p>
-    </blockquote>
-  </div>
-</div>
-  </div>
   </div>  
+  <div class="col-2">
+  <input type="date" id="startorder" name="startorder"align="left"><br>
+  </div>   
+  
+  <div class="col">
+  <h5 class="text-danger" align="left">*หมายเหตุ สั่งก่อนวันที่สั่งล่วงหน้าอย่าน้อย 3 วัน และตรวจสอบเมื่อใส่ข้อมูลเสร็จสิ้น</h5>  
+  </div>    
+    
+  </div>
+  </div>
+  </div>
+  </div> 
+  </div> 
 
-  <br>
-   
-
+  
   
   <div class="row">
-  <div class="col"><div class="card">
+  <div class="col">
+  <div class="card">
   
   <div class="card-body" align="right">
-    <blockquote class="blockquote mb-0">
-      <p>ราคา
-      <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
-      <input type="submit" class="btn btn-light" name="light" value="ย้อนกลับ">
-      </p>
-    </blockquote>
+  <div class="row"align="right">
+  <div class="col-9"align="right">
+    <h5>ราคา<h5>
   </div>
-</div>
+  <div class="col-2"> 
+  <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
   </div>
+  <div class="col-1">
+  <input type="submit" class="btn btn-light" name="light" value="ย้อนกลับ">
+  </div>
+  
+  </div>
+
+  
+  </div>
+  </div>
+  </div>
+  </div> 
+
+
+
   </div>  
   </form>
-   
-      
+  
+  
+  
   
 
-
+  <br>
   <br>
  </div>
+ </div>
+ </div>
+ </div>
+ 
  
 
  </div>
 </body>
+
 </html>
 
 <?php $this->load->view('footer');  ?>
