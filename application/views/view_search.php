@@ -43,26 +43,57 @@
     <div class="container">
     <div class="ex1">ค้นหาร้าน</div><br>
   <div class="row">
-  
-    <div class="col-sm-4" align="center">
+       
+<?php if ($xe!= null)
+  foreach ($xe as $x){ ?>
+<img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." style="width: 287px; height: 200px;">
+<h3><?php echo $x->nameProduct; ?><h3>
+<h3><?php echo $x->type; ?><h3>
+    <?php };?>
+    
+    
 
-    <form action="<?= site_url('...');?>" method="POST">
+    
+    <div class="col-sm-4" align="center">
+    <?php if ($xx!= null)
+  foreach ($xx as $x){ ?>
+    <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
+    
     <div class="card" style="width: 23rem;" >
-    <?php foreach ($phu as $x){ ?>
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." >
-    
-    
+    <center><img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>" class="img-fluid rounded-start" alt="..."style="width: 180px; max-hight: 200px" > </center>
   <div class="card-body">
     <h5 class="card-title">
     
-    <input type="submit" class="btn btn-lg btn-link-dark" value="?>/<?php echo $x->nameShop;?>"></h5>
-    <?php };?>
+    <input type="submit" class="btn btn-lg btn-link-dark" value="<?php echo $x->nameShop; ?>"></h5>
+    
+      <input type="text" name="id" value="..." hidden>
+       
+  </div>
+</div>
+    </div> 
+    </form>
+    <?php };?> 
+
+    <?php if ($xe!= null)
+  foreach ($xe as $x){ ?>
+    <form action="<?= site_url('...');?>" method="POST">
+    
+    <div class="card" style="width: 23rem;" >
+
+  <div class="card-body">
+    <h5 class="card-title">
+    
+    <input type="submit" class="btn btn-lg btn-link-dark" value="..ชื่อร้าน."></h5>
+    
       <input type="text" name="id" value="..." hidden>
       <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด">  
   </div>
 </div>
     </div> 
-    </form> 
+    </form>
+    <?php };?> 
+
+    
     
     </div>
 

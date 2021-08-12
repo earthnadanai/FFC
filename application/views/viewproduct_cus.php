@@ -13,7 +13,7 @@
 </head>
 
 <body> 
-
+<div class="bg">
     <br>
     <div class="container" align="center">
     <?php foreach ($viewShop as $x){ ?>
@@ -25,7 +25,7 @@
     <div class="col-12">
       
     
-    <div class="card mb-3" style="max-width: 800px; max-hight: 800" >
+    <div class="card mb-3" id="myid1" style="max-width: 800px; max-hight: 800" >
   <div class="row g-0">
 
     <div class="col-md-6">
@@ -69,7 +69,7 @@
 </div>
       
    
-
+</div>
 <?php
 $conn = null;
 ?>
