@@ -42,7 +42,7 @@
         <p class="card-text">
         ขนาด: <?php echo $x->size;?></p>
 
-        <form action="<?= site_url('...');?>" method="POST">
+        <form action="<?= site_url('Customer/buy_product');?>" method="POST">
     
       
       
