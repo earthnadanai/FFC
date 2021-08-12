@@ -29,7 +29,7 @@
   <div class="row g-0">
 
     <div class="col-md-6">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="img-fluid rounded-start" alt="..."style="width: 180px; max-hight: 200px">
     </div>
     <div class="col-md-6">
       <div class="card-body">
@@ -43,8 +43,8 @@
         ขนาด: <?php echo $x->size;?></p>
 
         <form action="<?= site_url('Customer/buy_product');?>" method="POST">
-    
-      
+        <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
+        
       
       <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
       
