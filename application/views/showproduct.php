@@ -61,7 +61,7 @@
     <?php echo $x->info; ?>
   <br>
 
-   
+
   
     </p>
   </div>
@@ -70,23 +70,39 @@
     <?php } ?>
     </div>
 </div>
+
+
+
 <div class="container" align="right">
+
+
+ <h4>  <font color="red"> ราคา  <?php echo $x->price;?> บาท </font></h4>  
+ 
+ <div class="row">
+ <div class="col-10" align="right">
+<form action="<?= site_url('Customer/buy_product');?>" method="POST">
+<input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
+<button type="submit" class="btn btn-success btn-lg" name="submit"> สั่งเลย!!</button>
+  </form>
+  </div>
+  <div class="col-2" align="left">
 <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
-<?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden><?php echo $x->id_shops; ?>
-    
-    <h4> <img src="../../img/paid.png" style="width: 20px; height:20;"> <font color="red"> ราคา 3000 บาท </font></h4>
+<?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden> 
+
   
     
-    <button type="submit" class="btn btn-outline-success btn" name="submit"><img src="../../img/shoppingicon.png" style="width: 25px; height:25;"> สั่งซื้อ</button>
-    <button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
-      
+    
+    <button type="submit" class="btn btn-secondary btn-lg" name="submit">ย้อนกลับ</button> 
+</div>
       <?php };?>
+      
     </div>
     </div>
 </div>
 </div>
 </div>
 <br>
+</div>
 </div>
 </body>
 <?php $this->load->view('footer');  ?>
