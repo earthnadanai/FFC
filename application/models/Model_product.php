@@ -243,7 +243,6 @@ class Model_product extends CI_Model
 
     function show_search($search)
     {
-        //$this->db->or_like('shop' . "." . 'nameShop', $search);
         $this->db->or_like('product' . "." . 'nameProduct', $search);
         $this->db->or_like('product' . "." . 'type', $search);
         $result = $this->db->get('product');
