@@ -34,13 +34,13 @@
     <div class="col-md-6">
       <div class="card-body">
         <h5 class="card-title">
-        <?php echo $x->name_set;?><br>
+        <h5> <b><font color= "white"><?php echo $x->name_set;?><br> </font></b></h5>
         </h5>
         <p class="card-text">
-        ราคา: <?php echo $x->price;?>
+        <h5><font color= "white"> ราคา: <?php echo $x->price;?> </font></h5>
         </p>
         <p class="card-text">
-        ขนาด: <?php echo $x->size;?></p>
+        <h5><font color= "white"> ขนาด: <?php echo $x->size;?></p> </font></h5>
 
         <form action="<?= site_url('Customer/buy_product');?>" method="POST">
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>

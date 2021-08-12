@@ -57,7 +57,7 @@
     <input type="submit" class="btn btn-lg text-light " value="<?php echo $x->nameShop;?>"></h5>
     
       <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-      <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด">  
+      
   </div>
 </div>
 </div> 
