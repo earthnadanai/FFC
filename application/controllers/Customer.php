@@ -103,10 +103,13 @@ class Customer extends CI_Controller {
         $this->load->view('view_payment');
     }
 
-    public function set_product()
+    public function buy_product()
     {
-        $this->load->view('bootstap');
-		$this->load->view('set_product');
+        $a = $this->input->post('id');
+        $data["buypro"]=$this->ffc_product->buy_product($a);
+        $this->load->view("set_product",$data);
     }
+   
+
 
 }

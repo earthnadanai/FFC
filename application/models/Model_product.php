@@ -241,5 +241,11 @@ class Model_product extends CI_Model
        return $query->result();
     }
 
+    public function buy_product($a)
+    {
+        $this->db->where('id_set',$a);
+        $query = $this->db->get('product_set');
+        return $query->result();
+    }
     
 }
