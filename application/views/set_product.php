@@ -57,7 +57,7 @@
 <br>
 <br>
     <div class="container" align="right">
-<form action="<?= site_url('...');?>" method="POST">
+<form action="<?= site_url('Customer/lalalapayment');?>" method="POST">
 
 
 

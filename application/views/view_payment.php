@@ -126,7 +126,7 @@
   <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
   </div>
   <div class="col-1">
-  <input type="submit" class="btn btn-light" name="light" value="ย้อนกลับ">
+  <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
   </div>
   
   </div>
