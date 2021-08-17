@@ -7,10 +7,10 @@ class Customer extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('session', 'database');
-        //$this->load->model('Model_customer', 'ffc_customer');
         $this->load->model('Model_product', 'ffc_product');
         $this->load->model('Model_shop', 'ffc_shop');
         $this->load->model('Model_user', 'ffc_user');
+        $this->load->model('Model_order', 'ffc_order');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -111,12 +111,45 @@ class Customer extends CI_Controller {
 
     public function buy_product()
     {
-        $a = $this->input->post('id_sets');
-        $data["buypro"]=$this->ffc_product->buy_product($a);
-        $this->load->view("set_product",$data);
+        {
+            $data = array(
+                
+                'id_order'=> $this->input->post("id_order"),
+                'id_customer'=> $this->input->post("id_customer"),
+                'id_shop'=> $this->input->post("id_shop"),
+                'nameProduct'=> $this->input->post("nameProduct"),
+                'image'=> $this->input->post("image"),
+                'price'=> $this->input->post("price"),
+                'name_size'=> $this->input->post("name_size"),
+    
+            );
+            
+            $a = $this->ffc_order->buy_product($data);
+            $b = $this->input->post('id');
+            $c = $this->input->post('id_customer');
+            if($a == 0){ 
+                echo "<script language='JavaScript'>";
+                echo "alert('กรุณาชำระเงินค่าอาหารก่อนสั่งซ้ำ')";
+                echo "</script>";
+                $data["buyshop"] = $this->ffc_shop->view_shopss($b);
+                $data["buypro"] = $this->ffc_order->view_order($c);
+                $this->load->view("set_product",$data);
+            }else{
+                $data["buyshop"] = $this->ffc_shop->view_shopss($b);
+                $data["buypro"] = $this->ffc_order->view_order($c);
+                $this->load->view("set_product",$data);
+            }
+                
+    
+        }
+        /*$a = $this->input->post('id_sets');
+        $b = $this->input->post('id');
+        $data["buypro"] = $this->ffc_product->buy_product($a);
+        $data["buyshop"] = $this->ffc_shop->view_shopss($b);
+        $this->load->view("set_product",$data);*/
     }
 
-    
+   
    
 
 

@@ -15,20 +15,23 @@
 
         
 </head>
-
-<body>
 <div class="bg">
+<body>
+
 <br>
 
-<div class="container" align="left">
-<h4> ชำระเงิน 1 ครั้ง ต่อ 1 เซ็ต </h4>
+<div class="container" align="left" >
+<div class="ex1">
+<font color= "white">ชำระเงิน 1 ครั้ง ต่อ 1 เซ็ต </font>
+</div>
 </div>
 <div class="container">
 <div class="card">
 <div class="card-header">
 <?php foreach ($buypro as $x){ ?>
-
-  <h5> <?php echo $x->nameShop;?><br></h5>
+  <?php foreach ($buyshop as $xx){ ?>
+  <h5> <?php echo $xx->nameShop;?><br></h5>
+  <?php };?>
   </div>
 
   <div class="card-body">
@@ -43,7 +46,7 @@
 </div>
     </div>
     <div class="col">
-    <?php echo $x->name_set;?>
+    <?php echo $x->nameProduct;?>
     </div>
     <div class="col">
     ราคา: <?php echo $x->price;?>
@@ -52,63 +55,25 @@
     <div class="col">
     <form action="<?= site_url('...');?>" method="POST">
     <button type="button" class="btn btn-danger">ลบ</button></form>
+    </form>
     </div>
 <br>
 <br>
 <br>
     <div class="container" align="right">
 <form action="<?= site_url('Customer/lalalapayment');?>" method="POST">
-
-
-
-    <button type="submit" class="btn btn-success btn" name="submit"><img src="../../img/shoppingicon.png" style="width: 25px; height:25;"> สั่งซื้อ</button>
+    <button type="submit" class="btn btn-success btn" name="submit">สั่งเลย!!!</button>
+    </form>
     <button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
-   
-    </div>
     </div>
 </div>
 </div>
 </div>
-</div> 
-
-</form>
-
-  </div>
+<br>
+  <br>
+<?php };?>
 </div>
-</div>
-</div>
-<?php 
-};?>
-</div>
-</div>
-
-
-
-</form>
-
-
-  </label>
-</div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-</form>
-
-
-
-
-
 </body>
-
-
-        
-
-
+</div>
 <?php $this->load->view('footer');  ?>
 </html>

@@ -42,4 +42,26 @@ class Model_order extends CI_Model
         $query = $this->db->get('shop',$b);
         return $query->result();
     }*/
+    
+    function buy_product($data)
+    {
+        $a = $data['id_order'];
+        $this->db->where('id_order',$a);
+        $query = $this->db->get('order');
+        if ($query->num_rows() > 0) {
+            $message = false;
+            return $message;
+        } else {
+            $this->db->insert('order',$data);
+            $message = true;  
+            return $message;
+        }      
+    }
+    
+    function view_order($c)
+    {
+        $this->db->where('id_customer',$c);
+        $query = $this->db->get('order');
+        return $query->result();
+    }
 }
