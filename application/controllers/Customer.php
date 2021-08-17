@@ -117,7 +117,10 @@ class Customer extends CI_Controller {
     }
 
     
-   
+    public function final_payment()
+    {
+        $this->load->view('bootstap');
+        $this->load->view("final_payment");
 
-
+}
 }

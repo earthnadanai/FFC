@@ -53,3 +53,7 @@ h3.card-title2{
 #myid1 {
     background-color: rgba(0, 0, 0, 0.363);
 }
+
+.w3-myfont {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
