@@ -87,7 +87,7 @@
       <input type="text" name="id_order"  class="form-control" value="<?php echo $x->id_set; ?>" hidden>
 </div>
 <div class="col-sm-12">
-      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden><?php echo $this->session->userdata('id');?>
+      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden>
     </div>
     <div class="col-sm-12">
       <input type="text" name="id_shop"  class="form-control" value="<?php echo $x->id_set_shop; ?>" hidden>
@@ -106,9 +106,6 @@
     </div> 
   <?php };?>
   <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
-  <?php foreach ($viewShop as $x){ ?>
- <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden> 
-  <?php };?>
 <input type="submit" class="btn btn-success btn-lg" name="submit" value="สั่งเลย!!"> 
   </form>
   

@@ -44,17 +44,15 @@
 
         <form action="<?= site_url('Customer/buy_product');?>" method="POST">
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
-        <?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+        <?php foreach ($viewShop as $xx){ ?> <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
       <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
-      <?php };?>
+      
       <form action="<?= site_url('Customer/showproduct');?>" method="POST">
-      <?php foreach ($re as $x){ ?>
-      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-      <?php };?>
-      <?php foreach ($viewShop as $x){ ?><input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-    <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>"></form>
+      <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
     <?php };?>
-
+      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden><?php echo $x->id_set; ?>
+      <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>">
+      </form>
         </p>
       </div>
     </div>

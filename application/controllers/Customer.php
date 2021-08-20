@@ -125,28 +125,24 @@ class Customer extends CI_Controller {
             );
             
             $a = $this->ffc_order->buy_product($data);
-            $b = $this->input->post('id');
+            //$b = $this->input->post('id');
             $c = $this->input->post('id_customer');
             if($a == 0){ 
                 echo "<script language='JavaScript'>";
                 echo "alert('กรุณาชำระเงินค่าอาหารก่อนสั่งซ้ำ')";
                 echo "</script>";
-                $data["buyshop"] = $this->ffc_shop->view_shopss($b);
+                //$data["buyshop"] = $this->ffc_shop->view_shopss($b);
                 $data["buypro"] = $this->ffc_order->view_order($c);
                 $this->load->view("set_product",$data);
             }else{
-                $data["buyshop"] = $this->ffc_shop->view_shopss($b);
+                //$data["buyshop"] = $this->ffc_shop->view_shopss($b);
                 $data["buypro"] = $this->ffc_order->view_order($c);
                 $this->load->view("set_product",$data);
             }
                 
     
         }
-        /*$a = $this->input->post('id_sets');
-        $b = $this->input->post('id');
-        $data["buypro"] = $this->ffc_product->buy_product($a);
-        $data["buyshop"] = $this->ffc_shop->view_shopss($b);
-        $this->load->view("set_product",$data);*/
+
     }
 
     

@@ -60,8 +60,11 @@ class Model_order extends CI_Model
     
     function view_order($c)
     {
-        $this->db->where('id_customer',$c);
-        $query = $this->db->get('order');
+        $this->db->select('*')
+        ->from('order')
+        ->join('shop', 'order.id_shop  = shop.id_shops ')
+        ->where('id_customer', $c);
+        $query = $this->db->get();
         return $query->result();
     }
 }
