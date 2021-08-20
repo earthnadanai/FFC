@@ -21,20 +21,54 @@
   <br>
 <div class="container">
 <div class="row">
-<?php foreach ($buyshop as $xx){ ?>
+<?php foreach ($buypro as $xx){ ?>
   <div class="col-12">
   <div class="card">
   <div class="card-header">
   <h5> <?php echo $xx->nameShop;?><br></h5>
   </div>
+
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <h5 class="card-title"></h5>
+    <div class="row">
+    <div class="col">
+    <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"   style="width: 100px; height: 100px; alt="..." >
+
+    </div>
+  <div class="col">
+  <?php echo $xx->nameProduct;?>
+  </div>
+  <div class="col">
+  ราคา: <?php echo $xx->price;?>
+  </div>
+  <div class="col">
+  <form action="<?= site_url('...');?>" method="POST">
+    <button type="button" class="btn btn-danger">ลบ</button></form>
+    </form>
+  </div>
+  </div>
   </div>
 </div>
+<br>
   </div><?php };?>
 </div>
 </div>
+
+    <div class="container" align="right">
+    <div class="row">
+    <div class="col-12">
+<form action="<?= site_url('Customer/lalalapayment');?>" method="POST">
+    <button type="submit" class="btn btn-success btn" name="submit">สั่งเลย!!!</button>
+    </form>
+</div>
+<form action="<?= site_url('Customer/showproduct');?>" method="POST">
+    <button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
+    </form>
+    </div>
+    </div>
+
+
+
 <br>
 </body>
 </div>
