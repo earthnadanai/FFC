@@ -106,9 +106,6 @@
     </div> 
   <?php };?>
   <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
-  <?php foreach ($viewShop as $x){ ?>
- <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden> 
-  <?php };?>
 <input type="submit" class="btn btn-success btn-lg" name="submit" value="สั่งเลย!!"> 
   </form>
   
