@@ -50,6 +50,10 @@ h3.card-title2{
     font-family: 'Kanit', sans-serif;
 }
 
+#myfontid1 {
+    font-size: 300%;
+    font-family: 'Kanit', sans-serif;
+}
 #myid1 {
     background-color: rgba(0, 0, 0, 0.363);
 }
@@ -57,3 +61,4 @@ h3.card-title2{
 .w3-myfont {
     font-family: "Comic Sans MS", cursive, sans-serif;
   }
+

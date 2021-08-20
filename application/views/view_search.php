@@ -14,7 +14,7 @@
 
     </head>
 <body>
-  
+  <div class="bg">
     <div class="card bg-dark text-white" >
         <img src="../../img/tum-yum-goong-005.jpg" width="1000" height="700" class="card-img" alt="...">
         <div class="card-img-overlay" >
@@ -41,53 +41,61 @@
     </div>
     <br><br>
     <div class="container">
-    <div class="ex1">ค้นหาร้าน</div><br>
-  <div class="row">
-       
-<?php if ($xe!= null)
-  foreach ($xe as $x){ ?>
-<img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." style="width: 287px; height: 200px;">
-<h3><?php echo $x->nameProduct; ?><h3>
-<h3><?php echo $x->type; ?><h3>
-    <?php };?>
-    <?php if ($xx!= null)
-  foreach ($xx as $x){ ?>
-  <h3><?php echo $x->nameShop; ?><h3>
-<?php };?>
-
+      <div class="ex1">ร้านค้าที่เปิดให้บริการอยู่</div><br>
+      
+  <div class="row" >
+  <?php foreach ($xx as $x){ ?>
     <div class="col-sm-4" align="center">
 
-    <form action="<?= site_url('...');?>" method="POST">
-    <div class="card" style="width: 23rem;" >
-
+    <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
+   
+    <div id="myid1" class="card" style="width: 23rem;" >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." >
   <div class="card-body">
     <h5 class="card-title">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >
+    <input type="submit" class="btn btn-lg text-light " value="<?php echo $x->nameShop;?>"></h5>
     
-    <input type="submit" class="btn btn-lg btn-link-dark" value="..ชื่อร้าน."></h5>
-    
-      <input type="text" name="id" value="..." hidden>
-      <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด">  
+      <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+      
   </div>
 </div>
-    </div> 
+</div> 
     </form> 
-    
+  <?php };?>
     </div>
 
-      
+    <div class="row" >
+  <?php foreach ($xe as $x){ ?>
+    <div class="col-sm-4" align="center">
+
+    <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
+   
+    <div id="myid1" class="card" style="width: 23rem;" >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." >
+  <div class="card-body">
+    <h5 class="card-title">
+    <?php echo $x->nameProduct;?>
+    </h5>
+    <h5>ประเภทอาหาร:<?php echo $x->type;?> </h5>
     
       
-    
-    
+  </div>
+</div>
+</div> 
+    </form> 
+  <?php };?>
     </div>
-    <br>
-    </div>
+
+
+  </div>
+</div>
 
 
 
 </div> 
-<br>
-      
+
+</div> 
 </body>
 <?php $this->load->view('footer');  ?>
 </html>

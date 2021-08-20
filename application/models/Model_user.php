@@ -170,4 +170,6 @@ class Model_user extends CI_Model
         return $query->result();
     }
 
+    
+
 }
