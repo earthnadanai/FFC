@@ -73,16 +73,16 @@
    
     <div id="myid1" class="card" style="width: 23rem;" >
     <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." >
-  <div class="card-body">
+   <div class="card-body">
     <h5 class="card-title">
     <?php echo $x->nameProduct;?>
     </h5>
     <h5>ประเภทอาหาร:<?php echo $x->type;?> </h5>
     
       
-  </div>
-</div>
-</div> 
+    </div>
+    </div>
+    </div> 
     </form> 
   <?php };?>
     </div>
