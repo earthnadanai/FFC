@@ -17,7 +17,7 @@
     <br>
     <div class="container" align="center">
     <?php foreach ($viewShop as $x){ ?>
-      <div class="ex1"><?php echo $x->nameShop; ?></div><br>
+      <div class="ex1"><font color= "white"><?php echo $x->nameShop; ?></font></div><br>
     <?php };?>
   <div class="row">
 
@@ -29,7 +29,7 @@
   <div class="row g-0">
 
     <div class="col-md-6">
-      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="img-fluid rounded-start" alt="..."style="width: 180px; max-hight: 200px">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="img-fluid rounded-start" alt="..."style="width: 200px; max-hight: 220px">
     </div>
     <div class="col-md-6">
       <div class="card-body">
@@ -44,20 +44,15 @@
 
         <form action="<?= site_url('Customer/buy_product');?>" method="POST">
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
-        
-      
+        <?php foreach ($viewShop as $xx){ ?> <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
       <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
       
-
-      
       <form action="<?= site_url('Customer/showproduct');?>" method="POST">
-    
-    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-    <?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-  <?php };?>
-    <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>"></form>
-      
-
+      <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
+    <?php };?>
+      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden><?php echo $x->id_set; ?>
+      <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>">
+      </form>
         </p>
       </div>
     </div>

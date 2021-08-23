@@ -80,18 +80,39 @@
  
  <div class="row">
  <div class="col-10" align="right">
-<form action="<?= site_url('Customer/buy_product');?>" method="POST">
-<input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
-<button type="submit" class="btn btn-success btn-lg" name="submit"> สั่งเลย!!</button>
+ 
+<form action="<?= site_url('Customer/buy_product');?>" method="POST" >
+<?php foreach ($result as $x){ ?>
+<div class="col-sm-12">
+      <input type="text" name="id_order"  class="form-control" value="<?php echo $x->id_set; ?>" hidden>
+</div>
+<div class="col-sm-12">
+      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="id_shop"  class="form-control" value="<?php echo $x->id_set_shop; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="nameProduct"  class="form-control" value="<?php echo $x->name_set; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="image"  class="form-control" value="<?php echo $x->img_set; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="price"  class="form-control" value="<?php echo $x->price; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="name_size"  class="form-control" value="<?php echo $x->size; ?>" hidden>
+    </div> 
+  <?php };?>
+  <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
+<input type="submit" class="btn btn-success btn-lg" name="submit" value="สั่งเลย!!"> 
   </form>
+  
   </div>
   <div class="col-2" align="left">
 <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
 <?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden> 
-
-  
-    
-    
     <button type="submit" class="btn btn-secondary btn-lg" name="submit">ย้อนกลับ</button> 
 </div>
       <?php };?>
