@@ -95,10 +95,14 @@ class Customer extends CI_Controller {
         
     }
 
-    public function lalalapayment()
+    public function foodpayment()
     {
-        $this->load->view('bootstap');
-        $this->load->view('view_payment');
+        $id_order = $this->input->post('id_o');
+        /*$id_food = $this->input->post('id_order');
+        $id_customer = $this->input->post('id_customer');
+        $id_shop = $this->input->post('id_shop');*/
+        $data['foodpay'] = $this->ffc_order->foodpayment($id_order);
+        $this->load->view('view_payment',$data);
     }
 
     public function search()
@@ -125,17 +129,17 @@ class Customer extends CI_Controller {
             );
             
             $a = $this->ffc_order->buy_product($data);
-            //$b = $this->input->post('id');
+            //$b = $this->input->post('id_set');
             $c = $this->input->post('id_customer');
             if($a == 0){ 
                 echo "<script language='JavaScript'>";
                 echo "alert('กรุณาชำระเงินค่าอาหารก่อนสั่งซ้ำ')";
                 echo "</script>";
-                //$data["buyshop"] = $this->ffc_shop->view_shopss($b);
+                //$data['result'] = $this->ffc_product->showproduct_cuss($b);
                 $data["buypro"] = $this->ffc_order->view_order($c);
                 $this->load->view("set_product",$data);
             }else{
-                //$data["buyshop"] = $this->ffc_shop->view_shopss($b);
+                //$data['result'] = $this->ffc_product->showproduct_cuss($b);
                 $data["buypro"] = $this->ffc_order->view_order($c);
                 $this->load->view("set_product",$data);
             }

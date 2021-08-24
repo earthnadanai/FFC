@@ -50,23 +50,28 @@
   </div>
 </div>
 <br>
-  </div><?php };?>
+</div><?php };?>
 </div>
 </div>
 
     <div class="container" align="right">
     <div class="row">
     <div class="col-12">
-<form action="<?= site_url('Customer/lalalapayment');?>" method="POST">
-    <button type="submit" class="btn btn-success btn" name="submit">สั่งเลย!!!</button>
+    
+<form action="<?= site_url('Customer/foodpayment');?>" method="POST">
+<?php foreach ($buypro as $xx){ ?>
+<input type="text" name="id_o" value="<?php echo $xx->id_o; ?>" hidden> 
+<?php };?>
+  <button type="submit" class="btn btn-success btn" name="submit">สั่งเลย!!!</button>
     </form>
 </div>
-<form action="<?= site_url('Customer/showproduct');?>" method="POST">
-    <button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
+<form action="<?= site_url('Customer/index');?>" method="POST">
+<button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
     </form>
+    
     </div>
     </div>
-
+    
 
 
 <br>
