@@ -106,6 +106,7 @@
     </div> 
   <?php };?>
   <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
+  <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
 <input type="submit" class="btn btn-success btn-lg" name="submit" value="สั่งเลย!!"> 
   </form>
   

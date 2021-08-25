@@ -46,7 +46,9 @@ class Model_order extends CI_Model
     function buy_product($data)
     {
         $a = $data['id_order'];
+        $idcut = $this->session->userdata('id');
         $this->db->where('id_order',$a);
+        $this->db->where('id_customer',$idcut);
         $query = $this->db->get('order');
         if ($query->num_rows() > 0) {
             $message = false;
@@ -64,6 +66,18 @@ class Model_order extends CI_Model
         ->from('order')
         ->join('shop', 'order.id_shop  = shop.id_shops ')
         ->where('id_customer', $c);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function foodpayment($id_order)
+    {
+        $this->db->select('*')
+        ->from('order')
+        ->join('shop', 'order.id_shop  = shop.id_shops ')
+        ->join('user', 'order.id_customer  = user.id ')
+        ->join('product_set', 'order.id_order  = product_set.id_set ')
+        ->where('id_o', $id_order);
         $query = $this->db->get();
         return $query->result();
     }
