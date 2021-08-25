@@ -51,9 +51,7 @@
   ราคา: <?php echo $xx->price;?>
   </div>
   <div class="col">
-  <form action="<?= site_url('...');?>" method="POST">
-    <button type="button" class="btn btn-danger">ลบ</button></form>
-    </form>
+  
   </div>
   </div>
   </div>
@@ -68,11 +66,12 @@
     <div class="col-12">
     
 
-  <input type="submit" class="btn btn-success btn" name="สั่งเลย">
+    <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
     </form>
 </div>
+
 <form action="<?= site_url('Customer/index');?>" method="POST">
-<input type="submit" class="btn btn-secondary" name="ย้อนกลับ">
+<input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
     </form>
     
     </div>
