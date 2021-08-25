@@ -53,4 +53,9 @@ class Order extends CI_Controller {
         $data['viewShop'] = $this->ffc_shop->view_shops1($b);
         $this->load->view('view_food',$data);
     }
+    public function check_status()
+    {
+        $this->load->view('bootstap');
+        $this->load->view("view_oderstatus");
+    }
 }

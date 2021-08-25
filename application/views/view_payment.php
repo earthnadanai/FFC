@@ -24,7 +24,7 @@
   <div class="card">
 
   
-  <form action="<?= site_url('...');?>" method="POST"> 
+  <form action="<?= site_url('Customer/final_payment');?>" method="POST"> 
   <div class="card-body" align="left">
   <div class="row">
     <div class="col-1">
@@ -32,7 +32,15 @@
     </div>
     
     <div class="col">
-      <h3 align="left">lala</h3>
+    <?php foreach ($foodpay as $x){ ?>
+      <h5 align="left"><?php echo $x->firstname;?> 
+      &nbsp<?php echo $x->lastname;?>
+      &nbsp&nbsp <?php echo $x->tell;?>
+      <br> <?php echo $x->numhome;?>
+      ต.<?php echo $x->parish;?>
+      อ.<?php echo $x->district;?>
+      จ.<?php echo $x->province;?>
+    </h5>
     </div>
   
       
@@ -52,29 +60,29 @@
     
       
   <div class="card-header"align="left">
-    ดึงชื่อร้าน
+  <?php echo $x->nameShop;?>
   </div>
   
   <div class="card-body" align="left">
     
   <div class="row">
   <div class="col">
-      <img src="ดึงรูปชุดเซ็ต" alt="...">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" alt="..."style="width: 50px; max-hight: 50px">
       </div>
       <div class="col">
-        ดึงชื่อชุดอาหาร
+      <?php echo $x->name_set;?>
       </div>
       <div class="col">
-      <h5 >ดึงราคา</h5>
+      <h5 >฿<?php echo $x->price;?></h5>
       </div> 
       <div class="col">
-      <h5 >ดึงราคา2</h5>
+      <h5 class="text-warning">฿<?php echo $x->price;?></h5>
       </div> 
       <div class="col">
-      <form action="<?= site_url('...');?>" method="POST">
+      
     
       
-      <input type="submit" class="btn btn-danger" name="danger" value="ลบ"></form>
+      <input type="submit" class="btn btn-danger" name="danger" value="ลบ">
       </div> 
       </div>
       
@@ -120,13 +128,40 @@
   <div class="card-body" align="right">
   <div class="row"align="right">
   <div class="col-9"align="right">
-    <h5>ราคา<h5>
+    <h4>ราคา &nbsp฿<?php echo $x->price;?><h4>
   </div>
   <div class="col-2"> 
   <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
   </div>
   <div class="col-1">
-  <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
+  <form action="<?= site_url('Customer/buy_product');?>" method="POST">
+        
+        <div class="col-sm-12">
+      <input type="text" name="id_order"  class="form-control" value="<?php echo $x->id_set; ?>" hidden>
+</div>
+<div class="col-sm-12">
+      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="id_shop"  class="form-control" value="<?php echo $x->id_set_shop; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="nameProduct"  class="form-control" value="<?php echo $x->name_set; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="image"  class="form-control" value="<?php echo $x->img_set; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="price"  class="form-control" value="<?php echo $x->price; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="name_size"  class="form-control" value="<?php echo $x->size; ?>" hidden>
+    </div> 
+    <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
+        <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
+        
+      <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ"></form>
+
   </div>
   
   </div>
@@ -139,7 +174,8 @@
 
 
 
-  </div>  
+  </div>
+  <?php };?>  
   </form>
   
   
