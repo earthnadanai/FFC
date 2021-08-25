@@ -31,6 +31,13 @@
   <div class="card-body">
     <h5 class="card-title"></h5>
     <div class="row">
+    <div class="col-1">
+   <center> <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">  
+    
+  </label><br></center>
+
+</div>
     <div class="col">
     <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"   style="width: 100px; height: 100px; alt="..." >
 
