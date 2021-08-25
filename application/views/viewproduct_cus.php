@@ -43,8 +43,31 @@
         <h5><font color= "white"> ขนาด: <?php echo $x->size;?></p> </font></h5>
 
         <form action="<?= site_url('Customer/buy_product');?>" method="POST">
+        
+        <div class="col-sm-12">
+      <input type="text" name="id_order"  class="form-control" value="<?php echo $x->id_set; ?>" hidden>
+</div>
+<div class="col-sm-12">
+      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="id_shop"  class="form-control" value="<?php echo $x->id_set_shop; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="nameProduct"  class="form-control" value="<?php echo $x->name_set; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="image"  class="form-control" value="<?php echo $x->img_set; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="price"  class="form-control" value="<?php echo $x->price; ?>" hidden>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" name="name_size"  class="form-control" value="<?php echo $x->size; ?>" hidden>
+    </div> 
+    <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
-        <?php foreach ($viewShop as $xx){ ?> <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
+        <?php foreach ($viewShop as $xx){ ?> 
       <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
       
       <form action="<?= site_url('Customer/showproduct');?>" method="POST">

@@ -31,6 +31,15 @@
   <div class="card-body">
     <h5 class="card-title"></h5>
     <div class="row">
+    <div class="col-1">
+    <form action="<?= site_url('Customer/foodpayment');?>" method="POST">
+
+   <center> <input type="radio" id="id_o" name="id_o" value="<?php echo $xx->id_o; ?>"> 
+  <label for="html">  
+    
+  </label><br></center>
+
+</div>
     <div class="col">
     <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"   style="width: 100px; height: 100px; alt="..." >
 
@@ -42,31 +51,32 @@
   ราคา: <?php echo $xx->price;?>
   </div>
   <div class="col">
-  <form action="<?= site_url('...');?>" method="POST">
-    <button type="button" class="btn btn-danger">ลบ</button></form>
-    </form>
+  
   </div>
   </div>
   </div>
 </div>
 <br>
-  </div><?php };?>
+</div><?php };?>
 </div>
 </div>
 
     <div class="container" align="right">
     <div class="row">
     <div class="col-12">
-<form action="<?= site_url('Customer/lalalapayment');?>" method="POST">
-    <button type="submit" class="btn btn-success btn" name="submit">สั่งเลย!!!</button>
+    
+
+    <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
     </form>
 </div>
-<form action="<?= site_url('Customer/showproduct');?>" method="POST">
-    <button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
-    </form>
-    </div>
-    </div>
 
+<form action="<?= site_url('Customer/index');?>" method="POST">
+<input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
+    </form>
+    
+    </div>
+    </div>
+    
 
 
 <br>
