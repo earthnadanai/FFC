@@ -32,7 +32,9 @@
     <h5 class="card-title"></h5>
     <div class="row">
     <div class="col-1">
-   <center> <input type="radio" id="html" name="fav_language" value="HTML">
+    <form action="<?= site_url('Customer/foodpayment');?>" method="POST">
+
+   <center> <input type="radio" id="id_o" name="id_o" value="<?php echo $xx->id_o; ?>"> 
   <label for="html">  
     
   </label><br></center>
@@ -65,15 +67,12 @@
     <div class="row">
     <div class="col-12">
     
-<form action="<?= site_url('Customer/foodpayment');?>" method="POST">
-<?php foreach ($buypro as $xx){ ?>
-<input type="text" name="id_o" value="<?php echo $xx->id_o; ?>" hidden> 
-<?php };?>
-  <button type="submit" class="btn btn-success btn" name="submit">สั่งเลย!!!</button>
+
+  <input type="submit" class="btn btn-success btn" name="สั่งเลย">
     </form>
 </div>
 <form action="<?= site_url('Customer/index');?>" method="POST">
-<button type="submit" class="btn btn-secondary" name="submit">ย้อนกลับ</button>
+<input type="submit" class="btn btn-secondary" name="ย้อนกลับ">
     </form>
     
     </div>
