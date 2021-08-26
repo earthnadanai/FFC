@@ -81,4 +81,9 @@ class Model_order extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    function order_delete($delete_order){
+        $this->db->where('id_o', $delete_order);
+        $this->db->delete('order');
+    }
 }

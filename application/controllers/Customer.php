@@ -152,7 +152,27 @@ class Customer extends CI_Controller {
     
     public function final_payment()
     {
-        $this->load->view('bootstap');
-        $this->load->view("final_payment");
+        $data = array(
+                
+            'id_customer'=> $this->input->post("id_customer"),
+            'id_shop'=> $this->input->post("id_shop"),
+            'date_customer'=> $this->input->post("date_customer"),
+            'id_sett'=> $this->input->post("id_sett"),
+
+        );
+        
+        $add_order = $this->ffc_order->final_payment($data);
+        $delete_order = $this->input->post("id_o");
+        $c = $this->input->post('id_customer');
+        if($a == 0){ 
+            echo "<script language='JavaScript'>";
+            echo "alert('ยืนยันการสั่งไม่สำเร็จ')";
+            echo "</script>";
+            $data["buypro"] = $this->ffc_order->view_order($c);
+            $this->load->view("set_product",$data);
+        }else{
+            $this->ffc_order->set_order($delete_order);
+            $this->load->view("final_payment");
+        }
     }
 }

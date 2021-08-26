@@ -34,14 +34,14 @@
     <div class="col-1">
     <form action="<?= site_url('Customer/foodpayment');?>" method="POST">
 
-   <center> <input type="radio" id="id_o" name="id_o" value="<?php echo $xx->id_o; ?>"> 
+   <center> <input type="radio" id="id_o" name="id_o" value="<?php echo $xx->id_o; ?>" required> 
   <label for="html">  
     
   </label><br></center>
 
 </div>
     <div class="col">
-    <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"   style="width: 100px; height: 100px; alt="..." >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"  style="width: 100px; height: 100px;" alt="..." >
 
     </div>
   <div class="col">

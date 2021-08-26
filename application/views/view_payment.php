@@ -78,12 +78,6 @@
       <div class="col">
       <h5 class="text-warning">฿<?php echo $x->price;?></h5>
       </div> 
-      <div class="col">
-      
-    
-      
-      <input type="submit" class="btn btn-danger" name="danger" value="ลบ">
-      </div> 
       </div>
       
       
@@ -106,7 +100,7 @@
       <h5>กำหนดวันส่งอาหาร</h5>
   </div>  
   <div class="col-2">
-  <input type="date" id="startorder" name="startorder"align="left"><br>
+  <input type="date" id="date_customer" name="date_customer" align="left"><br>
   </div>   
   
   <div class="col">
@@ -131,6 +125,7 @@
     <h4>ราคา &nbsp฿<?php echo $x->price;?><h4>
   </div>
   <div class="col-2"> 
+  <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
   <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
   </div>
   <div class="col-1">

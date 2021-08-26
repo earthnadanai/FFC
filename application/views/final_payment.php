@@ -35,11 +35,13 @@
 </div>
 
 
-        </body>
-
-
-        
+</body>
 
 
 <?php $this->load->view('footer');  ?>
 </html>
+
+
+
+
+
