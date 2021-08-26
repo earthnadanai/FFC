@@ -162,7 +162,7 @@ class Customer extends CI_Controller {
         );
         
         $add_order = $this->ffc_order->final_payment($data);
-        $delete_order = $this->input->post("id_sett");
+        $delete_order = $this->input->post("id_o");
         $c = $this->input->post('id_customer');
         if($add_order == 0){ 
             echo "<script language='JavaScript'>";
