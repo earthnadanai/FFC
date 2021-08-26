@@ -157,7 +157,7 @@ class Customer extends CI_Controller {
             'id_customer'=> $this->input->post("id_customer"),
             'id_shop'=> $this->input->post("id_shop"),
             'date_customer'=> $this->input->post("date_customer"),
-            'id_sett'=> $this->input->post("id_sett"),
+            'id_sett'=> $this->input->post("id_sett"), 
 
         );
         

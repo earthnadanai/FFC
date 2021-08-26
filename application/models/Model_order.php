@@ -86,4 +86,21 @@ class Model_order extends CI_Model
         $this->db->where('id_o', $delete_order);
         $this->db->delete('order');
     }
+
+    function final_payment($data)
+    {
+        $add_order = $data['id_sett'];
+        $idcut = $this->session->userdata('id');
+        $this->db->where('id_sett',$add_order);
+        $this->db->where('id_customer',$idcut);
+        $query = $this->db->get('confirmation');
+        if ($query->num_rows() > 0) {
+            $message = false;
+            return $message;
+        } else {
+            $this->db->insert('confirmation',$data);
+            $message = true;  
+            return $message;
+        }      
+    }
 }
