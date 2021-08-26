@@ -40,9 +40,10 @@
       ต.<?php echo $x->parish;?>
       อ.<?php echo $x->district;?>
       จ.<?php echo $x->province;?>
+      <input type="text" name="id_o" value="<?php echo $x->id_o;?>" hidden>
     </h5>
     </div>
-  
+    
       
   </div>
   </div>
@@ -126,6 +127,9 @@
   </div>
   <div class="col-2"> 
   <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
+  <input type="text" name="id_shop" value="<?php echo $x->id_shops;?>" hidden>
+  <input type="text" name="id_sett" value="<?php echo $x->id_set;?>" hidden>
+  
   <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
   </div>
   <div class="col-1">
