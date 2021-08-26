@@ -164,7 +164,7 @@ class Customer extends CI_Controller {
         $add_order = $this->ffc_order->final_payment($data);
         $delete_order = $this->input->post("id_o");
         $c = $this->input->post('id_customer');
-        if($a == 0){ 
+        if($add_order == 0){ 
             echo "<script language='JavaScript'>";
             echo "alert('ยืนยันการสั่งไม่สำเร็จ')";
             echo "</script>";
