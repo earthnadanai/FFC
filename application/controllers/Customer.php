@@ -171,7 +171,7 @@ class Customer extends CI_Controller {
             $data["buypro"] = $this->ffc_order->view_order($c);
             $this->load->view("set_product",$data);
         }else{
-            $this->ffc_order->set_order($delete_order);
+            $this->ffc_order->order_delete($delete_order);
             $this->load->view("final_payment");
         }
     }
