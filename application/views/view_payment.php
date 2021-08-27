@@ -97,16 +97,16 @@
   <div class="card-body" align="left">
     
   <div class="row">
-  <div class="col-3">
+  <div class="col-2">
       <h5>กำหนดวันส่งอาหาร</h5>
   </div>  
-  <div class="col-2">
-  <input type="datetime-local" id="date_customer"name="date_customer" min="T00:00" max="T00:00" align="left"><br>
+  <div class="col-3">
+  <input type="datetime-local" id="date_customer"name="date_customer" min="T00:00" max="T00:00" align="canter"><br>
 
   </div>   
   
   
-  <div class="col">
+  <div class="col-7">
   <h5 class="text-danger" align="left">*หมายเหตุ สั่งก่อนวันที่สั่งล่วงหน้าอย่าน้อย 3 วัน และตรวจสอบเมื่อใส่ข้อมูลเสร็จสิ้น</h5>  
   </div>    
     
