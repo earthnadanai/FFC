@@ -60,12 +60,12 @@ class Model_order extends CI_Model
         }      
     }
     
-    function view_order($c)
+    function view_order($idcut)
     {
         $this->db->select('*')
         ->from('order')
         ->join('shop', 'order.id_shop  = shop.id_shops ')
-        ->where('id_customer', $c);
+        ->where('id_customer', $idcut);
         $query = $this->db->get();
         return $query->result();
     }

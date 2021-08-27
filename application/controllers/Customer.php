@@ -130,17 +130,17 @@ class Customer extends CI_Controller {
             
             $a = $this->ffc_order->buy_product($data);
             //$b = $this->input->post('id_set');
-            $c = $this->input->post('id_customer');
+            $idcut = $this->input->post('id_customer');
             if($a == 0){ 
                 echo "<script language='JavaScript'>";
                 echo "alert('กรุณาชำระเงินค่าอาหารก่อนสั่งซ้ำ')";
                 echo "</script>";
                 //$data['result'] = $this->ffc_product->showproduct_cuss($b);
-                $data["buypro"] = $this->ffc_order->view_order($c);
+                $data["buypro"] = $this->ffc_order->view_order($idcut);
                 $this->load->view("set_product",$data);
             }else{
                 //$data['result'] = $this->ffc_product->showproduct_cuss($b);
-                $data["buypro"] = $this->ffc_order->view_order($c);
+                $data["buypro"] = $this->ffc_order->view_order($idcut);
                 $this->load->view("set_product",$data);
             }
                 
@@ -149,6 +149,14 @@ class Customer extends CI_Controller {
 
     }
 
+    public function buy_productback()
+    {
+        $idcut = $this->input->post('id_customer');
+        $data["buypro"] = $this->ffc_order->view_order($idcut);
+        $this->load->view("set_product",$data);        
+    }
+
+    
     
     public function final_payment()
     {
@@ -163,12 +171,12 @@ class Customer extends CI_Controller {
         
         $add_order = $this->ffc_order->final_payment($data);
         $delete_order = $this->input->post("id_o");
-        $c = $this->input->post('id_customer');
+        $idcut = $this->input->post('id_customer');
         if($add_order == 0){ 
             echo "<script language='JavaScript'>";
             echo "alert('ยืนยันการสั่งไม่สำเร็จ')";
             echo "</script>";
-            $data["buypro"] = $this->ffc_order->view_order($c);
+            $data["buypro"] = $this->ffc_order->view_order($idcut);
             $this->load->view("set_product",$data);
         }else{
             $this->ffc_order->order_delete($delete_order);

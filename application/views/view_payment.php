@@ -101,8 +101,10 @@
       <h5>กำหนดวันส่งอาหาร</h5>
   </div>  
   <div class="col-2">
-  <input type="date" id="date_customer" name="date_customer" align="left"><br>
+  <input type="datetime-local" id="date_customer"name="date_customer" min="T00:00" max="T00:00" align="left"><br>
+
   </div>   
+  
   
   <div class="col">
   <h5 class="text-danger" align="left">*หมายเหตุ สั่งก่อนวันที่สั่งล่วงหน้าอย่าน้อย 3 วัน และตรวจสอบเมื่อใส่ข้อมูลเสร็จสิ้น</h5>  
@@ -130,36 +132,12 @@
   <input type="text" name="id_shop" value="<?php echo $x->id_shops;?>" hidden>
   <input type="text" name="id_sett" value="<?php echo $x->id_set;?>" hidden>
   
-  <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
+  <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
   </div>
   <div class="col-1">
-  <form action="<?= site_url('Customer/buy_product');?>" method="POST">
-        
-        <div class="col-sm-12">
-      <input type="text" name="id_order"  class="form-control" value="<?php echo $x->id_set; ?>" hidden>
-</div>
-<div class="col-sm-12">
-      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="id_shop"  class="form-control" value="<?php echo $x->id_set_shop; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="nameProduct"  class="form-control" value="<?php echo $x->name_set; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="image"  class="form-control" value="<?php echo $x->img_set; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="price"  class="form-control" value="<?php echo $x->price; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="name_size"  class="form-control" value="<?php echo $x->size; ?>" hidden>
-    </div> 
-    <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
-        <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
-        
-      <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ"></form>
+  <form action="<?= site_url('Customer/buy_productback');?>" method="POST">
+  <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
+  <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ"></form>
 
   </div>
   
@@ -175,7 +153,7 @@
 
   </div>
   <?php };?>  
-  </form>
+  
   
   
   
