@@ -108,8 +108,8 @@ class Customer extends CI_Controller {
     public function search()
     {
         $search = $this->input->post('search');
-        $data['xe'] = $this->ffc_product->show_search($search);
-        $data['xx'] = $this->ffc_shop->show_searchs($search);
+        $data['searchproduct'] = $this->ffc_product->show_search($search);
+        $data['searchshop'] = $this->ffc_shop->show_searchs($search);
         $this->load->view('view_search', $data);
     }
 

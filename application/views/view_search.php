@@ -44,7 +44,7 @@
       <div class="ex1">ร้านค้าที่เปิดให้บริการอยู่</div><br>
       
   <div class="row" >
-  <?php foreach ($xx as $x){ ?>
+  <?php foreach ($searchshop as $x){ ?>
     <div class="col-sm-4" align="center">
 
     <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
@@ -66,7 +66,7 @@
     </div>
 
     <div class="row" >
-  <?php foreach ($xe as $x){ ?>
+  <?php foreach ($searchproduct as $x){ ?>
     <div class="col-sm-4" align="center">
 
     <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">

@@ -241,12 +241,12 @@ class Model_product extends CI_Model
        return $query->result();
     }
 
+ 
     public function show_search($search)
     {
         $this->db->like('product' . "." . 'nameProduct', $search);
         $this->db->or_like('product' . "." . 'type', $search);
         $result = $this->db->get('product');
-        return $result->result();
     }
 
     
