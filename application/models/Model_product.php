@@ -143,9 +143,13 @@ class Model_product extends CI_Model
         return $query->result();
     }
 
-    function menu_delete($delete_food){
-        $this->db->where('id_pro', $delete_food);
-        $this->db->delete('product');
+    function menu_delete($delete_food)
+    {
+        $delete = $this->db->where('Pro_id_pro',$delete_food)
+        ->delete('product_id');
+        $this->db->where('id_pro',$delete_food)
+        ->delete('product');
+        return $delete;
     }
 
     function set_delete($delete_food){
@@ -247,6 +251,7 @@ class Model_product extends CI_Model
         $this->db->like('product' . "." . 'nameProduct', $search);
         $this->db->or_like('product' . "." . 'type', $search);
         $result = $this->db->get('product');
+        return $result->result();
     }
 
     

@@ -36,11 +36,11 @@
       <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
-        <button type="submit" class="btn btn-success" >ยืนยัน</button>
+        <button type="submit" class="btn btn-success" >ดูอาหาร</button>
     </form>
   </div>
 </div>
-    
+    <br>
     </div>    
     <?php } ?>
     </div>
@@ -63,39 +63,19 @@
     <?php echo $x->info; ?>
     </p>
   
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModals">
-  ลบอาหาร
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabels">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        คุณมั่นใจที่จะลบรายการนี้หรือไม่
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
-        <form action="<?= site_url('Product/delete_menu');?>" method="post">
-      <input type="text" name="id_pro" value="<?php echo $x->id_pro; ?>" hidden>
-      <?php foreach ($viewShop as $x){ ?>
+    <form action="<?= site_url('Product/delete_menu');?>" method="post">
+    <input type="text" name="id_pro" value="<?php echo $x->id_pro; ?>" hidden> <?php echo $x->id_pro; ?>
+    <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
-        <button type="submit" class="btn btn-danger" >ลบ</button>
+
+<button type="submit" class="btn btn-danger" onclick="myFunction()">ลบอาหาร</button>
     </form>
-      </div>
-    </div>
-  </div>
+
 </div>
   </div>
+  <br>
 </div>
-<br>
-    </div>
   <?php } ?>
   </div>
  </div>

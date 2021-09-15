@@ -333,15 +333,26 @@ class Product extends CI_Controller {
     public function delete_menu()
     {
         $delete_food = $this->input->post("id_pro");
-        $this->ffc_product->menu_delete($delete_food);
-        $this->ffc_product->set_delete($delete_food);
-        if($delete_food){
         $a = $this->input->post('id');
+        $result = $this->ffc_product->menu_delete($delete_food);
+        if($delete_food){
+            echo "<script language='JavaScript'>";
+            echo "alert('ลบสำเร็จ')";
+            echo "</script>";
         $data['viewShop'] = $this->ffc_shop->view_shop($a);
-        $data['viewProset'] = $this->ffc->view_sets($a);
+        $data['viewProset'] = $this->ffc_product->view_sets($a);
         $data['viewPro'] = $this->ffc_product->view_pro($a);
         $this->load->view('delete_food',$data);
-        }         
+    } else {
+        echo "<script language='JavaScript'>";
+            echo "alert('ลบไม่สำเร็จ')";
+            echo "</script>";
+        $data['viewShop'] = $this->ffc_shop->view_shop($a);
+        $data['viewProset'] = $this->ffc_product->view_sets($a);
+        $data['viewPro'] = $this->ffc_product->view_pro($a);
+        $this->load->view('delete_food',$data);
+    }
+
     }
 
     public function delete_set()
