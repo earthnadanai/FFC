@@ -19,7 +19,7 @@ class Order extends CI_Controller {
         $a = $this->input->post('id');
         $data['orderShop'] = $this->ffc_order->order_shops($a);
         $data['orderCut'] = $this->ffc_order->order_cut($a);
-        $data['orderMake'] = $this->ffc_order->order_Make($a);
+        $data['orderMakes'] = $this->ffc_order->order_Makes($a);
         $data['orderfinished'] = $this->ffc_order->order_finished($a);
         $this->load->view('view_order',$data);
     }

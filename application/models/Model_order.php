@@ -106,20 +106,6 @@ class Model_order extends CI_Model
     
     function order_cut($a)
     {
-        $status_shop = "รอการนำเนิดการ";
-        $this->db->select('*')
-        ->from('confirmation')
-        ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
-        ->join('user', 'confirmation.id_customer = user.id')
-        ->join('product_set', 'confirmation.id_sett = product_set.id_set')
-        ->where('id_shop', $a)
-        ->where('status_shop', $status_shop);
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function order_Make($a)
-    {
         $status_shop = "ยอมรับ";
         $status_customer = "รอการนำเนิดการ";
         $this->db->select('*')
@@ -130,6 +116,20 @@ class Model_order extends CI_Model
         ->where('id_shop', $a)
         ->where('status_shop', $status_shop)
         ->where('status_customer', $status_customer);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function order_Makes($a)
+    {
+        $status_shop = "รอการนำเนิดการ";
+        $this->db->select('*')
+        ->from('confirmation')
+        ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
+        ->join('user', 'confirmation.id_customer = user.id')
+        ->join('product_set', 'confirmation.id_sett = product_set.id_set')
+        ->where('id_shop', $a)
+        ->where('status_shop', $status_shop);
         $query = $this->db->get();
         return $query->result();
     }

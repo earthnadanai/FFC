@@ -101,7 +101,7 @@
       <h5>กำหนดวันส่งอาหาร</h5>
   </div>  
   <div class="col-3">
-  <input type="datetime-local" id="date_customer"name="date_customer" min="T00:00" max="T00:00" align="canter"><br>
+  <input type="datetime-local" id="date_customer"name="date_customer" min="T00:00" max="T00:00" align="canter" required><br>
 
   </div>   
   

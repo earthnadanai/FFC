@@ -39,17 +39,19 @@
       <th scope="col"><div align="center">ชื่อชุดอาหาร</div></th>
       <th scope="col"><div align="center">ขนาด</div></th>
       <th scope="col"><div align="center">ราคา</div></th>
+      <th scope="col"><div align="center">วันที่ต้องส่งอาหาร</div></th>
       <th scope="col"><div align="center">เวลาที่กดยอมรับ</div></th>
       <th scope="col">ยอมรับ/ไม่ยอมรับ</th>
     </tr>
   </thead>
-  <?php foreach ($orderCut as $x){ ?>
+  <?php foreach ($orderMakes as $x){ ?>
   <tbody>
     <tr>
       <td align="center"><?php echo $x->firstname; ?></td>
       <td align="center"><?php echo $x->name_set; ?></td>
       <td align="center"><?php echo $x->size; ?></td>
       <td align="center"><?php echo $x->price; ?></td>
+      <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
       <td align="center">
       <form action="<?= site_url('Order/ok_confirmation');?>" method="POST">
       <input type="datetime-local" id="birthdaytime" name="date_shop" required>
@@ -66,12 +68,8 @@
     </form>
     </div>
   </div>
-    <div class="col-5"><input type="submit" class="btn btn-danger" name="status_shop" value="ไม่ยอมรับ"></div>
+    <div class="col-7"><input type="submit" class="btn btn-danger" name="status_shop" value="ไม่ยอมรับ"></div>
   </div>
-    
-    
-    
-  
     
       </td>
     </tr>
@@ -88,25 +86,27 @@
     <tr>
       <th scope="col"><div align="center">ชื่อลูกค้า</div></th>
       <th scope="col"><div align="center">ชื่อชุดอาหาร</div></th>
+      <th scope="col"><div align="center">วันที่ต้องส่งอาหาร</div></th>
       <th scope="col"><div align="center">เวลาที่กดยอมรับ</div></th>
       <th scope="col"><div align="center">ขนาด</div></th>
       <th scope="col"><div align="center">ราคา</div></th>
       <th scope="col"><div align="center">อาหารที่ต้องทำ</div></th>
     </tr>
   </thead>
-  <?php foreach ($orderMake as $x){ ?>
+  <?php foreach ($orderCut as $xx){ ?>
   <tbody>
     <tr>
-      <td align="center"><?php echo $x->firstname; ?></td>
-      <td align="center"><?php echo $x->name_set; ?></td>
-      <td align="center"><?php echo $x->date_shop; ?></td> 
-      <td align="center"><?php echo $x->size; ?></td>
-      <td align="center"><?php echo $x->price; ?></td>
+      <td align="center"><?php echo $xx->firstname; ?></td>
+      <td align="center"><?php echo $xx->name_set; ?></td>
+      <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
+      <td align="center"><?php echo $xx->date_shop; ?></td> 
+      <td align="center"><?php echo $xx->size; ?></td>
+      <td align="center"><?php echo $xx->price; ?></td>
       <td align="center">
 
       <form action="<?= site_url('Order/pege_foodset');?>" method="post">
-      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+      <input type="text" name="id_set" value="<?php echo $xx->id_set; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
         <button type="submit" class="btn btn-success" >ดูอาหารที่ต้องทำ</button>
     </form>
 
@@ -123,6 +123,7 @@
     <tr>
       <th scope="col"><div align="center">ชื่อลูกค้า</div></th>
       <th scope="col"><div align="center">ชื่อชุดอาหาร</div></th>
+      <th scope="col"><div align="center">วันที่ต้องส่งอาหาร</div></th>
       <th scope="col"><div align="center">เวลาที่กดยอมรับ</div></th>
       <th scope="col"><div align="center">ขนาด</div></th>
       <th scope="col"><div align="center">ราคา</div></th>
@@ -134,6 +135,7 @@
     <tr>
       <td align="center"><?php echo $x->firstname; ?></td>
       <td align="center"><?php echo $x->name_set; ?></td>
+      <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
       <td align="center"><?php echo $x->date_shop; ?></td> 
       <td align="center"><?php echo $x->size; ?></td>
       <td align="center"><?php echo $x->price; ?></td>
