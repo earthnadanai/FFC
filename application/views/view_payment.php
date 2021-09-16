@@ -116,8 +116,35 @@
   </div> 
   </div> 
 
+  <br>
+  <div class="row">
+  <div class="col">
+  <div class="card">
+
+  <div class="card-body" align="left">   
+  <div class="row">   
+  <div class="col-2">
+      <h5>คำขอเพิ่มเติม</h5>
+  </div> 
+  <label for="exampleFormControlTextarea1"></label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"placeholder="เช่น กระเพรา เผ็ดน้อย"></textarea>
   
-  
+
+
+
+
+
+
+  </div> 
+  </div>    
+  </div>
+  </div>
+  </div>
+
+
+
+
+  <br>
   <div class="row">
   <div class="col">
   <div class="card">
@@ -125,6 +152,7 @@
   <div class="card-body" align="right">
   <div class="row"align="right">
   <div class="col-9"align="right">
+    
     <h4>ราคา &nbsp฿<?php echo $x->price;?><h4>
   </div>
   <div class="col-2"> 
