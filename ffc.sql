@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2021 at 01:42 PM
+-- Generation Time: Sep 16, 2021 at 08:17 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -33,9 +33,9 @@ CREATE TABLE `confirmation` (
   `id_customer` int(10) NOT NULL,
   `id_shop` int(10) NOT NULL,
   `status_shop` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'รอการนำเนิดการ',
-  `date_shop` date NOT NULL,
+  `date_shop` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status_customer` varchar(240) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'รอการนำเนิดการ	',
-  `date_customer` date NOT NULL,
+  `date_customer` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_sett` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +44,7 @@ CREATE TABLE `confirmation` (
 --
 
 INSERT INTO `confirmation` (`id_conn`, `id_customer`, `id_shop`, `status_shop`, `date_shop`, `status_customer`, `date_customer`, `id_sett`) VALUES
-(1, 4, 1, 'ยอมรับ', '2021-01-28', 'รับสินค้าแล้ว', '2021-01-31', 1);
+(1, 4, 1, 'ยอมรับ', '2021-01-27 17:00:00', 'รับสินค้าแล้ว', '2021-08-25 17:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `order` (
   `nameProduct` varchar(250) NOT NULL,
   `image` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `price` int(10) NOT NULL,
-  `date` date NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `name_size` varchar(240) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -69,7 +69,14 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id_o`, `id_order`, `id_customer`, `id_shop`, `nameProduct`, `image`, `price`, `date`, `name_size`) VALUES
-(1, 1, 4, 1, 'ชุดสุดคุ้ม', 'icon-food.png', 800, '2021-01-28', 'เล็ก');
+(1, 1, 4, 1, 'ชุดสุดคุ้ม', 'icon-food.png', 800, '2021-01-27 17:00:00', 'กลาง'),
+(2, 2, 4, 1, 'ชุดสุดคุ้ม', 'food2.jpg	', 500, '2021-08-26 14:56:14', 'เล็ก'),
+(3, 3, 4, 2, 'อาหารพื้นบ้าน', 'food2.jpg	', 500, '2021-08-26 14:56:14', 'กลาง'),
+(4, 2, 6, 1, 'ชุดสุดคุ้ม', 'food2.jpg	', 500, '2021-08-26 14:56:14', 'เล็ก'),
+(5, 1, 6, 1, 'ชุดสุดคุ้ม', 'food2.jpg	', 800, '2021-08-26 14:56:14', 'กลาง'),
+(7, 2, 9, 1, 'ชุดสุดคุ้ม', 'food2.jpg	', 500, '2021-08-26 14:56:14', 'เล็ก'),
+(8, 1, 9, 1, 'ชุดสุดคุ้ม', 'food2.jpg	', 800, '2021-08-26 15:38:19', 'กลาง'),
+(10, 4, 6, 1, 'อาหารญี่ปุ่น', 'food2.jpg', 1500, '2021-09-16 08:13:51', 'กลาง');
 
 -- --------------------------------------------------------
 
@@ -85,7 +92,7 @@ CREATE TABLE `orderhistory` (
   `name_food` varchar(240) NOT NULL,
   `price` int(10) NOT NULL,
   `size` varchar(240) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `date` date NOT NULL
+  `date` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -93,7 +100,7 @@ CREATE TABLE `orderhistory` (
 --
 
 INSERT INTO `orderhistory` (`id_ostory`, `id_shop`, `id_customer`, `id_set`, `name_food`, `price`, `size`, `date`) VALUES
-(1, 1, 4, 1, 'ชุดสุดคุ้ม', 800, 'เล็ก', '2021-01-27');
+(1, 1, 4, 1, 'ชุดสุดคุ้ม', 800, 'เล็ก', '2021-01-26 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,12 @@ INSERT INTO `product` (`id_pro`, `id_pro_shop`, `img_pro`, `type`, `nameProduct`
 (4, 2, 'icon-food.png', 'ผัด', 'ผัดผักบุ้ง', 'ลุยไปเก็บในสวน'),
 (5, 1, '5790e1a87b1aa746d97f3fd5cae382b2.jpg', 'ต้ม', 'ต้มจืด', 'ต้มจืดเพิ่อสุขภาพ\r\n'),
 (6, 2, 'b6d981ccac4e4d731de263ab317d3c64.jpg', 'ต้ม', 'ต้มจืด', 'อร่อย'),
-(9, 1, '51b0695489ac32040bcd397e953aa918.jpg', 'ของหวาน', 'บัวลอย', 'อร่อย');
+(9, 1, '51b0695489ac32040bcd397e953aa918.jpg', 'ของหวาน', 'บัวลอย', 'อร่อย'),
+(10, 1, 'ce159c418db304bf69d741af3e8de65f.jpg', 'ต้ม', 'หมูจุ่ม', '-'),
+(11, 1, '7de44cea95bb894c2fbc2567c1dbdbfe.jpg', 'ของหวาน', 'รวมมิตร', '-'),
+(12, 1, '02a4de46b5f025d94c87b1900ccb40ce.jpg', 'ของคาว', 'ซูซิ', '-'),
+(13, 1, '9abfe82f1da55242fae551e0343e43c3.jpg', 'ของคาว', 'ซาชิมิ', '-'),
+(14, 1, '89b59b2ac42bbda5a5288ed15fbf2ba3.jpg', 'ของหวาน', 'ดังโงะ', '-');
 
 -- --------------------------------------------------------
 
@@ -168,8 +180,15 @@ CREATE TABLE `product_id` (
 INSERT INTO `product_id` (`Pro_id`, `Pro_id_set`, `Pro_id_pro`) VALUES
 (2, 2, 5),
 (4, 3, 4),
-(8, 1, 1),
-(9, 1, 5);
+(12, 2, 2),
+(14, 1, 10),
+(16, 1, 12),
+(17, 1, 11),
+(18, 2, 9),
+(19, 2, 1),
+(20, 4, 12),
+(21, 4, 13),
+(22, 4, 14);
 
 -- --------------------------------------------------------
 
@@ -183,17 +202,19 @@ CREATE TABLE `product_set` (
   `name_set` varchar(250) NOT NULL,
   `price` int(10) NOT NULL,
   `size` varchar(50) NOT NULL,
-  `img_set` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'food2.jpg'
+  `img_set` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'food2.jpg',
+  `unit_eat` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product_set`
 --
 
-INSERT INTO `product_set` (`id_set`, `id_set_shop`, `name_set`, `price`, `size`, `img_set`) VALUES
-(1, 1, 'ชุดสุดคุ้ม', 800, 'กลาง', '-'),
-(2, 1, 'ชุดสุดคุ้ม', 500, 'เล็ก', '-'),
-(3, 2, 'อาหารพื้นบ้าน', 500, 'กลาง', '-');
+INSERT INTO `product_set` (`id_set`, `id_set_shop`, `name_set`, `price`, `size`, `img_set`, `unit_eat`) VALUES
+(1, 1, 'ชุดคุ้มสุดใจ', 800, 'กลาง', 'food2.jpg	', '1-5'),
+(2, 1, 'อาหารบ้านเรา', 500, 'เล็ก', 'food2.jpg	', '1-4'),
+(3, 2, 'อาหารพื้นบ้าน', 500, 'กลาง', 'food2.jpg	', '0'),
+(4, 1, 'อาหารญี่ปุ่น', 1500, 'กลาง', 'food2.jpg', '1-5');
 
 -- --------------------------------------------------------
 
@@ -216,9 +237,15 @@ CREATE TABLE `shop` (
 --
 
 INSERT INTO `shop` (`id_shops`, `id_cus`, `nameShop`, `status_work`, `img_status`, `img_shop`, `number_bank`) VALUES
-(1, 3, 'Hot pot', 'เปิดแล้ว', 'green.png	', 'Shop-icon.png	', 'xxxxxxxxxx'),
-(2, 7, 'DuenDuen\r\n', 'ยังไม่เปิด	', 'gray.png	', 'Shop-icon.png	', 'xxxxxxxxxx'),
-(4, 11, 'ร้านบ้านจ๊าบ', 'ยังไม่เปิด	', 'gray.png', '247dfe226ebe94bb77b4ae56228b9b00.jpg', '1234567891');
+(1, 3, 'Hot pot', 'เปิดแล้ว', 'green.png	', 'Yukata.jpg', 'xxxxxxxxxx'),
+(2, 7, 'DuenDuen\r\n', 'เปิดแล้ว', 'green.png	', 'oxafzq61aSH7BF1DAa2-o.jpg', 'xxxxxxxxxx'),
+(4, 11, 'ร้านบ้านจ๊าบ', 'เปิดแล้ว', 'green.png', '20150422154139.jpg', '1234567891'),
+(5, 14, 'ครัวบ่อปลา', 'เปิดแล้ว', 'green.png', 'Blog-DSC_6580.jpg', '-'),
+(6, 15, 'เจ๊น้อยข้าวแกง', 'เปิดแล้ว', 'green.png', '4DQpjUtzLUwmJZZSCIfedGw2shRbFwTuZFw2kOrnHwbq.jpg', '-'),
+(7, 16, 'ข้าวแกงปักษ์ใต้ ศ.โภชนา', 'เปิดแล้ว', 'gray.png', 'pj3a8msdownk0jqrhSR-o.jpg', '-'),
+(8, 17, 'ข้าวแกงลูกแม่จิต', 'เปิดแล้ว', 'gray.png', 'd1.jpg', '-'),
+(9, 18, 'Hungry Box', 'เปิดแล้ว', 'gray.png', 'd2.jpg', '-'),
+(10, 19, 'ห้องอาหารเกาะแก้ว', 'เปิดแล้ว', 'gray.png', 'asian-food-thai-thailand-wallpaper-preview.jpg', '-');
 
 -- --------------------------------------------------------
 
@@ -282,9 +309,15 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `firstname`, `lastnam
 (8, 'fulk', '25d55ad283aa400af464c76d713c07ad', '614259036@webmail.npru.ac.th', 'เดชาชาญ', 'บัวแสง', '-', 'dc.png', '0888888888', '2', 'defined.png', '17', 'นครปฐม', 'เมือง', 'สะกระเทียม', '-', '-', 'รอ', 'ไม่มี'),
 (9, 'phu', '25d55ad283aa400af464c76d713c07ad', '614259023@webmail.npru.ac.th', 'ภูริภัทร', 'รักคง', '-', 'dc.png', '0888888888', '2', 'defined.png', '17', 'นครปฐม', 'เมือง', 'สะกระเทียม', '-', '-', 'รอ', 'ไม่มี'),
 (10, 'Nadech', '25d55ad283aa400af464c76d713c07ad', 'Nadech@gmail.com', 'ณเดชน์', 'คูกิมิยะ', '1234567891112', '750x422_872701_1585149004.png', '0343279065', '3', 'defined.png', '1', 'ขอนแก่น', 'อำเภอเมืองขอนแก่น', 'เมือง', '13.665261581012041', '1256.16541656465489', 'รอ', 'ไม่มี'),
-(11, 'Jab', '25d55ad283aa400af464c76d713c07ad', 'godjab@gmail.com', 'อดิศักคิ์', 'จารุวงค์', '1234567891114', '4de92e9b68603c5ddc9b33ff699f659b.jpg', '0222222222', '3', 'defined.png', '25/20', 'สมุทสาคร', 'กระทุ่มแบน', 'ท่าไม้', '13.665261581012041', '1256.16541656465489', 'รอการนำเนิดการ', 'มี'),
+(11, 'Jab', '25d55ad283aa400af464c76d713c07ad', 'godjab@gmail.com', 'อดิศักคิ์', 'จารุวงค์', '1234567891114', '4de92e9b68603c5ddc9b33ff699f659b.jpg', '0222222222', '3', 'defined.png', '25/20', 'สมุทสาคร', 'กระทุ่มแบน', 'ท่าไม้', '13.665261581012041', '1256.16541656465489', 'อนุมัติ', 'มี'),
 (12, 'godjab', '25d55ad283aa400af464c76d713c07ad', 'jablanjer@hotmail.com', 'adisak', 'jaruwong', '-', 'dc.png', '0888888888', '2', 'defined.png', '99/20', 'สมุทรสาคร', 'กระทุ่มแบน', 'สวนหลวง', '-', '-', 'รอ', 'ไม่มี'),
-(13, 'tree', '25d55ad283aa400af464c76d713c07ad', 'tree@gmail.com', 'ทรีรเดช', 'นาฤดี', '1234567891116', 'dc.png', '0343279065', '3', 'defined.png', '1', 'กาฬสินธุ์', 'เมือง', 'เมือง', '13.665261581012041', '1256.16541656465489', 'รอ', 'ไม่มี');
+(13, 'tree', '25d55ad283aa400af464c76d713c07ad', 'tree@gmail.com', 'ทรีรเดช', 'นาฤดี', '1234567891116', 'dc.png', '0343279065', '3', 'defined.png', '1', 'กาฬสินธุ์', 'เมือง', 'เมือง', '13.665261581012041', '1256.16541656465489', 'รอ', 'ไม่มี'),
+(14, 'boat', '25d55ad283aa400af464c76d713c07ad', 'boatlala@gmail.con', 'ธนชาติ', 'ณ เซเว่นแสนสุข', '1234567890123', '04a891ed49f75f9a3c3ac216f04ace3f.PNG', '0987456891', '3', 'defined.png', '1', 'นครปฐม', 'เมือง', 'ลอนดอน', '13.834148323287767', '100.02636981614587', 'อนุมัติ', 'มี'),
+(15, 'day', '25d55ad283aa400af464c76d713c07ad', 'asdasd@gmail.com', 'เดชา', 'บัวทอง', '9874563210145', '79127fba015ba30271ef83241a15a444.PNG', '0987314692', '3', 'defined.png', '2', 'นครปฐม', 'เมือง', 'ลิโอ', '13.834148323287767', '100.02636981614587', 'อนุมัติ', 'มี'),
+(16, 'day2', '25d55ad283aa400af464c76d713c07ad', 'daylala@gmail.com', 'เดชาชิ', 'ทองคำเหลา', '6478921549356', 'f0b704defeb4b3906a84876a5c423f44.PNG', '0614875931', '3', 'defined.png', '3', 'นครปฐม', 'เมือง', 'แฟรงเฟริต', '13.834148323287767', '100.02636981614587', 'อนุมัติ', 'มี'),
+(17, 'day3', '25d55ad283aa400af464c76d713c07ad', 'day3jaja@gmail.com', 'dad', 'fafas', '5789413256984', '7acd0bf729b299f83c777c62007b8de7.PNG', '0841576291', '3', 'defined.png', '4', 'นครปฐม', 'เมือง', 'เบอร์ลิน', '13.834148323287767', '100.02636981614587', 'อนุมัติ', 'มี'),
+(18, 'day4', '25d55ad283aa400af464c76d713c07ad', 'asda63526sd@gmail.com', 'เดชาชู', 'อร่อยจัง', '579842463145', '3511ccc3484760fad27fbb964894d396.PNG', '0831467951', '3', 'defined.png', '5', 'นครปฐม', 'เมือง', 'เมลเบิล', '13.834148323287767', '100.02636981614587', 'อนุมัติ', 'มี'),
+(19, 'day5', '25d55ad283aa400af464c76d713c07ad', 'sdsad@gmail.com', 'เดชาบู', 'อร่อยมาก', '1267948530146', '2b5564cd0880dbe99033fdb9470575af.PNG', '0857943126', '3', 'defined.png', '6', 'นครปฐม', 'เมือง', 'แฟรงเฟริต', '13.834148323287767', '100.02636981614587', 'อนุมัติ', 'มี');
 
 --
 -- Indexes for dumped tables
@@ -384,7 +417,7 @@ ALTER TABLE `confirmation`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_o` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_o` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `orderhistory`
@@ -402,25 +435,25 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_pro` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pro` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_id`
 --
 ALTER TABLE `product_id`
-  MODIFY `Pro_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Pro_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product_set`
 --
 ALTER TABLE `product_set`
-  MODIFY `id_set` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_set` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `id_shops` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_shops` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -432,7 +465,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
