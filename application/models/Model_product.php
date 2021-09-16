@@ -107,7 +107,19 @@ class Model_product extends CI_Model
     
     function add_setmeal($add_setmeal)
     {
+        $id_set = $add_setmeal['Pro_id_set'];
+        $id_pro = $add_setmeal['Pro_id_pro'];
+        $this->db->where('Pro_id_set',$id_set);
+        $this->db->where('Pro_id_pro',$id_pro);
+        $query = $this->db->get('product_id');
+        if ($query->num_rows() > 0) {
+            $message = false;
+            return $message;
+        } else {
             $this->db->insert('product_id',$add_setmeal);
+            $message = true;  
+            return $message;
+        } 
     } 
     
     function view_setID($b)

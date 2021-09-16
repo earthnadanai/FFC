@@ -41,7 +41,7 @@
     </form>
   </div>
 </div>
-    
+<br>
     </div>    
     <?php } ?>
     </div>

@@ -18,23 +18,23 @@
     if((!strcmp($a,$b)))  { ?>
     <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
-    FootForCatering
+    FoodForCatering
     </a>
     <?php } 
     elseif ((!strcmp($a,$c))) {?>
       <a href="<?php echo site_url('Customer/index'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
-    FootForCatering 
+    FoodForCatering 
     </a>
     <?php } elseif ((!strcmp($a,$d))) {?>
       <a href="<?php echo site_url('Product/page_shop'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
-    FootForCatering 
+    FoodForCatering 
     </a>
     <?php } else { ?>
       <a href="<?php echo site_url('Customer/index'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
-    FootForCatering 
+    FoodForCatering 
     </a>
     <?php } ?>
 

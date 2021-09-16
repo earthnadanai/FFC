@@ -13,7 +13,7 @@
 
     <a href="<?php echo site_url('User/logout'); ?>" class="logo">
     <img src="<?php echo base_url('img'); ?>/LOGOFFS.png" width="70" height="50" alt="">
-    FootForCatering 
+    FoodForCatering 
     </a>
 
 

@@ -31,6 +31,7 @@
     </p>
   </div>
 </div>
+<br>
     </div>
     <?php } ?>
     </div>

@@ -180,6 +180,7 @@ class Product extends CI_Controller {
             'id_set_shop'=> $this->input->post("id_set_shop"),
             'name_set'=> $this->input->post("name_set"),
             'size'=> $this->input->post("size"),
+            'unit_eat'=> $this->input->post("unit_eat"),
             'price'=> $this->input->post("price")
         );
 
@@ -214,7 +215,15 @@ class Product extends CI_Controller {
         $a = $this->input->post('id');
         $b = $this->input->post('Pro_id_set');
 
-        
+        if($add == 0){
+            echo "<script language='JavaScript'>";
+            echo "alert('คุณเพิ่มอาหารซ้ำ')";
+            echo "</script>";
+            $data['viewProSet'] = $this->ffc_product->view_Proset($b);
+            $data['viewPro'] = $this->ffc_product->view_pro($a);
+            $data['viewSet'] = $this->ffc_shop->view_set($a);
+            $this->load->view('set_n1meal',$data);
+        } else {
             echo "<script language='JavaScript'>";
             echo "alert('คุณเพิ่มอาหารใส่ชุดอาหารสำเร็จ')";
             echo "</script>";
@@ -222,7 +231,7 @@ class Product extends CI_Controller {
             $data['viewPro'] = $this->ffc_product->view_pro($a);
             $data['viewSet'] = $this->ffc_shop->view_set($a);
             $this->load->view('set_n1meal',$data);
-        
+        }
     }
 
     function pege_N1setmeal()

@@ -41,6 +41,12 @@
 </div>
     </div>
     </div>
+    <h6 align="left">จำนวนที่จะรองรับผู้รับประทาน<h6>
+    <div class="col">
+    <div class="col-sm-12">
+      <input type="text" name="unit_eat"  class="form-control" placeholder="กรอกจำนวนที่จะรองรับได้ เช่น 1-5" required>
+    </div>
+    </div>
     <h6 align="left">ราคาของชุดอาหาร<h6>
     <div class="col">
     <div class="col-sm-12">

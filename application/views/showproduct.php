@@ -47,8 +47,9 @@
     <div class="card bg-light">
     <div class="card-body">
     <?php foreach ($result as $x){ ?>
-    <h4>อาหารใน<?php echo $x->name_set;?> ("ขนาด<?php echo $x->size;?>")</h4>
+    <h4>อาหารใน<?php echo $x->name_set;?> ("ขนาด<?php echo $x->size;?> <?php echo $x->unit_eat;?> คน")</h4>
       <?php } ?>
+      <br>
   <div class="row">
   <?php foreach ($re as $x){ ?>
     <div class="col-4">
@@ -60,12 +61,10 @@
     ประเภทอาหาร : <?php echo $x->type; ?><br>
     <?php echo $x->info; ?>
   <br>
-
-
-  
     </p>
-  </div>
+  </div>  
 </div>
+<br>
     </div>
     <?php } ?>
     </div>

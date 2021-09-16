@@ -44,6 +44,7 @@
     <option value="แกง">แกง</option>
     <option value="ทอด">ทอด</option>
     <option value="ทอด">ยำ</option>
+    <option value="ของคาว">ของคาว</option>
     <option value="ของหวาน">ของหวาน</option>
   </select>
   <label for="floatingSelect">ประเภทอาหาร</label>
