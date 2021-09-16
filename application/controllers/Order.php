@@ -18,7 +18,7 @@ class Order extends CI_Controller {
     {
         $a = $this->input->post('id');
         $data['orderShop'] = $this->ffc_order->order_shops($a);
-        $data['orderCut'] = $this->ffc_order->order_cut($a);
+        $data['orderCus'] = $this->ffc_order->order_cus($a);
         $data['orderMakes'] = $this->ffc_order->order_Makes($a);
         $data['orderfinished'] = $this->ffc_order->order_finished($a);
         $this->load->view('view_order',$data);
@@ -26,7 +26,7 @@ class Order extends CI_Controller {
 
     function ok_confirmation()
     {
-        $a = $this->input->post('id');
+        
         $id_conn = $this->input->post('id_conn');
         $status_shop = $this->input->post('status_shop');
         $date_shop = $this->input->post('date_shop');
@@ -34,17 +34,17 @@ class Order extends CI_Controller {
         $this->db->set('status_shop', $status_shop);
         $this->db->where('id_conn', $id_conn);
         $result = $this->db->update('confirmation');
-        
+
         if ($result) {
-            echo "<script language='JavaScript'>";
-            echo "alert('ยอมรับ')";
-            echo "</script>";
-            $data['orderShop'] = $this->ffc_order->order_shops($a);
-            $this->load->view('view_order',$data);
+           $a = $this->input->post('id');
+           $data['Shop'] = $this->ffc_shop->view_shop($a);
+           $this->load->view("confirmation",$data);
         } else {
             echo "<script language='JavaScript'>";
-            echo "alert('ไม่ยอมรับ')";
+            echo "alert('เปลี่ยนแปลงไม่สำเร็จ')";
             echo "</script>";
+            $data['idShop'] = $this->ffc_order->order_shops($a);
+            $this->load->view('confirmation',$data);
         }
 	}
 
