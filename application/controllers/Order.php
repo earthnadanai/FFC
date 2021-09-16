@@ -18,6 +18,9 @@ class Order extends CI_Controller {
     {
         $a = $this->input->post('id');
         $data['orderShop'] = $this->ffc_order->order_shops($a);
+        $data['orderCut'] = $this->ffc_order->order_cut($a);
+        $data['orderMake'] = $this->ffc_order->order_Make($a);
+        $data['orderfinished'] = $this->ffc_order->order_finished($a);
         $this->load->view('view_order',$data);
     }
 
@@ -26,21 +29,21 @@ class Order extends CI_Controller {
         $a = $this->input->post('id');
         $id_conn = $this->input->post('id_conn');
         $status_shop = $this->input->post('status_shop');
-        $date = $this->input->post('date');
-        $this->db->set('date_shop', $date);
+        $date_shop = $this->input->post('date_shop');
+        $this->db->set('date_shop', $date_shop);
         $this->db->set('status_shop', $status_shop);
         $this->db->where('id_conn', $id_conn);
         $result = $this->db->update('confirmation');
         
         if ($result) {
             echo "<script language='JavaScript'>";
-            echo "alert('อนุมัติให้เปิดร้าน')";
+            echo "alert('ยอมรับ')";
             echo "</script>";
             $data['orderShop'] = $this->ffc_order->order_shops($a);
             $this->load->view('view_order',$data);
         } else {
             echo "<script language='JavaScript'>";
-            echo "alert('ไม่อนุมัติให้เปิดร้าน')";
+            echo "alert('ไม่ยอมรับ')";
             echo "</script>";
         }
 	}
@@ -58,4 +61,5 @@ class Order extends CI_Controller {
         $this->load->view('bootstap');
         $this->load->view("view_oderstatus");
     }
+    
 }

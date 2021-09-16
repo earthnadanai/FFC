@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
       $this->load->view('bootstap');    
       $this->load->view('navbar.php');  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +31,7 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <?php 
-    foreach ($orderShop as $x){
-    $a = $x->status_shop;;
-    $b = "รอการนำเนิดการ	";
-    if((!strcmp($a,$b)))  { 
-   ?>
+
     <table class="table">
   <thead>
     <tr>
@@ -43,9 +39,11 @@
       <th scope="col"><div align="center">ชื่อชุดอาหาร</div></th>
       <th scope="col"><div align="center">ขนาด</div></th>
       <th scope="col"><div align="center">ราคา</div></th>
+      <th scope="col"><div align="center">เวลาที่กดยอมรับ</div></th>
       <th scope="col">ยอมรับ/ไม่ยอมรับ</th>
     </tr>
   </thead>
+  <?php foreach ($orderCut as $x){ ?>
   <tbody>
     <tr>
       <td align="center"><?php echo $x->firstname; ?></td>
@@ -53,62 +51,38 @@
       <td align="center"><?php echo $x->size; ?></td>
       <td align="center"><?php echo $x->price; ?></td>
       <td align="center">
+      <form action="<?= site_url('Order/ok_confirmation');?>" method="POST">
+      <input type="datetime-local" id="birthdaytime" name="date_shop" required>
+    </td>
+      <td align="center">
       
       <div class="row">
     <div class="col-2">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">ยอมรับ</button>
-   
- 
-    <form action="./ok_confirmation" method="POST">
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-    <input type="date" name="date">
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <input type="text" name="id_conn" value="<?php echo $x->id_conn; ?>" hidden>
-    
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <input type="button" class="btn btn-success" name="status_shop" value="ยอมรับ">
-      </div>
+    <div class="row">
+    <div class="col-6"><input type="submit" class="btn btn-success" name="status_shop" value="ยอมรับ">  </div>
+    </form>
     </div>
   </div>
-</div>
-</div>
-<div class="col-2">
-<input type="submit" class="btn btn-danger" name="status_shop" value="ไม่ยอมรับ"></form>
-    </div>
+    <div class="col-5"><input type="submit" class="btn btn-danger" name="status_shop" value="ไม่ยอมรับ"></div>
   </div>
+    
+    
+    
   
     
       </td>
     </tr>
   </tbody>
+  <?php } ?>
 </table>
-<?php } else { }?>
-<?php } ?>
+
   </div>
 
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   
-  <?php 
-    foreach ($orderShop as $x){
-    $a = $x->status_shop;;
-    $b = "ยอมรับ";
-    $c = "รอการนำเนิดการ";
-    $d = $x->status_customer;;
-    if((!strcmp($a,$b) && !strcmp($c,$d)))  { 
-   ?>
   <table class="table">
   <thead>
     <tr>
@@ -120,6 +94,7 @@
       <th scope="col"><div align="center">อาหารที่ต้องทำ</div></th>
     </tr>
   </thead>
+  <?php foreach ($orderMake as $x){ ?>
   <tbody>
     <tr>
       <td align="center"><?php echo $x->firstname; ?></td>
@@ -138,19 +113,11 @@
       </td>
     </tr>
   </tbody>
+  <?php } ?>
 </table>
-<?php } else { }?>
-<?php } ?>
-
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
   
-  <?php 
-    foreach ($orderShop as $x){
-    $a = $x->status_shop;;
-    $b = "ยอมรับ";
-    if((!strcmp($a,$b)))  { 
-   ?>
   <table class="table">
   <thead>
     <tr>
@@ -162,6 +129,7 @@
       <th scope="col"><div align="center">สถานะจากลูกค้า</div></th>
     </tr>
   </thead>
+  <?php foreach ($orderfinished as $x){?>
   <tbody>
     <tr>
       <td align="center"><?php echo $x->firstname; ?></td>
@@ -172,10 +140,8 @@
       <td align="center"><?php echo $x->status_customer; ?></td>
     </tr>
   </tbody>
+  <?php } ?>
 </table>
-<?php } else { }?>
-<?php } ?>
-
   </div>
 </div>
 <br>
