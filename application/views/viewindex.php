@@ -50,7 +50,7 @@
     <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
    
     <div id="myid1" class="card" style="width: 23rem;" >
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..."style="width: 365px; height: 225px;" >
   <div class="card-body">
     <h5 class="card-title">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >

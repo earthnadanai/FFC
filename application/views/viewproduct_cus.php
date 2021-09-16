@@ -29,7 +29,7 @@
   <div class="row g-0">
 
     <div class="col-md-6">
-      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="img-fluid rounded-start" alt="..."style="width: 200px; max-hight: 220px">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="img-fluid rounded-start" alt="..."style="width: 510px; height: 270px;">
     </div>
     <div class="col-md-6">
       <div class="card-body">
