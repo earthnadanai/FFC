@@ -44,7 +44,9 @@
   <?php if ((!strcmp($a,$b))) { ?>
     <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
   <?php } else if ((!strcmp($a,$c))) {?>
-    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="<?php echo site_url('Order/check_status'); ?>"><i class="bi bi-inbox-fill"></i>MyOrder</a>
+    <a href="<?php echo site_url('Customer/view_basketsimple'); ?>"><i class="bi bi-basket"></i>Basket</a>  
   <?php } else if ((!strcmp($a,$d))) {?>
     <a href="<?php echo site_url('Product/page_shop'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
   <?php } else { ?>
@@ -54,30 +56,7 @@
 <!-- Button trigger modal -->
 
 
-<?php if ((!strcmp($a,$c))) { ?>
-  <a href="#" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-fw fa-search"></i>Search</a>
-<?php } else if ((!strcmp($a,$d))) {?>
-  <a href="#" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-fw fa-search"></i>Search</a>
-<?php }  else { }?> 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <?php 

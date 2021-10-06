@@ -183,4 +183,10 @@ class Customer extends CI_Controller {
             $this->load->view("final_payment");
         }
     }
+    public function view_basketsimple()
+    {
+        $idcut = $this->input->post('id_customer');
+        $data["buypro"] = $this->ffc_order->view_order($idcut);
+        $this->load->view("view_basket",$data);        
+    }
 }
