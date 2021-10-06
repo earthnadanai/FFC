@@ -97,7 +97,14 @@
   <?php foreach ($orderCus as $x){ ?>
   <tbody>
     <tr>
-      <td align="center"><?php echo $x->firstname; ?></td>
+    <td align="center">
+    <form action="<?= site_url('Order/infocus_shop');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
+    <input type="text" name="id_shops" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-info" ><?php echo $x->firstname; ?></button>
+    
+    </form>
+    </td>
       <td align="center"><?php echo $x->name_set; ?></td>
       <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
       <td align="center"><?php echo $x->date_shop; ?></td> 
@@ -108,7 +115,7 @@
       <form action="<?= site_url('Order/pege_foodset');?>" method="post">
       <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-        <button type="submit" class="btn btn-success" >ดูอาหารที่ต้องทำ</button>
+      <button type="submit" class="btn btn-info" >ดูอาหารที่ต้องทำ</button>
     </form>
 
       </td>

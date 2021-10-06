@@ -10,6 +10,7 @@ class Order extends CI_Controller {
         $this->load->model('Model_order', 'ffc_order');
         $this->load->model('Model_product', 'ffc_product');
         $this->load->model('Model_shop', 'ffc_shop');
+        $this->load->model('Model_user', 'ffc_user');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -60,6 +61,15 @@ class Order extends CI_Controller {
     {
         $this->load->view('bootstap');
         $this->load->view("view_oderstatus");
+    }
+
+    function infocus_shop()
+    {  
+        $a = $this->input->post('id');
+        $b = $this->input->post('id_shops');
+        $data['viewcut'] = $this->ffc_user->showinfo_customer($a);
+        $data['viewShop'] = $this->ffc_shop->view_shops1($b);
+        $this->load->view('showinfocus_shop', $data);
     }
     
 }
