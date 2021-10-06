@@ -13,6 +13,7 @@
 </head>
 <body>
 <br>
+<?php foreach ($orderCus as $x) { echo $x->id_shop; } ?>
 <div class="container" align="canter">
   <div class="row">
   <div class="card text-dark bg-light mb-3" style="max-width: 100rem;">
@@ -31,7 +32,7 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+  
     <table class="table">
   <thead>
     <tr>
@@ -54,7 +55,7 @@
       <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
       <td align="center">
       <form action="<?= site_url('Order/ok_confirmation');?>" method="POST">
-      <input type="datetime-local" id="birthdaytime" name="date_shop" required>
+      <input type="datetime-local" id="date_shop"name="date_shop" min="T00:00" max="T00:00" align="canter" required>
     </td>
       <td align="center">
       
@@ -93,21 +94,28 @@
       <th scope="col"><div align="center">อาหารที่ต้องทำ</div></th>
     </tr>
   </thead>
-  <?php foreach ($orderCut as $xx){ ?>
+  <?php foreach ($orderCus as $x){ ?>
   <tbody>
     <tr>
-      <td align="center"><?php echo $xx->firstname; ?></td>
-      <td align="center"><?php echo $xx->name_set; ?></td>
+    <td align="center">
+    <form action="<?= site_url('Order/infocus_shop');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
+    <input type="text" name="id_shops" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-info" ><?php echo $x->firstname; ?></button>
+    
+    </form>
+    </td>
+      <td align="center"><?php echo $x->name_set; ?></td>
       <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
-      <td align="center"><?php echo $xx->date_shop; ?></td> 
-      <td align="center"><?php echo $xx->size; ?></td>
-      <td align="center"><?php echo $xx->price; ?></td>
+      <td align="center"><?php echo $x->date_shop; ?></td> 
+      <td align="center"><?php echo $x->size; ?></td>
+      <td align="center"><?php echo $x->price; ?></td>
       <td align="center">
 
       <form action="<?= site_url('Order/pege_foodset');?>" method="post">
-      <input type="text" name="id_set" value="<?php echo $xx->id_set; ?>" hidden>
-    <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
-        <button type="submit" class="btn btn-success" >ดูอาหารที่ต้องทำ</button>
+      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+      <button type="submit" class="btn btn-info" >ดูอาหารที่ต้องทำ</button>
     </form>
 
       </td>

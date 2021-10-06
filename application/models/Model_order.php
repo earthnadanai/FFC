@@ -103,11 +103,35 @@ class Model_order extends CI_Model
             return $message;
         }      
     }
+    function change_status($data)
+    {
+        $change_status = $data['status_shop'.'date_shop'];
+        $status_shop = $data['status_shop'];
+        $date_shop = $data['date_shop'];
+        $id_conn = $data['id_conn'];
+        /*$this->db->set('date_shop', $date_shop);
+        $this->db->set('status_shop', $status_shop);*/
+        $this->db->where('id_conn', $id_conn);
+        $query = $this->db->get('confirmation');
+        if ($query->num_rows() > 0) {
+            //$this->db->update('confirmation',$change_status);
+            $message = false;
+            return $message;
+        } else {
+           $this->db->update('confirmation',$change_status);
+            $message = true;  
+            return $message;
+        }      
+
+       /* $this->db->set('date_shop', $date_shop);
+        $this->db->set('status_shop', $status_shop);
+        $this->db->where('id_conn', $id_conn);
+        $result = $this->db->update('confirmation');*/
+    }
     
-    function order_cut($a)
+    function order_cus($a)
     {
         $status_shop = "ยอมรับ";
-        $status_customer = "รอการนำเนิดการ";
         $this->db->select('*')
         ->from('confirmation')
         ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
@@ -115,7 +139,7 @@ class Model_order extends CI_Model
         ->join('product_set', 'confirmation.id_sett = product_set.id_set')
         ->where('id_shop', $a)
         ->where('status_shop', $status_shop)
-        ->where('status_customer', $status_customer);
+        ->where('status_customer', "รอการนำเนิดการ");
         $query = $this->db->get();
         return $query->result();
     }
