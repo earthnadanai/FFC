@@ -106,7 +106,11 @@
   <?php };?>
   <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
   <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+  <?php if (isset($this->session->userdata['firstname'])) { ?>
 <input type="submit" class="btn btn-success btn-lg" name="submit" value="สั่งเลย!!"> 
+<?php } else{ ?>
+        <a href="<?php echo site_url('User/page_login'); ?>" class="btn btn-success btn-lg">สั่งเลย!!</a>
+    <?php } ?>
   </form>
   
   </div>

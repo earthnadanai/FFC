@@ -59,8 +59,7 @@
 
 
 
-    <?php 
-    if (isset($this->session->userdata['firstname'])) { ?>
+    <?php if (isset($this->session->userdata['firstname'])) { ?>
     <a class="active" href="<?php echo site_url('Customer/page_edit'); ?>"><i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata['firstname'];?></a>
     <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-sign-in"></i> ออกจากระบบ</a>
     <?php } else{ ?>

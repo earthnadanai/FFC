@@ -70,12 +70,12 @@ class Model_order extends CI_Model
         return $query->result();
     }
 
-    function view_orderpay($idcut)
+    function view_comm($idcut)
     {
         $this->db->select('*')
-        ->from('order')
-        ->join('payment', 'order.id_customer  = payment.id_cuss ')
-        ->join('shop', 'order.id_shop  = shop.id_shops ')
+        ->from('confirmation')
+        ->join('product_set', 'confirmation.id_sett  = product_set.id_set ')
+        ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
         ->where('id_customer', $idcut);
         $query = $this->db->get();
         return $query->result();
