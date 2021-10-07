@@ -86,7 +86,7 @@ class Order extends CI_Controller {
     public function check_status()
     {
         $idcut = $this->session->userdata['id'];
-        $data["Order"] = $this->ffc_order->view_orderpay($idcut); 
+        $data["Order"] = $this->ffc_order->view_comm($idcut); 
         $this->load->view("view_oderstatus",$data);
     }
 }

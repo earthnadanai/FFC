@@ -83,8 +83,7 @@
     
     </div>
     
-<br>
-</body>
+<br><br><br><br><br><br><br><br>
 </div>
 
 <?php $this->load->view('footer');  ?>
