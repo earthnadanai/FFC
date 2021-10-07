@@ -68,8 +68,12 @@
     <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
         <?php foreach ($viewShop as $xx){ ?> 
-      <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!"></form>
-      
+    <?php if (isset($this->session->userdata['firstname'])) { ?>
+    <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
+    <?php } else{ ?>
+        <a href="<?php echo site_url('User/page_login'); ?>" class="btn btn-success"> สั่งเลย!!</a>
+    <?php } ?>
+    </form>
       <form action="<?= site_url('Customer/showproduct');?>" method="POST">
       <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
     <?php };?>
