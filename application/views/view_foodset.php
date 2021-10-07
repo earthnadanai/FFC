@@ -26,6 +26,7 @@
     <?php foreach ($viewProset as $x){ ?>
     <div class="col-6">
     <div class="card" style="width: 11rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." style="width: 174px; height: 100px;">
   <div class="card-body">
     <h5 class="card-title"><?php echo $x->name_set; ?></h5>
     <p class="card-text">
@@ -37,7 +38,16 @@
       <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
-        <button type="submit" class="btn btn-success" >ยืนยัน</button>
+        <button type="submit" class="btn btn-success" >ดูอาหารข้างใน</button>
+    </form>
+    <form action="<?= site_url('Product/pege_editsetfood');?>" method="post">
+    <?php foreach ($viewShop as $x){ ?>
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <?php } ?>
+    <?php foreach ($viewProset as $x){ ?>
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <?php } ?>
+        <button type="submit" class="btn btn-warning" >แก้ไขข้อมูล</button>
     </form>
   </div>
 </div>

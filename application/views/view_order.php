@@ -13,7 +13,7 @@
 </head>
 <body>
 <br>
-<?php foreach ($orderCus as $x) { echo $x->id_shop; } ?>
+
 <div class="container" align="canter">
   <div class="row">
   <div class="card text-dark bg-light mb-3" style="max-width: 100rem;">

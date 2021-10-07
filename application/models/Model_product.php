@@ -53,8 +53,10 @@ class Model_product extends CI_Model
     {
         $a = $add_food['nameProduct'];
         $b = $add_food['id_pro_shop'];
+        $c = $add_food['sizefood'];
         $this->db->where('nameProduct',$a);
         $this->db->where('id_pro_shop',$b);
+        $this->db->where('sizefood',$c);
         $query = $this->db->get('product');
         if ($query->num_rows() > 0) {
             $message = false;

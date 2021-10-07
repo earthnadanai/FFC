@@ -39,6 +39,7 @@
     <br>
 <?php foreach ($viewProSet as $x){ ?>
     <input type="text" name="Pro_id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <input type="text" name="size" value="<?php echo $x->size; ?>" hidden>
 <?php } ?>
 <?php foreach ($viewSet as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>

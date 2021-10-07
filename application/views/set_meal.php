@@ -15,7 +15,7 @@
 <img  src="../../img/200w.gif"  alt="..." >
 </center>
 <div class="container" align="center">
-<div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
+<div class="card text-dark bg-light mb-3" style="max-width: 70rem;">
 <div class="card-body">
 <h4>เพิ่มอาหาร</h4>
 
@@ -23,8 +23,9 @@
 
 <?php foreach ($viewSets as $x){ ?>
   
-  <div class="col-6">
+  <div class="col-4">
     <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." style="width: 287px; height: 150px;">
       <div class="card-body">
         <h5 class="card-title">ชื่อชุดอาหาร : <?php echo $x->name_set; ?></h5>
         <p class="card-text">

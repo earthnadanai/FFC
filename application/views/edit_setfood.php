@@ -16,10 +16,12 @@
 <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
 <div class="card-body">
 <h4>เพิ่มอาหาร</h4>
-<form action="<?= site_url('Product/add_set');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
-<?php foreach ($viewSet as $x){ ?>
-    <input type="text" name="id_set_shop" value="<?php echo $x->id_shops; ?>" hidden>
+<form action="<?= site_url('Product/edit_setfood');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+<?php foreach ($viewShop as $x){ ?>
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
+<?php foreach ($viewSet as $x){ ?>
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
     <h6 align="left">เพิ่มรูปอาหาร<h6>
     <div class="col">
     <div class="col-sm-12">
@@ -30,7 +32,7 @@
     <h6 align="left">กรอกชื่อชุดอาหาร<h6>
     <div class="col">
     <div class="col-sm-12">
-      <input type="text" name="name_set"  class="form-control" placeholder="กรอกชื่อชุดอาหาร" required>
+      <input type="text" name="name_set" value="<?php echo $x->name_set; ?>" class="form-control" placeholder="กรอกชื่อชุดอาหาร" required>
     </div>
     </div>
     <br>
@@ -38,7 +40,7 @@
     <div class="col-sm-12">
     <div class="form-floating">
   <select class="form-select" id="floatingSelect" name="size" aria-label="Floating label select example" required>
-    <option selected>เลือกขนาดของชุดอาหาร</option>
+  <option value="<?php echo $x->size; ?>"><?php echo $x->size; ?></option>
     <option value="เล็ก">เล็ก</option>
     <option value="กลาง">กลาง</option>
     <option value="ใหญ่">ใหญ่</option>
@@ -50,15 +52,16 @@
     <h6 align="left">จำนวนที่จะรองรับผู้รับประทาน<h6>
     <div class="col">
     <div class="col-sm-12">
-      <input type="text" name="unit_eat"  class="form-control" placeholder="กรอกจำนวนที่จะรองรับได้ เช่น 1-5" required>
+      <input type="text" name="unit_eat"  value="<?php echo $x->unit_eat; ?>" class="form-control" placeholder="กรอกจำนวนที่จะรองรับได้ เช่น 1-5" required>
     </div>
     </div>
     <h6 align="left">ราคาของชุดอาหาร<h6>
     <div class="col">
     <div class="col-sm-12">
-      <input type="int" name="price"  class="form-control" placeholder="ราคาของชุดอาหาร" required>
+      <input type="int" name="price"  value="<?php echo $x->price; ?>" class="form-control" placeholder="ราคาของชุดอาหาร" required>
     </div>
     </div>
+    <?php } ?>
 <br>
 <div class="row">
     <div class="col-sm"> 
@@ -66,8 +69,8 @@
     </form>
     </div>
     <div class="col-sm"> 
-    <form action="<?= site_url('Product/pege_status');?>" method="post" >
-    <?php foreach ($viewSet as $x){ ?>
+    <form action="<?= site_url('Product/pege_foodset');?>" method="post" >
+    <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
     <button type="submit" class="btn btn-secondary" >ย้อนกลับ</button>

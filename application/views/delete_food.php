@@ -64,7 +64,7 @@
     </p>
   
     <form action="<?= site_url('Product/delete_menu');?>" method="post">
-    <input type="text" name="id_pro" value="<?php echo $x->id_pro; ?>" hidden> <?php echo $x->id_pro; ?>
+    <input type="text" name="id_pro" value="<?php echo $x->id_pro; ?>" hidden> 
     <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>

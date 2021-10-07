@@ -56,7 +56,7 @@
     <div class="col">
     <div class="col-sm-12">
     <div class="form-floating">
-  <select class="form-select" id="floatingSelect" name="size" aria-label="Floating label select example" required>
+  <select class="form-select" id="floatingSelect" name="sizefood" aria-label="Floating label select example" required>
     <option selected>เลือกขนาดของอาหาร</option>
     <option value="เล็ก">เล็ก</option>
     <option value="กลาง">กลาง</option>

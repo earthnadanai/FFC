@@ -125,7 +125,7 @@ class Product extends CI_Controller {
     {
         $data = array();
         $config['upload_path'] = 'img/';
-        $config['allowed_types'] = 'jpg|png';
+        $config['allowed_types'] = 'jpg|png|gif';
         $config['max_size'] = 5024;
         $config['encrypt_name'] = true;  
 
@@ -144,6 +144,7 @@ class Product extends CI_Controller {
           'nameProduct'=> $this->input->post("nameProduct"),
           'img_pro'=> $img_pro,
           'info'=> $this->input->post("info"),
+          'sizefood'=> $this->input->post("sizefood"),
           'type'=> $this->input->post("type")
       );
 
@@ -175,12 +176,28 @@ class Product extends CI_Controller {
 
     function add_set()
     {
+        $data = array();
+        $config['upload_path'] = 'img/';
+        $config['allowed_types'] = 'jpg|png|gif';
+        $config['max_size'] = 5024;
+        $config['encrypt_name'] = true;  
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('img_set')) {
+            $img_set='';
+        } else {
+          $fileData = $this->upload->data();
+          $img_set= $data['img_set'] = $fileData['file_name'];
+        }
+
         $add_set = array(
 
             'id_set_shop'=> $this->input->post("id_set_shop"),
             'name_set'=> $this->input->post("name_set"),
             'size'=> $this->input->post("size"),
             'unit_eat'=> $this->input->post("unit_eat"),
+            'img_set'=> $img_set,
             'price'=> $this->input->post("price")
         );
 
@@ -208,7 +225,11 @@ class Product extends CI_Controller {
         $add_setmeal = array(
 
             'Pro_id_set'=> $this->input->post("Pro_id_set"),
-            'Pro_id_pro'=> $this->input->post("Pro_id_pro")
+            'Pro_id_pro'=> $this->input->post("Pro_id_pro"),
+        );
+        $data = array(
+            'id'=> $this->input->post("id"),
+            'size'=> $this->input->post("size")
         );
 
         $add = $this->ffc_product->add_setmeal($add_setmeal);
@@ -220,7 +241,7 @@ class Product extends CI_Controller {
             echo "alert('คุณเพิ่มอาหารซ้ำ')";
             echo "</script>";
             $data['viewProSet'] = $this->ffc_product->view_Proset($b);
-            $data['viewPro'] = $this->ffc_product->view_pro($a);
+            $data['viewPro'] = $this->ffc_product->view_product($data);
             $data['viewSet'] = $this->ffc_shop->view_set($a);
             $this->load->view('set_n1meal',$data);
         } else {
@@ -228,7 +249,7 @@ class Product extends CI_Controller {
             echo "alert('คุณเพิ่มอาหารใส่ชุดอาหารสำเร็จ')";
             echo "</script>";
             $data['viewProSet'] = $this->ffc_product->view_Proset($b);
-            $data['viewPro'] = $this->ffc_product->view_pro($a);
+            $data['viewPro'] = $this->ffc_product->view_product($data);
             $data['viewSet'] = $this->ffc_shop->view_set($a);
             $this->load->view('set_n1meal',$data);
         }
@@ -297,11 +318,20 @@ class Product extends CI_Controller {
         $this->load->view('edit_food',$data);
     }
 
+    function pege_editsetfood()
+    {
+        $a = $this->input->post('id_set');
+        $b = $this->input->post('id');
+        $data['viewSet'] = $this->ffc_product->view_Proset($a);
+        $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+        $this->load->view('edit_setfood',$data);
+    }
+
     function edit_food()
     {
         $data = array();
         $config['upload_path'] = 'img/';
-        $config['allowed_types'] = 'jpg|png';
+        $config['allowed_types'] = 'jpg|png|gif';
         $config['max_size'] = 5024;
         $config['encrypt_name'] = true;  
 
@@ -317,11 +347,13 @@ class Product extends CI_Controller {
             $nameProduct = $this->input->post("nameProduct");
             $type = $this->input->post("type");
             $info = $this->input->post("info");
+            $sizefood = $this->input->post('sizefood');
             $a = $this->input->post("id_pro");
             $b = $this->input->post('id');
 
         $this->db->set('img_pro', $img_pro);
         $this->db->set('nameProduct', $nameProduct);
+        $this->db->set('sizefood', $sizefood);
         $this->db->set('type', $type);
         $this->db->set('info', $info);
         $this->db->where('id_pro', $a);
@@ -341,6 +373,56 @@ class Product extends CI_Controller {
             $data['viewPro'] = $this->ffc_product->view_profood($a);
             $data['viewShop'] = $this->ffc_shop->view_shopss($b);
             $this->load->view('edit_food',$data);
+        }
+        
+    }
+
+    function edit_setfood()
+    {
+        $data = array();
+        $config['upload_path'] = 'img/';
+        $config['allowed_types'] = 'jpg|png|gif';
+        $config['max_size'] = 5024;
+        $config['encrypt_name'] = true;  
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('img_set')) {
+            $img_set = '';
+        } else {
+          $fileData = $this->upload->data();
+          $img_set = $data['img_set'] = $fileData['file_name'];
+        }
+
+            $name_set = $this->input->post("name_set");
+            $size = $this->input->post("size");
+            $unit_eat = $this->input->post("unit_eat");
+            $price = $this->input->post('price');
+            $a = $this->input->post('id_set');
+            $b = $this->input->post('id');
+
+        $this->db->set('img_set', $img_set);
+        $this->db->set('name_set', $name_set);
+        $this->db->set('size', $size);
+        $this->db->set('unit_eat', $unit_eat);
+        $this->db->set('price', $price);
+        $this->db->where('id_set', $a);
+        $result = $this->db->update('product_set');
+
+        if($result){
+            echo "<script language='JavaScript'>";
+            echo "alert('คุณได้แก้ไขแล้ว')";
+            echo "</script>";
+            $data['viewSet'] = $this->ffc_product->view_Proset($a);
+            $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            $this->load->view('edit_setfood',$data);
+        } else {
+            echo "<script language='JavaScript'>";
+            echo "alert('คุณได้แก้ไขไม่สำเร็จ')";
+            echo "</script>";
+            $data['viewSet'] = $this->ffc_product->view_Proset($a);
+            $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            $this->load->view('edit_setfood',$data);
         }
         
     }

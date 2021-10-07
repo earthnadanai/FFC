@@ -15,7 +15,7 @@
 <div class="container" align="center">
 <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
 <div class="card-body">
-<h4>เพิ่มอาหาร</h4>
+<h4>แก้ไขข้อมูลอาหาร</h4>
 <form action="<?= site_url('Product/edit_food');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 <?php foreach ($viewPro as $x){ ?>
     <input type="text" name="id_pro" value="<?php echo $x->id_pro; ?>" hidden>
@@ -49,6 +49,20 @@
     <option value="เครื่องดื่ม">เครื่องดื่ม</option>
   </select>
   <label for="floatingSelect">ประเภทอาหาร</label>
+</div>
+    </div>
+    </div>
+    <br>
+    <div class="col">
+    <div class="col-sm-12">
+    <div class="form-floating">
+  <select class="form-select" id="floatingSelect" name="sizefood" aria-label="Floating label select example" required>
+  <option value="<?php echo $x->sizefood; ?>"><?php echo $x->sizefood; ?></option>
+    <option value="เล็ก">เล็ก</option>
+    <option value="กลาง">กลาง</option>
+    <option value="ใหญ่">ใหญ่</option>
+  </select>
+  <label for="floatingSelect">ขนาดของอาหาร</label>
 </div>
     </div>
     </div>
