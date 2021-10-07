@@ -160,7 +160,7 @@ class Model_order extends CI_Model
 
     function order_finished($a)
     {
-        $status_shop = "ยอมรับ";
+        $status_shop = "ส่ง";
         $this->db->select('*')
         ->from('confirmation')
         ->join('shop', 'confirmation.id_shop  = shop.id_shops ')

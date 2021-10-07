@@ -53,6 +53,20 @@
     </div>
     </div>
     <br>
+    <div class="col">
+    <div class="col-sm-12">
+    <div class="form-floating">
+  <select class="form-select" id="floatingSelect" name="size" aria-label="Floating label select example" required>
+    <option selected>เลือกขนาดของอาหาร</option>
+    <option value="เล็ก">เล็ก</option>
+    <option value="กลาง">กลาง</option>
+    <option value="ใหญ่">ใหญ่</option>
+  </select>
+  <label for="floatingSelect">ขนาดของอาหาร</label>
+</div>
+    </div>
+    </div>
+    <br>
     <div class="form-floating">
   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="info" style="height: 100px"></textarea>
   <label for="floatingTextarea2">ข้อมูลแนะนำอาหาร</label>

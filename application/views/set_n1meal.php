@@ -33,6 +33,7 @@
         <form action="<?= site_url('Product/add_setfood');?>" method="post">
         <p class="card-text">
     <input type="text" name="Pro_id_pro" value="<?php echo $x->id_pro; ?>" hidden>
+    ขนาดอาหาร : <?php echo $x->sizefood; ?><br>
     ประเภทอาหาร : <?php echo $x->type; ?><br>
     <?php echo $x->info; ?>
     <br>

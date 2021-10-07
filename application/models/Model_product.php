@@ -100,6 +100,16 @@ class Model_product extends CI_Model
         return $query->result();
     }
 
+    function view_product($data)
+    {
+        $id = $data['id'];
+        $size = $data['size'];
+        $this->db->where('id_pro_shop', $id);
+        $this->db->where('sizefood', $size);
+        $query = $this->db->get('product');
+        return $query->result();
+    }
+
     function add_setfood($add_set)
     {
         $this->db->insert('product_set',$add_set);

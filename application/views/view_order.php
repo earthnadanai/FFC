@@ -65,13 +65,12 @@
     <input type="text" name="id_conn" value="<?php echo $x->id_conn; ?>" hidden>
 
     <div class="row">
-    <div class="col-6"><input type="submit" class="btn btn-success" name="status_shop" value="ยอมรับ">  </div>
-    </form>
+    <div class="col-6"><input type="submit" class="btn btn-success" name="status_shop" value="ยอมรับ"> </div>
     </div>
   </div>
     <div class="col-7"><input type="submit" class="btn btn-danger" name="status_shop" value="ไม่ยอมรับ"></div>
   </div>
-    
+  </form>
       </td>
     </tr>
   </tbody>
@@ -92,6 +91,7 @@
       <th scope="col"><div align="center">ขนาด</div></th>
       <th scope="col"><div align="center">ราคา</div></th>
       <th scope="col"><div align="center">อาหารที่ต้องทำ</div></th>
+      <th scope="col">ส่ง/ยกเลิก</th>
     </tr>
   </thead>
   <?php foreach ($orderCus as $x){ ?>
@@ -117,8 +117,23 @@
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
       <button type="submit" class="btn btn-info" >ดูอาหารที่ต้องทำ</button>
     </form>
-
       </td>
+
+<form action="<?= site_url('Order/cancel_shop');?>" method="post">
+<input type="text" name="id_conn" value="<?php echo $x->id_conn; ?>" hidden>
+<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+  <td align="center">
+  <div class="row">
+  <div class="col-3">
+  <input type="submit" class="btn btn-success" name="status_shop" value="ส่ง"> 
+  </div>
+  <div class="col-3">
+    <input type="submit" class="btn btn-danger" name="status_shop" value="ยกเลิก">
+  </div>
+  </div>
+  </form>
+  </td>
+
     </tr>
   </tbody>
   <?php } ?>

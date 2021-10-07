@@ -72,4 +72,18 @@ class Order extends CI_Controller {
         $this->load->view('showinfocus_shop', $data);
     }
     
+    function cancel_shop()
+    {
+        $id_conn = $this->input->post('id_conn');
+        $status_shop = $this->input->post('status_shop');
+        $this->db->set('status_shop', $status_shop);
+        $this->db->where('id_conn', $id_conn);
+        $result = $this->db->update('confirmation');
+
+        if ($result) {
+            $a = $this->input->post('id');
+            $data['Shop'] = $this->ffc_shop->view_shop($a);
+            $this->load->view("confirmation",$data);
+         }
+    }
 }

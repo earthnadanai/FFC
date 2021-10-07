@@ -33,6 +33,7 @@
         </p>
       <form action="<?= site_url('Product/pege_N1setmeal');?>" method="post">
       <input type="text" name="Pro_id_set" value="<?php echo $x->id_set; ?>" hidden>
+      <input type="text" name="size" value="<?php echo $x->size; ?>" hidden>
       <?php foreach ($viewSet as $x){ ?>
       <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
       <?php } ?>

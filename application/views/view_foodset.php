@@ -60,6 +60,7 @@
   <div class="card-body">
     <h5 class="card-title"><?php echo $x->nameProduct; ?></h5>
     <p class="card-text">
+    ขนาดอาหาร : <?php echo $x->sizefood; ?> <br>
     ประเภทอาหาร : <?php echo $x->type; ?> <br>
     <?php echo $x->info; ?>
     </p>

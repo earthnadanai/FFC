@@ -236,10 +236,16 @@ class Product extends CI_Controller {
 
     function pege_N1setmeal()
     {
+
         $a = $this->input->post('id');
         $b = $this->input->post('Pro_id_set');
+        $data = array(
+            'id'=> $this->input->post("id"),
+            'size'=> $this->input->post("size")
+        );
+        
         $data['viewProSet'] = $this->ffc_product->view_Proset($b);
-        $data['viewPro'] = $this->ffc_product->view_pro($a);
+        $data['viewPro'] = $this->ffc_product->view_product($data);
         $data['viewSet'] = $this->ffc_shop->view_set($a);
         $data['viewSetID'] = $this->ffc_product->view_setID($b);
         $this->load->view('set_n1meal',$data);
