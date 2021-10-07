@@ -73,7 +73,7 @@
       <form action="<?= site_url('Customer/showproduct');?>" method="POST">
       <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
     <?php };?>
-      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden><?php echo $x->id_set; ?>
+      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
       <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>">
       </form>
         </p>

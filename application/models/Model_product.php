@@ -88,6 +88,7 @@ class Model_product extends CI_Model
         $query = $this->db->get('product_set');
         return $query->result();
     }
+
     function view_Proset($b)
     {
         $this->db->where('id_set', $b);
@@ -176,7 +177,23 @@ class Model_product extends CI_Model
         return $delete;
     }
 
-    function set_delete($delete_food){
+    function menuset_delete($delete_food)
+    {
+        $this->db->where('Pro_id_set',$delete_food)
+        ->delete('product_id');
+        $delete = $this->db->where('id_set',$delete_food)
+        ->delete('product_set');
+        return $delete;
+    }
+
+    function order_delete($delete_food)
+    {
+        $this->db->where('id_o', $delete_food);
+        $this->db->delete('order');
+    }
+
+    function set_delete($delete_food)
+    {
         $this->db->where('Pro_id', $delete_food);
         $this->db->delete('product_id');
     }

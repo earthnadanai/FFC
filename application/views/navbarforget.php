@@ -20,7 +20,7 @@
   <div class="header-right">
     
   <?php  ?>
-    <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-fw fa-home"></i>หน้าแรก</a> 
     <?php  ?>
 
 <!-- Button trigger modal -->

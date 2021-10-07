@@ -12,8 +12,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
     <title>Welcome to FFC</title>
         
-
-        
 </head>
 
 <div class="bg">
@@ -33,6 +31,7 @@
     <div class="row">
     <div class="col-1">
     <form action="<?= site_url('Customer/foodpayment');?>" method="POST">
+    
 
    <center> <input type="radio" id="id_o" name="id_o" value="<?php echo $xx->id_o; ?>" required> 
   <label for="html">  
@@ -41,47 +40,54 @@
 
 </div>
     <div class="col">
-    <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"  style="width: 100px; height: 100px;" alt="..." >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $xx->image;?>"  style="width: 185px; height: 125px;" alt="..." >
 
     </div>
   <div class="col">
-  <?php echo $xx->nameProduct;?>
+  <h5><?php echo $xx->nameProduct;?></h5>
   </div>
   <div class="col">
-  ราคา: <?php echo $xx->price;?>
-  </div>
-  <div class="col">
-  
+  <h5> ราคา: <?php echo $xx->price;?></h5>
   </div>
   </div>
   </div>
 </div>
 <br>
-</div><?php };?>
+</div>
+<?php };?>
 </div>
 </div>
 
-    <div class="container" align="right">
+    <div class="container" >
     <div class="row">
-    <div class="col-12">
-    
-
-    <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
+    <div class="col-9" align="right">
+      
+    <input type="submit" class="btn btn-success" name="success" value="สั่งซื้อ.">
     </form>
 </div>
-
-<form action="<?= site_url('Customer/index');?>" method="POST">
+<div class="col" align="lift">
+<form action="<?= site_url('Customer/index');?>" method="post">
 <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
-    </form>
-    
+</form>
+</div>
+<div class="col-2" >
+<form action="<?= site_url('Customer/delete_order');?>" method="post">
+<?php foreach ($buypro as $xx){ ?>
+<input type="text" name="id_o" value="<?php echo $xx->id_o; ?>" hidden>
+<?php };?>
+<button type="submit" class="btn btn-warning" >กดเพื่อเลือกลบรายการ!!</button>
+
+</form>
     </div>
     </div>
     
-
-
+    </div>
+    
 <br>
 </body>
 </div>
 
 <?php $this->load->view('footer');  ?>
 </html>
+
+

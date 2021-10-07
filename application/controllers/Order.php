@@ -57,11 +57,7 @@ class Order extends CI_Controller {
         $data['viewShop'] = $this->ffc_shop->view_shops1($b);
         $this->load->view('view_food',$data);
     }
-    public function check_status()
-    {
-        $this->load->view('bootstap');
-        $this->load->view("view_oderstatus");
-    }
+
 
     function infocus_shop()
     {  
@@ -85,5 +81,12 @@ class Order extends CI_Controller {
             $data['Shop'] = $this->ffc_shop->view_shop($a);
             $this->load->view("confirmation",$data);
          }
+    }
+
+    public function check_status()
+    {
+        $idcut = $this->session->userdata['id'];
+        $data["Order"] = $this->ffc_order->view_orderpay($idcut); 
+        $this->load->view("view_oderstatus",$data);
     }
 }

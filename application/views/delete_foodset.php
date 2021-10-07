@@ -30,7 +30,7 @@
     <?php echo $x->info; ?>
     </p>
     <form action="<?= site_url('Product/delete_set');?>" method="post">
-      <input type="text" name="Pro_id" value="<?php echo $x->Pro_id; ?>" hidden><?php echo $x->Pro_id; ?>
+      <input type="text" name="Pro_id" value="<?php echo $x->Pro_id; ?>" hidden>
       <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
       <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>

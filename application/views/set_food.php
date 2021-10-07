@@ -15,7 +15,7 @@
 <div class="container" align="center">
 <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
 <div class="card-body">
-<h4>เพิ่มอาหาร</h4>
+<h4>เพิ่มชุดอาหาร</h4>
 <form action="<?= site_url('Product/add_set');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 <?php foreach ($viewSet as $x){ ?>
     <input type="text" name="id_set_shop" value="<?php echo $x->id_shops; ?>" hidden>

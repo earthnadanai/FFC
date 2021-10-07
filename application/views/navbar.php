@@ -42,15 +42,15 @@
     
 
   <?php if ((!strcmp($a,$b))) { ?>
-    <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Admin/showcustomer_admin'); ?>"><i class="fa fa-fw fa-home"></i>หน้าแรก</a> 
   <?php } else if ((!strcmp($a,$c))) {?>
-    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a>
-    <a href="<?php echo site_url('Order/check_status'); ?>"><i class="bi bi-inbox-fill"></i>MyOrder</a>
-    <a href="<?php echo site_url('Customer/view_basketsimple'); ?>"><i class="bi bi-basket"></i>Basket</a>  
+    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>หน้าแรก</a>
+    <a href="<?php echo site_url('Order/check_status'); ?>"><i class="bi bi-inbox-fill"></i> การสั่งซื้อของฉัน</a>
+    <a href="<?php echo site_url('Customer/view_basketsimple'); ?>"><i class="bi bi-basket"></i> ตะกร้า</a>  
   <?php } else if ((!strcmp($a,$d))) {?>
-    <a href="<?php echo site_url('Product/page_shop'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Product/page_shop'); ?>"><i class="fa fa-fw fa-home"></i>หน้าแรก</a> 
   <?php } else { ?>
-    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>Home</a> 
+    <a href="<?php echo site_url('Customer/index'); ?>"><i class="fa fa-fw fa-home"></i>หน้าแรก</a> 
     <?php } ?>
 
 <!-- Button trigger modal -->
@@ -62,9 +62,9 @@
     <?php 
     if (isset($this->session->userdata['firstname'])) { ?>
     <a class="active" href="<?php echo site_url('Customer/page_edit'); ?>"><i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata['firstname'];?></a>
-    <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-sign-in"></i> Logout</a>
+    <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-sign-in"></i> ออกจากระบบ</a>
     <?php } else{ ?>
-        <a href="<?php echo site_url('User/page_login'); ?>"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a href="<?php echo site_url('User/page_login'); ?>"><i class="fa fa-fw fa-user"></i> เข้าสู่ระบบ</a>
     <?php } ?>
 
     

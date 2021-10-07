@@ -10,6 +10,7 @@ class Product extends CI_Controller {
         $this->load->model('Model_product', 'ffc_product');
         $this->load->model('Model_shop', 'ffc_shop');
         $this->load->model('Model_user', 'ffc_user');
+        $this->load->model('Model_order', 'ffc_order');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -432,7 +433,7 @@ class Product extends CI_Controller {
         $delete_food = $this->input->post("id_pro");
         $a = $this->input->post('id');
         $result = $this->ffc_product->menu_delete($delete_food);
-        if($delete_food){
+        if($result){
             echo "<script language='JavaScript'>";
             echo "alert('ลบสำเร็จ')";
             echo "</script>";
@@ -449,7 +450,17 @@ class Product extends CI_Controller {
         $data['viewPro'] = $this->ffc_product->view_pro($a);
         $this->load->view('delete_food',$data);
     }
-
+   
+    }
+    public function delete_order()
+    {
+        $delete_food = $this->input->post("id_o");
+        $this->ffc_product->order_delete($delete_food);
+        if($delete_food){
+        $idcut = $this->session->userdata['id'];
+        $data["buypro"] = $this->ffc_order->view_order($idcut);
+        $this->load->view("delete_order",$data);        
+        }         
     }
 
     public function delete_set()
@@ -464,4 +475,30 @@ class Product extends CI_Controller {
             $this->load->view('delete_foodset',$data);
         }         
     }
+
+    function delete_menuset()
+    {
+        $delete_food = $this->input->post("id_set");
+        $a = $this->input->post('id');
+        $result = $this->ffc_product->menuset_delete($delete_food);
+        if($result){
+            echo "<script language='JavaScript'>";
+            echo "alert('ลบสำเร็จ')";
+            echo "</script>";
+        $data['viewShop'] = $this->ffc_shop->view_shop($a);
+        $data['viewProset'] = $this->ffc_product->view_sets($a);
+        $data['viewPro'] = $this->ffc_product->view_pro($a);
+        $this->load->view('delete_food',$data);
+    } else {
+        echo "<script language='JavaScript'>";
+            echo "alert('ลบไม่สำเร็จ')";
+            echo "</script>";
+        $data['viewShop'] = $this->ffc_shop->view_shop($a);
+        $data['viewProset'] = $this->ffc_product->view_sets($a);
+        $data['viewPro'] = $this->ffc_product->view_pro($a);
+        $this->load->view('delete_food',$data);
+    }
 }
+
+}
+

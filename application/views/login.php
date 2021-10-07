@@ -19,7 +19,7 @@
       <br>
     <div class=" card" style="width: 30rem;">
 <div  style="max-width: 45rem;">
-  <div><h2 class="text-white">Login</h2></div>
+  <div><h2 class="text-white">เข้าสู่ระบบ</h2></div>
   <div class="card-body ">
     <p class="card-text">   
     <form action="login_x" method="post">
@@ -30,10 +30,10 @@
     <input type="password"  name="password" placeholder="Password" required>
   </div>
   <br>
-  <a class="text-white text-decoration-none"  align="end" href="<?php echo site_url('User/page_forget'); ?>">Forget Password</a><br>
+  <a class="text-white text-decoration-none"  align="end" href="<?php echo site_url('User/page_forget'); ?>">ลืมรหัสผ่าน</a><br>
   <br>
-  <input type="submit" name="login"  class="button" value="Login" />
-  <a href="<?php echo site_url('User/page_register'); ?>" class="button">Go to register</a>
+  <input type="submit" name="login"  class="button" value="เข้าสู่ระบบ" />
+  <a href="<?php echo site_url('User/page_register'); ?>" class="button">สมัครสมาชิก</a>
   
 </form>
 </div>

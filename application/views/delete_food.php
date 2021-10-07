@@ -25,19 +25,26 @@
     <?php foreach ($viewProset as $x){ ?>
     <div class="col-6">
     <div class="card" style="width: 11rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." style="width: 174px; height: 100px;">
   <div class="card-body">
     <h5 class="card-title"><?php echo $x->name_set; ?></h5>
     <p class="card-text">
     ขนาด : <?php echo $x->size; ?> <br>
     ราคา : <?php echo $x->price; ?>
     </p>
+
     <form action="<?= site_url('Product/pege_deletefood');?>" method="post">
-      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-      <?php foreach ($viewShop as $x){ ?>
-    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-    <?php } ?>
-        <button type="submit" class="btn btn-success" >ดูอาหาร</button>
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $x->id_set_shop; ?>" hidden>
+    <button type="submit" class="btn btn-success" >ดูอาหาร</button>
     </form>
+
+    <form action="<?= site_url('Product/delete_menuset');?>" method="post">
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $x->id_set_shop; ?>" hidden>
+    <button type="submit" class="btn btn-danger" onclick="myFunction()">ลบชุดอาหาร</button>
+    </form>
+
   </div>
 </div>
     <br>
@@ -95,3 +102,6 @@
 </body>
 <?php $this->load->view('footer');  ?>
 </html>
+
+
+

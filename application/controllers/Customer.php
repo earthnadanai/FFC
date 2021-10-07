@@ -166,6 +166,7 @@ class Customer extends CI_Controller {
             'id_shop'=> $this->input->post("id_shop"),
             'date_customer'=> $this->input->post("date_customer"),
             'id_sett'=> $this->input->post("id_sett"), 
+            'comment'=> $this->input->post("comment")
 
         );
         
@@ -183,10 +184,18 @@ class Customer extends CI_Controller {
             $this->load->view("final_payment");
         }
     }
+
     public function view_basketsimple()
     {
-        $idcut = $this->input->post('id_customer');
+        $idcut = $this->session->userdata['id'];
         $data["buypro"] = $this->ffc_order->view_order($idcut);
         $this->load->view("view_basket",$data);        
+    }
+
+    public function delete_order()
+    {
+        $idcut = $this->session->userdata['id'];
+        $data["buypro"] = $this->ffc_order->view_order($idcut);
+        $this->load->view("delete_order",$data);        
     }
 }

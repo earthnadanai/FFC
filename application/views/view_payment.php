@@ -80,10 +80,7 @@
       <h5 class="text-warning">฿<?php echo $x->price;?></h5>
       </div> 
       </div>
-      
-      
-      
-    
+
   </div>
   </div>
       
@@ -127,13 +124,7 @@
       <h5>คำขอเพิ่มเติม</h5>
   </div> 
   <label for="exampleFormControlTextarea1"></label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"placeholder="เช่น กระเพรา เผ็ดน้อย"></textarea>
-  
-
-
-
-
-
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3"  placeholder="เช่น กระเพรา เผ็ดน้อย" required></textarea>
 
   </div> 
   </div>    

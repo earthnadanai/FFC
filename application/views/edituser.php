@@ -78,7 +78,7 @@
     <div class="col"><input type="text" name="district"  class="form-control" placeholder="อำเภอ" value="<?php echo $x->district; ?>"required></div>
     <div class="col"><input type="text" name="parish"  class="form-control" placeholder="ตำบล" value="<?php echo $x->parish; ?>"required></div>
   
-  
+  </div>
   </div>
 
     <br>
@@ -93,6 +93,7 @@
 </div>
 
 </body>
+<br>
 
 </html>
 
