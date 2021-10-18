@@ -27,7 +27,7 @@
         <div class="col-3">
         </div>
             <div class="col-5" >
-                <input  class="form-control" type="text" placeholder="ค้นหาร้านอาหาร ประเภทอาหาร อาหาร" name="search" />
+                <input  class="form-control" type="text" placeholder="ค้นหาร้านอาหาร ประเภทอาหาร อาหาร" name="search" required/>
         </div>
             <div class="col-4" >
                 <input type="submit" class="btn btn-block btn-primary" style="width:100px" name="submit" value="ค้นหา">
@@ -50,7 +50,7 @@
     <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
    
     <div id="myid1" class="card" style="width: 23rem;" >
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." style="width: 365px; height: 225px;">
   <div class="card-body">
     <h5 class="card-title">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >
@@ -69,17 +69,19 @@
   <?php foreach ($searchs_product as $x){ ?>
     <div class="col-sm-4" align="center">
 
-    <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
+    <form action="<?= site_url('Customer/showproduct_search');?>" method="POST">
    
     <div id="myid1" class="card" style="width: 23rem;" >
-    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." >
+    <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." style="width: 365px; height: 225px;">
    <div class="card-body">
-    <h5 class="card-title">
+    <h5 class="card-title text-light">
     <?php echo $x->nameProduct;?>
-    </h5>
-    <h5>ประเภทอาหาร:<?php echo $x->type;?> </h5>
-    
-      
+    <br> ประเภทอาหาร : <?php echo $x->type;?><br>
+    <br><input type="submit" class="btn btn-info" value="ดูอาหารทั้งหมดที่อยู่ในชุด"></h5>
+    <input type="text" name="id" value="<?php echo $x->id_pro; ?>" hidden>
+    <input type="text" name="id_shop" value="<?php echo $x->id_pro_shop; ?>" hidden>
+
+
     </div>
     </div>
     </div> 

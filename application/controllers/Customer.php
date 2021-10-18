@@ -198,4 +198,13 @@ class Customer extends CI_Controller {
         $data["buypro"] = $this->ffc_order->view_order($idcut);
         $this->load->view("delete_order",$data);        
     }
+
+    function showproduct_search()
+    {
+        $id_pro = $this->input->post("id");
+        $id_shop = $this->input->post("id_shop");
+        $data["foodset"] = $this->ffc_product->product_search($id_pro);
+        $data["foodshop"] = $this->ffc_shop->product_search($id_shop);
+        $this->load->view("food_search",$data);
+    }
 }

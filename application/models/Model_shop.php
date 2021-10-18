@@ -126,4 +126,11 @@ class Model_shop extends CI_Model
         return $result->result();
     }
 
+    function product_search($id_shop)
+    {
+        $this->db->where('id_shops', $id_shop);
+        $query = $this->db->get('shop');
+        return $query->result();
+    }
+
 }
