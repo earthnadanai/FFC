@@ -17,36 +17,36 @@
 </head>
 <body>
 <div class="bg">
-    <br>
+    <br><br>
 <div class="container" align="center">
   <div class="row">
     <div class="col">
 
 <div class="card">
   <div class="card-body">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">ที่ต้องชำระเงิน</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">รอร้านค้ายืนยัน</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ที่ต้องได้รับ</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-finish-tab" data-bs-toggle="pill" data-bs-target="#pills-finish" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">สำเร็จแล้ว</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-history-tab" data-bs-toggle="pill" data-bs-target="#pills-history" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ประวัติการสั่ง</button>
+  </li>
 
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">ที่ต้องชำระเงิน</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">รอร้านค้ายืนยัน</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">ที่ต้องได้รับ</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="P1-tab" data-bs-toggle="tab" data-bs-target="#P1" type="button" role="tab" aria-controls="profile" aria-selected="false">สำเร็จแล้ว</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="P2-tab" data-bs-toggle="tab" data-bs-target="#P2" type="button" role="tab" aria-controls="profile" aria-selected="false">ประวัติการสั่ง</button>
-  </li>
 </ul>
-<?php foreach ($Order as $xx){ ?>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <?php foreach ($Order as $xx){ ?>
   <div class="card-body" align="left">
-  <div class="row">  
+  <div class="row">   
   <div class="col">
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
@@ -66,15 +66,16 @@
       <button type="button" class="btn btn-info">ชำระเงิน</button>
       <input type="submit" class="btn btn-danger" name="danger" value="ยกเลิก">
       </div> 
-  <?php };?>
+
   </div>   
   </div>
+  <?php };?>
 
-  </div>
+  ...</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
   <?php foreach ($Order as $xx){ ?>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   <div class="card-body" align="left">
-  <div class="row">  
+  <div class="row">
   <div class="col">
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
@@ -96,14 +97,18 @@
       
       <input type="submit" class="btn btn-danger" name="danger" value="ยกเลิก">
       </div> 
-      <?php };?>
-  </div>   
+  
+  
+  
+  
+    </div>   
   </div>
-  </div>
+  <?php };?>    
+  ...</div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
   <?php foreach ($Order as $xx){ ?>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
   <div class="card-body" align="left">
-  <div class="row">  
+  <div class="row">
   <div class="col">
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
@@ -119,19 +124,17 @@
       <div class="col">
       <h5 class="text-warning"><?php echo $xx->status_shop;?></h5>
       </div> 
-      <div class="col">
-      
-    
-      
-      
-      </div> 
-      <?php };?>
+
+
+
   </div>   
-  </div>
-  </div>
-  
+  </div> 
+  <?php };?> 
+  ...</div>
+
+
+  <div class="tab-pane fade" id="pills-finish" role="tabpanel" aria-labelledby="pills-finish-tab">
   <?php foreach ($Order as $xx){ ?>
-  <div class="tab-pane fade" id="P1" role="tabpanel" aria-labelledby="P1-tab">
   <div class="card-body" align="left">
   <div class="row">  
   <div class="col">
@@ -155,20 +158,55 @@
       <button type="button" class="btn btn-success">ฉันได้ตรวจสอบและยอมรับอาหาร</button>
       
       </div> 
-      <?php };?>
+
+  </div>   
+  </div>
+  <?php };?>    
+  ...</div>
+
+
+  <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
+  <?php foreach ($Order as $xx){ ?>
+  <div class="card-body" align="left">
+  <div class="row"> 
+  <div class="col">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
+      </div>
+      <div class="col">
+      <?php echo $xx->name_set;?> 
+      </div>
+      <div class="col">
+      <h5 ><?php echo $xx->price;?></h5>
+      </div>
+      <div class="col">
+      <h5 ><?php echo $xx->date_customer;?></h5>
+      </div>  
+
+
+
+
+
+
+
+
   </div>   
   </div> 
-  </div>
-  <div class="tab-pane fade" id="P2" role="tabpanel" aria-labelledby="P2-tab">..5.</div>
+  <?php };?>   
+  ...</div>
+  
+
+
+
+
+
+</div>
+  
 </div>
 
-  </div>
-</div>
-
 </div>
 </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 
 </div>
 
