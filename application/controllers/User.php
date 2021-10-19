@@ -44,10 +44,24 @@ class User extends CI_Controller {
 			} 
 
             } else {
-					echo "<script language='JavaScript'>";
-                    echo "alert('กรุณาใส่รหัสอีกครั้ง')";
-                    echo "</script>";
-					$this->load->view('login');
+					echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                    echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                    echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                    echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลผิดพลาด",
+                                text : "คุณใส่ชื่อผู้ใช้หรือรหัสไม่ถูกต้อง",
+                                type : "warning"
+                            }, function(){
+                                window.location = "page_login";
+                            })
+                        }, 1000);
+                        </script>';
+
+                    
+                   /* $this->load->view('alert_error');
+					$this->load->view('login');*/
+                    
             } 
         }
     }
