@@ -51,16 +51,12 @@ class User extends CI_Controller {
                             swal({
                                 title : "ข้อมูลผิดพลาด",
                                 text : "คุณใส่ชื่อผู้ใช้หรือรหัสไม่ถูกต้อง",
-                                type : "warning"
-                            }, function(){
-                                window.location = "page_login";
+                                type : "warning",
                             })
                         }, 1000);
                         </script>';
 
-                    
-                   /* $this->load->view('alert_error');
-					$this->load->view('login');*/
+					$this->load->view('login');
                     
             } 
         }
