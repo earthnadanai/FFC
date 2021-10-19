@@ -12,6 +12,53 @@
     <title>Document</title>
 </head>
 <body>
+  <br>
+<div class="container">
+<div class="row">
+    <?php foreach ($viewShop as $x){ ?>
+    <div class="col-sm ">
+    <form action="<?= site_url('Product/pege_foodset');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-primary" style="width: 230px; height: 70px;">ดูอาหารทั้งหมด<br>ดูชุดอาหารทั้งหมด</button>
+    </form>
+    </div>
+    <?php } ?>
+    <?php foreach ($viewShop as $x){ ?>
+    <div class="col-sm"> 
+    <form action="<?= site_url('Product/pege_addfood');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-success " style="width: 230px; height: 70px;">เพิ่มอาหาร</button>
+    </form>
+    </div>
+    <?php } ?>
+    <?php foreach ($viewShop as $x){ ?>
+    <div class="col-sm ">
+    <form action="<?= site_url('Product/pege_setfood');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-success" style="width: 230px; height: 70px;">เพิ่มชุดของอาหาร</button>
+    </form>
+    </div>
+    <?php } ?>
+    <?php foreach ($viewShop as $x){ ?>
+    <div class="col-sm ">
+    <form action="<?= site_url('Product/pege_setmeal');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-warning" style="width: 230px; height: 70px;">จัดอาหารใส่ชุดอาหาร</button>
+    </form>
+    </div>
+    <?php } ?>
+    <?php foreach ($viewShop as $x){ ?>
+    <div class="col-sm ">
+    <form action="<?= site_url('Product/pege_deletefoodset');?>" method="post">
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-danger" style="width: 230px; height: 70px;">ลบอาหาร/ลบชุดอาหาร</button>
+    </form>
+    </div>
+    <?php } ?>
+  </div>
+</div>
+</div>
+</div>
 <br>
 <center>
 <img  src="../../img/original.gif"  alt="..." style="width: 238px; height: 150px;">

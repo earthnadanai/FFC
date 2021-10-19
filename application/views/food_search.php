@@ -28,10 +28,10 @@
     <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo site_url('Customer/index'); ?>">Home</a></li>
-    <?php foreach ($viewShop as $x){ ?> 
+    <?php foreach ($foodshop as $x){ ?> 
     <li class="breadcrumb-item active" aria-current="page"><?php echo $x->nameShop; ?></li>
     <?php } ?>
-    <?php foreach ($result as $x){ ?>
+    <?php foreach ($foodset as $x){ ?>
     <li class="breadcrumb-item active" aria-current="page"><?php echo $x->name_set;?></li>
     <?php } ?>
   </ol>
@@ -51,12 +51,30 @@
     <div class="col">
     <div class="card bg-light">
     <div class="card-body">
-    <?php foreach ($result as $x){ ?>
+    <?php foreach ($foodset as $x){ ?>
     <h4>อาหารใน<?php echo $x->name_set;?> ("ขนาด<?php echo $x->size;?> <?php echo $x->unit_eat;?> คน")</h4>
       <?php } ?>
       <br>
   <div class="row">
-  <?php foreach ($re as $x){ ?>
+  <?php foreach ($foodshop as $x){ ?>
+    <div class="col-4">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." style="width: 287px; height: 200px;">
+  <div class="card-body">
+    <h5 class="card-title">ชื่อร้าน : <?php echo $x->nameShop; ?></h5>
+  </div>
+</div>
+    </div>
+    <?php } ?>
+    <?php foreach ($foodset as $x){ ?>
+        <div class="col-4">
+    <div class="card" style="width: 18rem;">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." style="width: 287px; height: 200px;">
+  <div class="card-body">
+    <h5 class="card-title">ชื่อชุดอาหาร : <?php echo $x->name_set; ?></h5>
+  </div>
+</div>
+    </div>
     <div class="col-4">
     <div class="card" style="width: 18rem;">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_pro;?>"  alt="..." style="width: 287px; height: 200px;">
@@ -84,44 +102,19 @@
  
  <div class="row">
  <div class="col-10" align="right">
- 
-<form action="<?= site_url('Customer/buy_product');?>" method="POST" >
-<?php foreach ($result as $x){ ?>
-<div class="col-sm-12">
-      <input type="text" name="id_order"  class="form-control" value="<?php echo $x->id_set; ?>" hidden>
-</div>
-<div class="col-sm-12">
-      <input type="text" name="id_customer"  class="form-control" value="<?php echo $this->session->userdata('id');?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="id_shop"  class="form-control" value="<?php echo $x->id_set_shop; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="nameProduct"  class="form-control" value="<?php echo $x->name_set; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="image"  class="form-control" value="<?php echo $x->img_set; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="price"  class="form-control" value="<?php echo $x->price; ?>" hidden>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" name="name_size"  class="form-control" value="<?php echo $x->size; ?>" hidden>
-    </div> 
-  <?php };?>
-  <input type="text" name="id_customer" value="<?php echo $this->session->userdata('id');?>" hidden>
-  <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-  <?php if (isset($this->session->userdata['firstname'])) { ?>
-<input type="submit" class="btn btn-success btn-lg" name="submit" value="สั่งเลย!!"> 
-<?php } else{ ?>
-        <a href="<?php echo site_url('User/page_login'); ?>" class="btn btn-success btn-lg">สั่งเลย!!</a>
-    <?php } ?>
-  </form>
-  
+ <?php foreach ($foodshop as $x){ ?>
+ <form action="<?= site_url('Customer/showproduct');?>" method="POST">
+      <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+<?php };?>
+<?php foreach ($foodset as $x){ ?>
+      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+      <input type="submit" class="btn btn-primary btn-lg" name="light" value="ดูรายละเอียด>>">
+</form>
+<?php };?>
   </div>
   <div class="col-2" align="left">
 <form action="<?= site_url('Customer/showproduct_customer');?>" method="POST">
-<?php foreach ($viewShop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden> 
+<?php foreach ($foodshop as $x){ ?> <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden> 
     <button type="submit" class="btn btn-secondary btn-lg" name="submit">ย้อนกลับ</button> 
 </form>
 </div>

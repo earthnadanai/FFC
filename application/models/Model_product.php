@@ -295,5 +295,15 @@ class Model_product extends CI_Model
         return $result->result();
     }
 
+    function product_search($id_pro)
+    {
+        $this->db->select('*')
+        ->from('product_id')
+        ->join('product_set', 'product_id.Pro_id_set  = product_set.id_set ')
+        ->join('product', 'product_id.Pro_id_pro = product.id_pro')
+        ->where('Pro_id_pro',$id_pro);
+       $query = $this->db->get();
+       return $query->result();
+    }
     
 }
