@@ -50,15 +50,31 @@ class Payment extends CI_Controller {
 			    $result = $this->db->update('payment');
  
 			  if ($result) {
-			    echo "<script language='JavaScript'>";
-                echo "alert('อับโหลดสำเร็จ $P_img_shop')";
-                echo "</script>";
+                echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลถูกต้อง",
+                                text : "อับโหลดสำเร็จ",
+                                type : "success"
+                            })
+                        }, 1000);
+                        </script>';
                 $data1['query'] = $this->ffc_payment->tradings_admin();
                 $this->load->view('trading_admin', $data1);
 			  } else {
-                echo "<script language='JavaScript'>";
-                echo "alert('อับโหลดไม่สำเร็จ')";
-                echo "</script>";
+                echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลผิดพลาด",
+                                text : "อับโหลดไม่สำเร็จ",
+                                type : "warning"
+                            })
+                        }, 1000);
+                        </script>';
                 $data['query'] = $this->ffc_payment->tradings_admin1();
                 $this->load->view('tradinginfo_admin', $data);
 			  }

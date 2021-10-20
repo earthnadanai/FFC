@@ -51,15 +51,31 @@ class Product extends CI_Controller {
       $b = $this->session->userdata('id');
 
         if($a == 0){ 
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณกรอกชื่อร้านซ้ำ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณกรอกชื่อร้านซ้ำ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $data['pe'] = $this->ffc_shop->shop($b);
             $this->load->view('view_shop', $data);
         }else{
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณเปิดร้านสำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณเปิดร้านสำเร็จ",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $this->db->set('have_shop', "มี");
             $this->db->where('id', $b);
             $this->db->update('user');
@@ -99,15 +115,31 @@ class Product extends CI_Controller {
         $this->db->where('id', $b);
         $result = $this->db->update('user');
         if($result){
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณได้ส่งการยืนยันแล้ว')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณได้ส่งการยืนยันแล้ว",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $data['viewST'] = $this->ffc_shop->view_status($b);
             $this->load->view('view_status', $data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณส่งการยืนยันไม่สำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณส่งการยืนยันไม่สำเร็จ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $data['viewST'] = $this->ffc_shop->view_status($b);
             $this->load->view('view_status', $data);
         }
@@ -153,17 +185,16 @@ class Product extends CI_Controller {
       $a = $this->input->post('id_pro_shop');
 
         if($add == 0){ 
-            echo "<script language='JavaScript'>";
-            echo "alert('อาหารที่คุณเพิ่มมีอยู่แล้ว')";
-            echo "</script>";
             $data['viewShop'] = $this->ffc_shop->v_shop($a);
+            $this->session->set_flashdata('error_msg','อาหารที่คุณเพิ่มมีอยู่แล้ว');
             $this->load->view('add_food',$data);
         }else{
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณเพิ่มอาหารสำเร็จ')";
-            echo "</script>";
-            $data['viewS'] = $this->ffc_shop->view_status($a);
-            $this->load->view('view_status', $data);
+            //$data['viewS'] = $this->ffc_shop->view_status($a);
+            $data['viewShop'] = $this->ffc_shop->v_shop($a);
+            $this->session->set_flashdata('success_msg','คุณเพิ่มอาหารสำเร็จ');
+            //redirect('User/page_login');
+            $this->load->view('add_food',$data);
+            //$this->load->view('view_status', $data);
         }
     }
 
@@ -203,12 +234,10 @@ class Product extends CI_Controller {
         );
 
         $this->ffc_product->add_setfood($add_set);
-        echo "<script language='JavaScript'>";
-        echo "alert('คุณเพิ่มชุดอาหารสำเร็จ')";
-        echo "</script>";
         $a = $this->input->post('id_set_shop');
-        $data['viewS'] = $this->ffc_shop->view_shop($a);
-        $this->load->view('view_status', $data);
+        $data['viewSet'] = $this->ffc_shop->view_set($a);
+        $this->session->set_flashdata('success_msg','คุณเพิ่มชุดอาหารสำเร็จ');
+        $this->load->view('set_food',$data);
  
     }
 
@@ -238,20 +267,36 @@ class Product extends CI_Controller {
         $b = $this->input->post('Pro_id_set');
 
         if($add == 0){
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณเพิ่มอาหารซ้ำ')";
-            echo "</script>";
             $data['viewProSet'] = $this->ffc_product->view_Proset($b);
             $data['viewPro'] = $this->ffc_product->view_product($data);
             $data['viewSet'] = $this->ffc_shop->view_set($a);
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณเพิ่มอาหารซ้ำ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('set_n1meal',$data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณเพิ่มอาหารใส่ชุดอาหารสำเร็จ')";
-            echo "</script>";
             $data['viewProSet'] = $this->ffc_product->view_Proset($b);
             $data['viewPro'] = $this->ffc_product->view_product($data);
             $data['viewSet'] = $this->ffc_shop->view_set($a);
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณเพิ่มอาหารใส่ชุดอาหารสำเร็จ",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('set_n1meal',$data);
         }
     }
@@ -361,18 +406,14 @@ class Product extends CI_Controller {
         $result = $this->db->update('product');
 
         if($result){
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณได้แก้ไขแล้ว')";
-            echo "</script>";
             $data['viewPro'] = $this->ffc_product->view_profood($a);
             $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            $this->session->set_flashdata('success_msg','คุณได้แก้ไขแล้ว');
             $this->load->view('edit_food',$data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณได้แก้ไขไม่สำเร็จ')";
-            echo "</script>";
             $data['viewPro'] = $this->ffc_product->view_profood($a);
             $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            $this->session->set_flashdata('error_msg','คุณได้แก้ไขไม่สำเร็จ');
             $this->load->view('edit_food',$data);
         }
         
@@ -411,18 +452,14 @@ class Product extends CI_Controller {
         $result = $this->db->update('product_set');
 
         if($result){
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณได้แก้ไขแล้ว')";
-            echo "</script>";
             $data['viewSet'] = $this->ffc_product->view_Proset($a);
             $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            $this->session->set_flashdata('success_msg','คุณได้แก้ไขแล้ว');
             $this->load->view('edit_setfood',$data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณได้แก้ไขไม่สำเร็จ')";
-            echo "</script>";
             $data['viewSet'] = $this->ffc_product->view_Proset($a);
             $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            $this->session->set_flashdata('error_msg','คุณได้แก้ไขไม่สำเร็จ');
             $this->load->view('edit_setfood',$data);
         }
         
@@ -434,20 +471,36 @@ class Product extends CI_Controller {
         $a = $this->input->post('id');
         $result = $this->ffc_product->menu_delete($delete_food);
         if($result){
-            echo "<script language='JavaScript'>";
-            echo "alert('ลบสำเร็จ')";
-            echo "</script>";
         $data['viewShop'] = $this->ffc_shop->view_shop($a);
         $data['viewProset'] = $this->ffc_product->view_sets($a);
         $data['viewPro'] = $this->ffc_product->view_pro($a);
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "ลบสำเร็จ",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
         $this->load->view('delete_food',$data);
     } else {
-        echo "<script language='JavaScript'>";
-            echo "alert('ลบไม่สำเร็จ')";
-            echo "</script>";
         $data['viewShop'] = $this->ffc_shop->view_shop($a);
         $data['viewProset'] = $this->ffc_product->view_sets($a);
         $data['viewPro'] = $this->ffc_product->view_pro($a);
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลผิดพลาด",
+                        text : "ลบไม่สำเร็จ",
+                        type : "danger"
+                    })
+                }, 1000);
+                </script>';
         $this->load->view('delete_food',$data);
     }
    
@@ -472,6 +525,17 @@ class Product extends CI_Controller {
             $b = $this->input->post('id');
             $data['viewProid'] = $this->ffc_product->view_proid($a);
             $data['viewShop'] = $this->ffc_shop->view_shopss($b);
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "ลบอาหารเรียบร้อย",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('delete_foodset',$data);
         }         
     }
@@ -482,20 +546,36 @@ class Product extends CI_Controller {
         $a = $this->input->post('id');
         $result = $this->ffc_product->menuset_delete($delete_food);
         if($result){
-            echo "<script language='JavaScript'>";
-            echo "alert('ลบสำเร็จ')";
-            echo "</script>";
         $data['viewShop'] = $this->ffc_shop->view_shop($a);
         $data['viewProset'] = $this->ffc_product->view_sets($a);
         $data['viewPro'] = $this->ffc_product->view_pro($a);
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "ลบชุดอาหารเรียบร้อย",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
         $this->load->view('delete_food',$data);
     } else {
-        echo "<script language='JavaScript'>";
-            echo "alert('ลบไม่สำเร็จ')";
-            echo "</script>";
         $data['viewShop'] = $this->ffc_shop->view_shop($a);
         $data['viewProset'] = $this->ffc_product->view_sets($a);
         $data['viewPro'] = $this->ffc_product->view_pro($a);
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลผิดพลาด",
+                        text : "ลบไม่สำเร็จ",
+                        type : "danger"
+                    })
+                }, 1000);
+                </script>';
         $this->load->view('delete_food',$data);
     }
 }

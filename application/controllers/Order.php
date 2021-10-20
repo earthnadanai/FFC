@@ -38,14 +38,39 @@ class Order extends CI_Controller {
 
         if ($result) {
            $a = $this->input->post('id');
-           $data['Shop'] = $this->ffc_shop->view_shop($a);
-           $this->load->view("confirmation",$data);
+           $data['orderShop'] = $this->ffc_order->order_shops($a);
+           $data['orderCus'] = $this->ffc_order->order_cus($a);
+           $data['orderMakes'] = $this->ffc_order->order_Makes($a);
+           $data['orderfinished'] = $this->ffc_order->order_finished($a);
+           echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+           echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+           echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+           echo '<script> setTimeout(function() {
+                       swal({
+                           title : "ข้อมูลถูกต้อง",
+                           text : "ทำรายการสำเร็จ",
+                           type : "success"
+                       })
+                   }, 1000);
+                   </script>';
+           $this->load->view('view_order',$data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('เปลี่ยนแปลงไม่สำเร็จ')";
-            echo "</script>";
-            $data['idShop'] = $this->ffc_order->order_shops($a);
-            $this->load->view('confirmation',$data);
+            $data['orderShop'] = $this->ffc_order->order_shops($a);
+            $data['orderCus'] = $this->ffc_order->order_cus($a);
+            $data['orderMakes'] = $this->ffc_order->order_Makes($a);
+            $data['orderfinished'] = $this->ffc_order->order_finished($a);
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "เปลี่ยนแปลงไม่สำเร็จ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
+            $this->load->view('view_order',$data);
         }
 	}
 
@@ -78,8 +103,22 @@ class Order extends CI_Controller {
 
         if ($result) {
             $a = $this->input->post('id');
-            $data['Shop'] = $this->ffc_shop->view_shop($a);
-            $this->load->view("confirmation",$data);
+            $data['orderShop'] = $this->ffc_order->order_shops($a);
+            $data['orderCus'] = $this->ffc_order->order_cus($a);
+            $data['orderMakes'] = $this->ffc_order->order_Makes($a);
+            $data['orderfinished'] = $this->ffc_order->order_finished($a);
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "สำเร็จ",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
+            $this->load->view('view_order',$data);
          }
     }
 
