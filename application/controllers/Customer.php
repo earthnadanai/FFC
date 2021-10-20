@@ -132,11 +132,22 @@ class Customer extends CI_Controller {
             //$b = $this->input->post('id_set');
             $idcut = $this->input->post('id_customer');
             if($a == 0){ 
-                echo "<script language='JavaScript'>";
+                /*echo "<script language='JavaScript'>";
                 echo "alert('กรุณาชำระเงินค่าอาหารก่อนสั่งซ้ำ')";
                 echo "</script>";
-                //$data['result'] = $this->ffc_product->showproduct_cuss($b);
+                $data['result'] = $this->ffc_product->showproduct_cuss($b);*/
                 $data["buypro"] = $this->ffc_order->view_order($idcut);
+                echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลผิดพลาด",
+                                text : "กรุณาชำระเงินค่าอาหารก่อนสั่งซ้ำ",
+                                type : "warning"
+                            })
+                        }, 1000);
+                        </script>';
                 $this->load->view("set_product",$data);
             }else{
                 //$data['result'] = $this->ffc_product->showproduct_cuss($b);

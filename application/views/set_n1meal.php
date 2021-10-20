@@ -15,6 +15,7 @@
 <div class="container" align="center">
 <div class="card text-dark bg-light mb-3" style="max-width: 80rem;">
 <div class="card-body">
+
 <h4>เพิ่มอาหาร</h4>
 <?php foreach ($viewProSet as $x){ ?>
     <h5>ชื่อชุดอาหาร : <?php echo $x->name_set; ?></h5>

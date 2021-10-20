@@ -62,6 +62,14 @@
 <div class="container" align="center">
 <div class="card text-dark bg-light mb-3" style="max-width: 40rem;">
 <div class="card-body">
+  
+<?php if ($success = $this->session->flashdata('success_msg')): ?>
+    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle-fill"> <strong>ข้อมูลถูกต้อง!</strong> <?php echo $this->session->flashdata('success_msg'); ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></i>
+    </div>
+  <?php endif ;?>
+
 <h4>เพิ่มชุดอาหาร</h4>
 <form action="<?= site_url('Product/add_set');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 <?php foreach ($viewSet as $x){ ?>

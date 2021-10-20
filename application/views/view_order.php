@@ -85,12 +85,12 @@
   <thead>
     <tr>
       <th scope="col"><div align="center">ชื่อลูกค้า</div></th>
-      <th scope="col"><div align="center">ชื่อชุดอาหาร</div></th>
+      <th scope="col"><div align="center">ชื่อชุดอาหาร<br>อาหารที่ต้องทำ</div></th>
       <th scope="col"><div align="center">วันที่ต้องส่งอาหาร</div></th>
       <th scope="col"><div align="center">เวลาที่กดยอมรับ</div></th>
       <th scope="col"><div align="center">ขนาด</div></th>
       <th scope="col"><div align="center">ราคา</div></th>
-      <th scope="col"><div align="center">อาหารที่ต้องทำ</div></th>
+      <th scope="col"><div align="center">ข้อความจากลูกค้า</div></th>
       <th scope="col">ส่ง/ยกเลิก</th>
     </tr>
   </thead>
@@ -105,19 +105,23 @@
     
     </form>
     </td>
-      <td align="center"><?php echo $x->name_set; ?></td>
+    <td align="center">
+    <form action="<?= site_url('Order/pege_foodset');?>" method="post">
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+    <button type="submit" class="btn btn-info" ><?php echo $x->name_set; ?></button>
+    </form>
+    </td>
+
       <td align="center" class="text-danger"><?php echo $x->date_customer; ?></td> 
       <td align="center"><?php echo $x->date_shop; ?></td> 
       <td align="center"><?php echo $x->size; ?></td>
       <td align="center"><?php echo $x->price; ?></td>
-      <td align="center">
-
-      <form action="<?= site_url('Order/pege_foodset');?>" method="post">
-      <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-      <button type="submit" class="btn btn-info" >ดูอาหารที่ต้องทำ</button>
-    </form>
-      </td>
+      <td><div class="card">
+      <div class="card-body">
+      <?php echo $x->comment; ?>
+      </div>
+      </div></td>
 
 <form action="<?= site_url('Order/cancel_shop');?>" method="post">
 <input type="text" name="id_conn" value="<?php echo $x->id_conn; ?>" hidden>
