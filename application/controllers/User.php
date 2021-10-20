@@ -93,15 +93,31 @@ class User extends CI_Controller {
         
         $a = $this->ffc_user->regis_cus($data);
         if($a == 0){ 
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณกรอกข้อมูลซ้ำ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณกรอกข้อมูลซ้ำ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('bootstap');
             $this->load->view('register');
         }else{
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณลงทะเบียนสำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณลงทะเบียนสำเร็จ",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('bootstap');
             $this->load->view('login');
         }
@@ -132,15 +148,31 @@ class User extends CI_Controller {
         $a = $this->ffc_user->regis_shop($data_register);
         $b = $this->ffc_user->regis1_shop($data_register);
             if($a == 0 && $b == 0){ 
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณกรอกข้อมูลซ้ำ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณกรอกข้อมูลซ้ำ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('bootstap');
             $this->load->view('register');
         }else{
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณลงทะเบียนสำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณลงทะเบียนสำเร็จ",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $this->load->view('bootstap');
             $this->load->view('login');
         }
@@ -181,10 +213,17 @@ class User extends CI_Controller {
 
 
             } else {
-
-                echo "<script language='JavaScript'>";
-                    echo "alert('กรุณาใส่รหัสอีกครั้ง')";
-                    echo "</script>";
+                    echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                    echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                    echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                    echo '<script> setTimeout(function() {
+                                swal({
+                                    title : "ข้อมูลผิดพลาด",
+                                    text : "กรุณาใส่รหัสอีกครั้ง",
+                                    type : "warning"
+                                })
+                            }, 1000);
+                            </script>';
 					$this->load->view('forget');
 
             }
@@ -203,18 +242,34 @@ class User extends CI_Controller {
 			if((!strcmp($new_pass, $confirm_pass))){
              
 				$this->ffc_user->change_pass($session_id,$new_pass);
-                echo "<script language='JavaScript'>";
-                echo "alert('Password changed successfully !')";
-                echo "</script>";
+                echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลถูกต้อง",
+                                text : "Password changed successfully !",
+                                type : "success"
+                            })
+                        }, 1000);
+                        </script>';
                 $this->session->sess_destroy();
                 redirect('User/page_login');
                 redirect($this->load->view('navbar'), 'refresh');
                 
 				}
 			    else{
-                    echo "<script language='JavaScript'>";
-					echo "alert('ไม่ถูกต้อง')";
-                    echo "</script>";
+                    echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                    echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                    echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                    echo '<script> setTimeout(function() {
+                                swal({
+                                    title : "ข้อมูลผิดพลาด",
+                                    text : "ไม่ถูกต้อง",
+                                    type : "warning"
+                                })
+                            }, 1000);
+                            </script>';
                     $a = $this->session->userdata('id')  ;
                     $data['query'] = $this->ffc_user->forget_next($a);
                     $this->load->view('forget_next',$data);

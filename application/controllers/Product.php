@@ -51,15 +51,31 @@ class Product extends CI_Controller {
       $b = $this->session->userdata('id');
 
         if($a == 0){ 
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณกรอกชื่อร้านซ้ำ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณกรอกชื่อร้านซ้ำ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $data['pe'] = $this->ffc_shop->shop($b);
             $this->load->view('view_shop', $data);
         }else{
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณเปิดร้านสำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณเปิดร้านสำเร็จ",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $this->db->set('have_shop', "มี");
             $this->db->where('id', $b);
             $this->db->update('user');
@@ -99,15 +115,31 @@ class Product extends CI_Controller {
         $this->db->where('id', $b);
         $result = $this->db->update('user');
         if($result){
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณได้ส่งการยืนยันแล้ว')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณได้ส่งการยืนยันแล้ว",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $data['viewST'] = $this->ffc_shop->view_status($b);
             $this->load->view('view_status', $data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('คุณส่งการยืนยันไม่สำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "คุณส่งการยืนยันไม่สำเร็จ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $data['viewST'] = $this->ffc_shop->view_status($b);
             $this->load->view('view_status', $data);
         }

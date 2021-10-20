@@ -87,9 +87,17 @@ class Customer extends CI_Controller {
         $this->db->set('parish', $parish);
         $this->db->where('id', $id);
         $result = $this->db->update('user');
-        echo "<script language='JavaScript'>";
-        echo "alert('แก้ไขสำเร็จ!')";
-        echo "</script>";
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "แก้ไขสำเร็จ",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
         $data['query'] = $this->ffc_user->showprofile($id);
         $this->load->view('edituser',$data);
         

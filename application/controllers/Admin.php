@@ -64,15 +64,31 @@ class Admin extends CI_Controller {
         $result =$this->db->update('user');
         
         if ($result) {
-            echo "<script language='JavaScript'>";
-            echo "alert('อนุมัติให้เปิดร้าน')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "อนุมัติให้เปิดร้าน",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
             $data['query'] = $this->ffc_user->showapprovals_shop();
             $this->load->view('showapproval_shop', $data);
         } else {
-            echo "<script language='JavaScript'>";
-            echo "alert('ไม่อนุมัติให้เปิดร้าน')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "ไม่อนุมัติให้เปิดร้าน",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
         }
 	}
 
