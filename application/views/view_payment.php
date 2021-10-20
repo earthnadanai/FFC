@@ -79,7 +79,8 @@
       <div class="col">
       <h5 class="text-warning">฿<?php echo $x->price;?></h5>
       </div> 
-      </div>
+      
+    </div>
 
   </div>
   </div>

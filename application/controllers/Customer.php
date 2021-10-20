@@ -207,4 +207,12 @@ class Customer extends CI_Controller {
         $data["foodshop"] = $this->ffc_shop->product_search($id_shop);
         $this->load->view("food_search",$data);
     }
+
+   
+    public function payfor_make()
+    {
+        $idcut = $this->input->post('id_customer');
+        $data["buypro"] = $this->ffc_order->view_order($idcut);
+        $this->load->view("view_payfood",$data);        
+    }
 }
