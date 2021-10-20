@@ -18,6 +18,14 @@
     <br>
       <br>
     <div class=" card" style="width: 30rem;">
+
+  <?php if ($error = $this->session->flashdata('error_msg')): ?>
+    <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-circle-fill"> <strong>ข้อมูลผิดพลาด!</strong> <?php echo $this->session->flashdata('error_msg'); ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></i>
+    </div>
+  <?php endif ;?>
+
 <div  style="max-width: 45rem;">
   <div><h2 class="text-white">เข้าสู่ระบบ</h2></div>
   <div class="card-body ">

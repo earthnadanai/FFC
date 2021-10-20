@@ -39,17 +39,6 @@ class Order extends CI_Controller {
         if ($result) {
            $a = $this->input->post('id');
            $data['Shop'] = $this->ffc_shop->view_shop($a);
-           echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
-           echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
-           echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
-           echo '<script> setTimeout(function() {
-                   swal({
-                       title : "ข้อมูลผิดพลาด",
-                       text : "คุณใส่ชื่อผู้ใช้หรือรหัสไม่ถูกต้อง",
-                       type : "warning"
-                   })
-               }, 1000);
-               </script>';
            $this->load->view("confirmation",$data);
         } else {
             echo "<script language='JavaScript'>";
