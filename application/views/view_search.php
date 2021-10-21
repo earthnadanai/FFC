@@ -54,7 +54,7 @@
   <div class="card-body">
     <h5 class="card-title">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >
-    <input type="submit" class="btn btn-lg text-light " value="<?php echo $x->nameShop;?>"></h5>
+    <input type="submit" class="btn btn-lg text-light <?php echo $x->id_shops; ?>" value="<?php echo $x->nameShop;?>"></h5>
     
       <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
       
@@ -77,7 +77,7 @@
     <h5 class="card-title text-light">
     <?php echo $x->nameProduct;?>
     <br> ประเภทอาหาร : <?php echo $x->type;?><br>
-    <br><input type="submit" class="btn btn-info" value="ดูอาหารทั้งหมดที่อยู่ในชุด"></h5>
+    <br><input type="submit" class="btn btn-info <?php echo $x->id_pro; ?>" value="ดูอาหารทั้งหมดที่อยู่ในชุด"></h5>
     <input type="text" name="id" value="<?php echo $x->id_pro; ?>" hidden>
     <input type="text" name="id_shop" value="<?php echo $x->id_pro_shop; ?>" hidden>
 

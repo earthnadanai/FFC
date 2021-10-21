@@ -69,7 +69,7 @@
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
         <?php foreach ($viewShop as $xx){ ?> 
     <?php if (isset($this->session->userdata['firstname'])) { ?>
-    <input type="submit" class="btn btn-success" name="success" value="สั่งเลย!!">
+    <input type="submit" class="btn btn-success <?php echo $x->id_set; ?>" name="success" value="สั่งเลย!!">
     <?php } else{ ?>
         <a href="<?php echo site_url('User/page_login'); ?>" class="btn btn-success"> สั่งเลย!!</a>
     <?php } ?>
@@ -78,7 +78,7 @@
       <input type="text" name="id" value="<?php echo $xx->id_shops; ?>" hidden>
     <?php };?>
       <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
-      <input type="submit" class="btn btn-light" name="light" value="ดูรายละเอียด>>">
+      <input type="submit" class="btn btn-light <?php echo $x->id_set; ?>" name="light" value="ดูรายละเอียด>>">
       </form>
         </p>
       </div>
