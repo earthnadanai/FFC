@@ -48,24 +48,36 @@
   <div class="card-body" align="left">
   <div class="row">   
   <div class="col">
+    
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
       <?php echo $xx->name_set;?> 
       </div>
       <div class="col">
-      <h5 ><?php echo $xx->price;?> </h5>
+      <h5 >฿ <?php echo $xx->price;?>.- </h5>
       </div> 
       <div class="col">
       <h5 ><?php echo $xx->date_customer;?></h5>
       </div> 
       
-      <div class="col">
-      
-    
-      <button type="button" class="btn btn-info">ชำระเงิน</button>
+    <div class="col-1">
+      <form action="<?= site_url('Payment/payfor_make');?>" method="post">
+      <input type="text" name="id_conn" value="<?php echo $xx->id_conn;?>" hidden>
+      <input type="submit" class="btn btn-info"value="ชำระเงิน">
+      </form>
+    </div>
+    <div class="col-1">
+    <form action="<?= site_url('Order/delete_comm');?>" method="post">
+      <input type="text" name="id_conn" value="<?php echo $xx->id_conn;?>" hidden>
       <input type="submit" class="btn btn-danger" name="danger" value="ยกเลิก">
-      </div> 
+      </form>
+    </div>
+    
+      
+
+      
+      
 
   </div>   
   </div>
@@ -73,7 +85,7 @@
 
   ...</div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-  <?php foreach ($Order as $xx){ ?>
+  <?php foreach ($Order_status as $xx){ ?>
   <div class="card-body" align="left">
   <div class="row">
   <div class="col">
@@ -83,7 +95,7 @@
       <?php echo $xx->name_set;?> 
       </div>
       <div class="col">
-      <h5 ><?php echo $xx->price;?></h5>
+      <h5 >฿ <?php echo $xx->price;?>.-</h5>
       </div> 
       <div class="col">
       <h5 ><?php echo $xx->date_shop;?></h5>
@@ -95,7 +107,10 @@
       
     
       
+      <form action="<?= site_url('Order/delete_comm');?>" method="post">
+      <input type="text" name="id_conn" value="<?php echo $xx->id_conn;?>" hidden>
       <input type="submit" class="btn btn-danger" name="danger" value="ยกเลิก">
+      </form>
       </div> 
   
   
@@ -106,7 +121,7 @@
   <?php };?>    
   ...</div>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-  <?php foreach ($Order as $xx){ ?>
+  <?php foreach ($Order_receive as $xx){ ?>
   <div class="card-body" align="left">
   <div class="row">
   <div class="col">
@@ -116,7 +131,7 @@
       <?php echo $xx->name_set;?> 
       </div>
       <div class="col">
-      <h5 ><?php echo $xx->price;?></h5>
+      <h5 >฿ <?php echo $xx->price;?>.-</h5>
       </div> 
       <div class="col">
       <h5 ><?php echo $xx->date_shop;?></h5>
@@ -134,7 +149,7 @@
 
 
   <div class="tab-pane fade" id="pills-finish" role="tabpanel" aria-labelledby="pills-finish-tab">
-  <?php foreach ($Order as $xx){ ?>
+  <?php foreach ($Order_accept as $xx){ ?>
   <div class="card-body" align="left">
   <div class="row">  
   <div class="col">
@@ -144,7 +159,7 @@
       <?php echo $xx->name_set;?> 
       </div>
       <div class="col">
-      <h5 ><?php echo $xx->price;?></h5>
+      <h5 >฿ <?php echo $xx->price;?>.-</h5>
       </div> 
       <div class="col">
       <h5 ><?php echo $xx->date_shop;?></h5>
@@ -166,7 +181,7 @@
 
 
   <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
-  <?php foreach ($Order as $xx){ ?>
+  <?php foreach ($Order_history as $xx){ ?>
   <div class="card-body" align="left">
   <div class="row"> 
   <div class="col">
@@ -176,10 +191,10 @@
       <?php echo $xx->name_set;?> 
       </div>
       <div class="col">
-      <h5 ><?php echo $xx->price;?></h5>
+      <h5 >฿ <?php echo $xx->price;?>.-</h5>
       </div>
       <div class="col">
-      <h5 ><?php echo $xx->date_customer;?></h5>
+      <h5 ><?php echo $xx->date;?></h5>
       </div>  
 
 

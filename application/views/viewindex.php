@@ -54,7 +54,7 @@
   <div class="card-body">
     <h5 class="card-title">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" style="width: 20px; height: 20px;  alt="..." >
-    <input type="submit" class="btn btn-lg text-light " value="<?php echo $x->nameShop;?>"></h5>
+    <input type="submit" class="btn btn-lg text-light  <?php echo $x->id_shops; ?>" value="<?php echo $x->nameShop;?>"></h5>
     
       <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
       

@@ -11,6 +11,7 @@ class Customer extends CI_Controller {
         $this->load->model('Model_shop', 'ffc_shop');
         $this->load->model('Model_user', 'ffc_user');
         $this->load->model('Model_order', 'ffc_order');
+        $this->load->model('Model_confirmation', 'ffc_confirmation');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -189,13 +190,21 @@ class Customer extends CI_Controller {
 
         );
         
-        $add_order = $this->ffc_order->final_payment($data);
+        $add_order = $this->ffc_confirmation->final_payment($data);
         $delete_order = $this->input->post("id_o");
         $idcut = $this->input->post('id_customer');
         if($add_order == 0){ 
-            echo "<script language='JavaScript'>";
-            echo "alert('ยืนยันการสั่งไม่สำเร็จ')";
-            echo "</script>";
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลผิดพลาด",
+                            text : "ยืนยันการสั่งไม่สำเร็จ",
+                            type : "warning"
+                        })
+                    }, 1000);
+                    </script>';
             $data["buypro"] = $this->ffc_order->view_order($idcut);
             $this->load->view("set_product",$data);
         }else{
@@ -228,10 +237,5 @@ class Customer extends CI_Controller {
     }
 
    
-    public function payfor_make()
-    {
-        $idcut = $this->input->post('id_customer');
-        $data["buypro"] = $this->ffc_order->view_order($idcut);
-        $this->load->view("view_payfood",$data);        
-    }
+
 }

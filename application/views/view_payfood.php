@@ -28,15 +28,16 @@
   <div class="col-1">
     <img src="../../img/baseline_location_on_black_36dp.png" alt="...">
     </div>
+    <?php foreach ($payfood as $x){ ?>
     <div class="col">
     <h5 align="left">
-      &nbsp
-      &nbsp&nbsp 
-      <br> 
-      ต.
-      อ.
-      จ.
-      
+      ชื่อ  <?php echo $x->firstname?> <?php echo $x->lastname?> 
+      เบอร์โทร <?php echo $x->tell?> 
+    <br> 
+      บ้านเลขที่ <?php echo $x->numhome?> 
+      ต. <?php echo $x->parish?>
+      อ. <?php echo $x->district?>
+      จ. <?php echo $x->province?>
     </h5>
     </div>
   </div>
@@ -149,6 +150,7 @@
   
   </div>
   </div>
+  <?php } ?>
   </div>
   </div>
   <br>

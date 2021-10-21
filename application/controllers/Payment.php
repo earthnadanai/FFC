@@ -9,6 +9,8 @@ class Payment extends CI_Controller {
         $this->load->library('session', 'database');
         $this->load->model('Model_payment', 'ffc_payment');
         $this->load->model('Model_shop', 'ffc_shop');
+        $this->load->model('Model_order', 'ffc_order');
+        $this->load->model('Model_confirmation', 'ffc_confirmation');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -91,6 +93,13 @@ class Payment extends CI_Controller {
         $data['qu'] = $this->ffc_payment->tradings_admin3($b);
         $data['query'] = $this->ffc_payment->tradings_admin2($a);
         $this->load->view('tradingfood_admin', $data);
+    }
+
+    public function payfor_make()
+    {
+        $id_conn = $this->input->post("id_conn");
+        $data["payfood"] = $this->ffc_confirmation->order_palment($id_conn);
+        $this->load->view("view_payfood",$data);        
     }
     
 }

@@ -11,6 +11,7 @@ class Order extends CI_Controller {
         $this->load->model('Model_product', 'ffc_product');
         $this->load->model('Model_shop', 'ffc_shop');
         $this->load->model('Model_user', 'ffc_user');
+        $this->load->model('Model_confirmation', 'ffc_confirmation');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -18,10 +19,10 @@ class Order extends CI_Controller {
     public function order_shop()
     {
         $a = $this->input->post('id');
-        $data['orderShop'] = $this->ffc_order->order_shops($a);
-        $data['orderCus'] = $this->ffc_order->order_cus($a);
-        $data['orderMakes'] = $this->ffc_order->order_Makes($a);
-        $data['orderfinished'] = $this->ffc_order->order_finished($a);
+        $data['orderShop'] = $this->ffc_confirmation->order_shops($a);
+        $data['orderCus'] = $this->ffc_confirmation->order_cus($a);
+        $data['orderMakes'] = $this->ffc_confirmation->order_Makes($a);
+        $data['orderfinished'] = $this->ffc_confirmation->order_finished($a);
         $this->load->view('view_order',$data);
     }
 
@@ -38,10 +39,10 @@ class Order extends CI_Controller {
 
         if ($result) {
            $a = $this->input->post('id');
-           $data['orderShop'] = $this->ffc_order->order_shops($a);
-           $data['orderCus'] = $this->ffc_order->order_cus($a);
-           $data['orderMakes'] = $this->ffc_order->order_Makes($a);
-           $data['orderfinished'] = $this->ffc_order->order_finished($a);
+           $data['orderShop'] = $this->ffc_confirmation->order_shops($a);
+           $data['orderCus'] = $this->ffc_confirmation->order_cus($a);
+           $data['orderMakes'] = $this->ffc_confirmation->order_Makes($a);
+           $data['orderfinished'] = $this->ffc_confirmation->order_finished($a);
            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
@@ -55,10 +56,10 @@ class Order extends CI_Controller {
                    </script>';
            $this->load->view('view_order',$data);
         } else {
-            $data['orderShop'] = $this->ffc_order->order_shops($a);
-            $data['orderCus'] = $this->ffc_order->order_cus($a);
-            $data['orderMakes'] = $this->ffc_order->order_Makes($a);
-            $data['orderfinished'] = $this->ffc_order->order_finished($a);
+            $data['orderShop'] = $this->ffc_confirmation->order_shops($a);
+            $data['orderCus'] = $this->ffc_confirmation->order_cus($a);
+            $data['orderMakes'] = $this->ffc_confirmation->order_Makes($a);
+            $data['orderfinished'] = $this->ffc_confirmation->order_finished($a);
             echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
             echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
             echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
@@ -103,10 +104,10 @@ class Order extends CI_Controller {
 
         if ($result) {
             $a = $this->input->post('id');
-            $data['orderShop'] = $this->ffc_order->order_shops($a);
-            $data['orderCus'] = $this->ffc_order->order_cus($a);
-            $data['orderMakes'] = $this->ffc_order->order_Makes($a);
-            $data['orderfinished'] = $this->ffc_order->order_finished($a);
+            $data['orderShop'] = $this->ffc_confirmation->order_shops($a);
+            $data['orderCus'] = $this->ffc_confirmation->order_cus($a);
+            $data['orderMakes'] = $this->ffc_confirmation->order_Makes($a);
+            $data['orderfinished'] = $this->ffc_confirmation->order_finished($a);
             echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
             echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
             echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
@@ -125,7 +126,38 @@ class Order extends CI_Controller {
     public function check_status()
     {
         $idcut = $this->session->userdata['id'];
-        $data["Order"] = $this->ffc_order->view_comm($idcut); 
+        $data["Order"] = $this->ffc_confirmation->view_comm($idcut); 
+        $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
+        $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
+        $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+        $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
         $this->load->view("view_oderstatus",$data);
+    }
+
+    function delete_comm()
+    {
+        $delete_conn = $this->input->post("id_conn");
+        $this->ffc_confirmation->conn_delete($delete_conn);
+
+        $idcut = $this->session->userdata['id'];
+        $data["Order"] = $this->ffc_confirmation->view_comm($idcut); 
+        $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
+        $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
+        $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+        $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "ยกเลิกรายการที่สั่งเรียบร้อย",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
+        $this->load->view("view_oderstatus",$data);       
+               
+
     }
 }

@@ -277,9 +277,10 @@ class Product extends CI_Controller {
                         swal({
                             title : "ข้อมูลผิดพลาด",
                             text : "คุณเพิ่มอาหารซ้ำ",
-                            type : "warning"
+                            type : "warning",
+                            timer: 5000
                         })
-                    }, 1000);
+                    });
                     </script>';
             $this->load->view('set_n1meal',$data);
         } else {
@@ -293,9 +294,10 @@ class Product extends CI_Controller {
                         swal({
                             title : "ข้อมูลถูกต้อง",
                             text : "คุณเพิ่มอาหารใส่ชุดอาหารสำเร็จ",
-                            type : "success"
+                            type : "success",
+                            timer: 5000
                         })
-                    }, 1000);
+                    };
                     </script>';
             $this->load->view('set_n1meal',$data);
         }
@@ -509,18 +511,29 @@ class Product extends CI_Controller {
     {
         $delete_food = $this->input->post("id_o");
         $this->ffc_product->order_delete($delete_food);
-        if($delete_food){
+        
         $idcut = $this->session->userdata['id'];
         $data["buypro"] = $this->ffc_order->view_order($idcut);
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "ลบรายการที่สั่งเรียบร้อย",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
         $this->load->view("delete_order",$data);        
-        }         
+                 
     }
 
     public function delete_set()
     {
         $delete_food = $this->input->post("Pro_id");
         $this->ffc_product->set_delete($delete_food);
-        if($delete_food){
+        
             $a = $this->input->post('id_set');
             $b = $this->input->post('id');
             $data['viewProid'] = $this->ffc_product->view_proid($a);
@@ -538,7 +551,6 @@ class Product extends CI_Controller {
                     </script>';
             $this->load->view('delete_foodset',$data);
         }         
-    }
 
     function delete_menuset()
     {

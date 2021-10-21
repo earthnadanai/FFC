@@ -20,10 +20,10 @@ if ((!strcmp($a,$b))) { ?>
     <div class="container" align="center">
     <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
-    <div class="col-md-4">
-    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." style="width: 160px; height: 170px;">
+    <div class="col-md-6">
+    <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_shop;?>"  alt="..." style="width: 270px; height: 150px;">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="card-body">
         <h5 class="card-title"><?php echo $x->nameShop; ?></h5>
         <p class="card-text"></p>
