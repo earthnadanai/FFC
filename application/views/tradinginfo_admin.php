@@ -12,7 +12,7 @@
     <title>อนุมัติการซื้อขาย</title>
 </head>
 <body>
-<h1>Admin</h1>
+<br>
     <div class="container">
     <div class="row">
     <div class="col-sm-3">
@@ -53,7 +53,9 @@
     <tr>
 
       <td align="center"><?php echo $x->nameShop; ?></td>
-      <td align="center"><?php echo $x->status_customer; ?></td>
+      <?php foreach ($conn as $x){ ?>
+      <td align="center"><?php echo $x->status_pay; ?></td>
+      <?php } ?>
       <td align="center">
                 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -70,10 +72,12 @@
       </div>
       <div class="modal-body">
       <p class="card-text"><h4>  
+      <?php foreach ($query as $x){ ?>
       <img src="<?php echo base_url('img_bank'); ?>/<?php echo $x->P_img_cus;?>" style="width: 200px; height: 300;" alt="..." > <br>
        <br> วันที่ชำระเงิน  : <?php echo $x->date_cus;?> 
       <br> ราคา  : <?php echo $x->total;?> , ชื่อธนาคาร : <?php echo $x->nameBang;?>
       <br> ชื่อผู้ชำระเงิน : <?php echo $x->firstname;?> <?php echo $x->lastname;?>
+      <?php } ?>
     </h4></p>
       </div>
       <div class="modal-footer">
@@ -85,9 +89,18 @@
       </td>
       <td align="center">
       <form action="<?php echo site_url('Admin/tradingfood_admin'); ?>" method="POST">
-    <input type="text" name="id" value="<?php echo $x->id_orderhistory; ?>" hidden>
+      <?php foreach ($conn as $x){ ?>
+    <input type="text" name="id_conn" value="<?php echo $x->id_conn; ?>" hidden>
+    <?php } ?>
+    <?php foreach ($query as $x){ ?>
     <input type="text" name="id_p" value="<?php echo $x->id_p; ?>" hidden>
+    <?php } ?>
+    <?php foreach ($conn as $x){ ?>
     <input type="text" name="id_shop" value="<?php echo $x->id_shop; ?>" hidden>
+    <?php } ?>
+    <?php foreach ($query as $x){ ?>
+    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
+    <?php } ?>
     <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียดอาหาร"></form>
       </td>
 

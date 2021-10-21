@@ -20,13 +20,13 @@ class Model_confirmation extends CI_Model
 
     function view_comm($idcut)
     {
-        $status_pay = "รอการนำเนิดการ";
+        $status_pay = "รอการชำระเงิน";
         $this->db->select('*')
         ->from('confirmation')
         ->join('product_set', 'confirmation.id_sett  = product_set.id_set ')
         ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
         ->where('id_customer', $idcut)
-        ->where('status_customer', $status_pay);
+        ->where('status_pay', $status_pay);
         $query = $this->db->get();
         return $query->result();
     }
@@ -167,6 +167,13 @@ class Model_confirmation extends CI_Model
         ->join('product_set', 'confirmation.id_sett = product_set.id_set')
         ->where('id_conn', $id_conn);
         $query = $this->db->get();
+        return $query->result();
+    }
+
+    function tradings_adminconn($id_con)
+    {
+        $this->db->where('id_conn',$id_con);
+        $query = $this->db->get('confirmation');
         return $query->result();
     }
 }

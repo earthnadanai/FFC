@@ -26,7 +26,7 @@
   <div class="card-body" align="left">
   <div class="row">
   <div class="col-1">
-    <img src="../../img/baseline_location_on_black_36dp.png" alt="...">
+    <img src="../../img/baseline_location_on_black_36dp.png" alt="..." >
     </div>
     <?php foreach ($payfood as $x){ ?>
     <div class="col">
@@ -59,7 +59,7 @@
   
    
   <div class="card-body" align="left">
-    
+  <form method="post" action="<?php echo site_url('Payment/addpay_customer'); ?>" method="post" class="form-horizontal" enctype="multipart/form-data">  
   <div class="row">
   <div class="col">
   <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="card-img-top" alt="..."style="width: 125px; max-hight: 125px">
@@ -68,7 +68,7 @@
       <?php echo $x->name_set?> 
       </div>
       <div class="col">
-      <h5 >฿<?php echo $x->price;?></h5>
+      <h5 ><input type="text" name="total" value="<?php echo $x->price?>" hidden>฿<?php echo $x->price;?></h5>
       </div> 
       <div class="col">
       <h5 class="text-warning">฿<?php echo $x->price;?></h5>
@@ -93,7 +93,6 @@
   
    
   <div class="card-body" align="left">
-  <form method="post" action="<?php echo site_url('...'); ?>" >  
   <div class="row">
   
       <div class="col-2">
@@ -108,10 +107,11 @@
       </div> 
       <div class="col-3">
       <h5 >แนบหลักฐานการโอนเงิน</h5>
-      <input type="file" id="myfile" name="myfile">
+      <input type="file" name="P_img_cus" required>
       </div> 
       <div class="col-2">
-      <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+      <input type="datetime-local" name="date_cus" required>
+      <br> <input type="text" name="nameBang" placeholder="ชื่อธนาคาร" required>
       </div> 
 
     </div>
@@ -138,7 +138,12 @@
     <h4>ยอดชำระเงินทั้งหมด &nbsp฿ <?php echo $x->price;?><h4>
   </div>
   <div class="col-2"> 
-  
+  <input type="text" name="id_cuss" value="<?php echo $x->id?> " hidden>
+  <input type="text" name="id_shopsp" value="<?php echo $x->id_shops?> " hidden>
+  <input type="text" name="id_sset" value="<?php echo $x->id_set?> " hidden>
+  <input type="text" name="status_pay" value="ชำระเงินแล้ว " hidden>
+  <input type="text" name="id_con" value="<?php echo $x->id_conn?>" hidden>
+
   
   <input type="submit" class="btn btn-success" name="success" value="ชำระเงิน">
   </form>

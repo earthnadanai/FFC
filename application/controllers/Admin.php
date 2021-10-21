@@ -11,6 +11,7 @@ class Admin extends CI_Controller {
         $this->load->model('Model_shop', 'ffc_shop');
         $this->load->model('Model_payment', 'ffc_payment');
         $this->load->model('Model_user', 'ffc_user');
+        $this->load->model('Model_confirmation', 'ffc_confirmation');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -101,7 +102,9 @@ class Admin extends CI_Controller {
     function tradinginfo_admin()
     {
         $a = $this->input->post('id');
+        $id_con = $this->input->post('id_con');
         $data['query'] = $this->ffc_payment->tradings_admin1($a);
+        $data['conn'] = $this->ffc_confirmation->tradings_adminconn($id_con);
         $this->load->view('tradinginfo_admin', $data);
     }
 
@@ -110,9 +113,11 @@ class Admin extends CI_Controller {
         $a = $this->input->post('id');
         $b = $this->input->post('id_p');
         $c = $this->input->post('id_shop');
+        $id_con = $this->input->post('id_conn');
         $data['ve'] = $this->ffc_shop->tradings_admin4($c);
         $data['qu'] = $this->ffc_payment->tradings_admin3($b);
-        $data['query'] = $this->ffc_order->tradings_admin2($a);
+        $data['query'] = $this->ffc_payment->tradings_admins($a);
+        $data['conn'] = $this->ffc_confirmation->tradings_adminconn($id_con);
         $this->load->view('tradingfood_admin', $data);
     }
 }

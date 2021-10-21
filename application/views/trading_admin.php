@@ -55,8 +55,9 @@
       <td align="center"><?php echo $x->date_cus;?></td>
 
       <td align="center">
-      <form action="./tradinginfo_admin" method="POST">
+      <form action="<?= site_url('Admin/tradinginfo_admin');?>" method="POST">
     <input type="text" name="id" value="<?php echo $x->id_cuss; ?>" hidden>
+    <input type="text" name="id_con" value="<?php echo $x->id_con; ?>" hidden>
     <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด"></form>
     </td>
     </tr>

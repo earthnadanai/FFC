@@ -24,14 +24,16 @@
         <h5 class="modal-title">แจ้งเตือน</h5>
       </div>
       <div class="modal-body">
-        <p>ไปที่หน้าเช็ครายการสั่ง</p>
+        <h5>กรุณากดปุ่มเพื่อยืนยันการชำระเงิน</h5>
+        <p class="text-warning">*กรุณากดปุ่มเพื่อยืนยันการชำระขั้นที่2 ถ้าหากข้ามขั้นตอนนี้อาจชำระเงินไม่สำเร็จ*</p>
       </div>
       <div class="modal-footer">
       
-      <form action="<?= site_url('Order/order_shop');?>" method="post">
-      <?php foreach ($Shop as $x){ ?>
-<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-<button type="submit" class="btn btn-primary">ไปที่หน้าเช็ครายการสั่ง</button>
+  <form action="<?= site_url('Payment/add_payconn');?>" method="post">
+  <?php foreach ($query as $x){ ?>
+  <input type="text" name="status_pay" value="ชำระเงินแล้ว " hidden>
+  <input type="text" name="id_con" value="<?php echo $x->id_conn?>" hidden>
+<button type="submit" class="btn btn-success">ยืนยันการชำระเงิน</button>
 </form> 
       <?php } ?>
       </div>
