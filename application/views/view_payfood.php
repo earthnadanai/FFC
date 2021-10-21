@@ -31,10 +31,10 @@
     <?php foreach ($payfood as $x){ ?>
     <div class="col">
     <h5 align="left">
-      ชื่อ  <?php echo $x->firstname?> <?php echo $x->lastname?> 
-      เบอร์โทร <?php echo $x->tell?> 
+        <?php echo $x->firstname?> <?php echo $x->lastname?> 
+       <?php echo $x->tell?> 
     <br> 
-      บ้านเลขที่ <?php echo $x->numhome?> 
+       <?php echo $x->numhome?> 
       ต. <?php echo $x->parish?>
       อ. <?php echo $x->district?>
       จ. <?php echo $x->province?>
@@ -54,7 +54,7 @@
   <div class="card">
 
   <div class="card-header"align="left">
-  ชื่อร้าน
+  <?php echo $x->nameShop?> 
   </div>
   
    
@@ -62,16 +62,16 @@
     
   <div class="row">
   <div class="col">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>" class="card-img-top" alt="..."style="width: 125px; max-hight: 125px">
       </div>
       <div class="col">
-      ชื่อเซ็ตอาหาร
+      <?php echo $x->name_set?> 
       </div>
       <div class="col">
-      <h5 >฿ราคา</h5>
+      <h5 >฿<?php echo $x->price;?></h5>
       </div> 
       <div class="col">
-      <h5 class="text-warning">฿ราคา</h5>
+      <h5 class="text-warning">฿<?php echo $x->price;?></h5>
       </div> 
       
     </div>
@@ -93,24 +93,27 @@
   
    
   <div class="card-body" align="left">
-    
+  <form method="post" action="<?php echo site_url('...'); ?>" >  
   <div class="row">
   
-      <div class="col">
+      <div class="col-2">
       <h5> ช่องทางการชำระเงิน</h5>
       </div>
       <div class="col-1">
   <img src="../../img/SCB.png" class="card-img-top" alt="..."style="width: 50px; max-hight: 50px">
   
       </div>
-      <div class="col-4">
-      <h5 >614-259015-0 FOODFORCATERING</h5>
+      <div class="col-3">
+      <h5 >เลขที่บัญชี: 614-259015-0 <br>บัญชี: FOODFORCATERING</h5>
       </div> 
-      <div class="col-4">
+      <div class="col-3">
       <h5 >แนบหลักฐานการโอนเงิน</h5>
       <input type="file" id="myfile" name="myfile">
       </div> 
-      
+      <div class="col-2">
+      <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+      </div> 
+
     </div>
 
   </div>
@@ -132,16 +135,19 @@
   <div class="row"align="right">
   <div class="col-9"align="right">
     
-    <h4>ราคา &nbsp฿<h4>
+    <h4>ยอดชำระเงินทั้งหมด &nbsp฿ <?php echo $x->price;?><h4>
   </div>
   <div class="col-2"> 
   
   
-  <input type="submit" class="btn btn-success" name="success" value="ชำระเงิน"></form>
+  <input type="submit" class="btn btn-success" name="success" value="ชำระเงิน">
+  </form>
   </div>
+  
   <div class="col-1">
-  <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ"></form>
-
+  <form method="post" action="<?php echo site_url('...'); ?>" > 
+  <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
+  </form>
 </div>
   
   
