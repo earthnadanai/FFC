@@ -133,4 +133,18 @@ class Model_shop extends CI_Model
         return $query->result();
     }
 
+    function view_slippay($id_shop)
+    {
+        $status_admin = "โอนแล้ว";
+        $this->db->select('*') 
+        ->from('payment')
+        ->join('shop', ' payment.id_shopsp =  shop.id_shops')
+        ->join('user', ' payment.id_cuss = user.id')
+        ->join('product_set', ' payment.id_sset = product_set.id_set')
+        ->where('id_shops',$id_shop)
+        ->where('status_admin',$status_admin);
+        $this->db->order_by("date_shop", "DESC");
+        $query = $this->db->get();  
+        return $query->result();
+    }
 }

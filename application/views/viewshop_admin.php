@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Admin</h1>
+    <br>
     <div class="container">
     <div class="row">
     <div class="col-sm-3">

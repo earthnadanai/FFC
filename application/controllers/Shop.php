@@ -7,11 +7,61 @@ class Shop extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('session', 'database');
-        $this->load->model('Model_shop', 'ffc');
+        $this->load->model('Model_shop', 'ffc_shop');
+        $this->load->model('Model_user', 'ffc_user');
         $this->load->helper(array('form', 'url')); 
         
     }
 
+    function open ()
+    {
+        $a = $this->input->post('id');
+        $this->db->set('status_work', "เปิดแล้ว");
+        $this->db->set('img_status', "green.png");
+        $this->db->where('id_shops', $a);
+        $this->db->update('shop');
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณเปิดร้านเรียบร้อย",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
+        
+        $b = $this->session->userdata('id');
+        $data['viewS'] = $this->ffc_shop->view_shop($a);
+        $data['viewST'] = $this->ffc_user->view_statu($b);
+        $this->load->view('view_status', $data);
+    }
+
+    function close()
+    {
+        $a = $this->input->post('id');
+        $this->db->set('status_work', "ยังไม่เปิด");
+        $this->db->set('img_status', "gray.png");
+        $this->db->where('id_shops', $a);
+        $this->db->update('shop');
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "คุณปิดร้านเรียบร้อย",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
+        $a = $this->input->post('id');
+        $b = $this->session->userdata('id');
+        $data['viewS'] = $this->ffc_shop->view_shop($a);
+        $data['viewST'] = $this->ffc_user->view_statu($b);
+        $this->load->view('view_status', $data);
+    }
     /*function showapproval_shop()
     {
         $data['query'] = $this->ffc->showapprovals_shop();

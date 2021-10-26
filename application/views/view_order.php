@@ -15,6 +15,26 @@
 <br>
 
 <div class="container" align="canter">
+  
+<div class="row">
+<div class="col-sm-2 " >
+<form action="<?= site_url('Order/order_shop');?>" method="post">
+<?php foreach ($orderShop as $x){ ?>
+<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+<?php } ?>
+<button type="submit" class="btn btn-primary">ดูอาหารที่ลูกค้าสั่ง</button>
+</form>
+</div>
+<div class="col-sm-2 "align="left">
+<form action="<?= site_url('Order/view_slippay');?>" method="post">
+<?php foreach ($orderShop as $x){ ?>
+<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+<?php } ?>
+<button type="submit" class="btn btn-info">ดูสลิปเงินที่ลูกค้าชำระ</button>
+</form>
+</div>
+</div>
+
   <div class="row">
   <div class="card text-dark bg-light mb-3" style="max-width: 100rem;">
   <div class="card-body" >
@@ -187,5 +207,6 @@
 </body>
 <?php $this->load->view('footer');  ?>
 </html>
+
 
 

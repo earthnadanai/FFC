@@ -22,15 +22,35 @@
 
 <div class="row">
 <?php foreach ($viewS as $x){ ?>
-<div class="col-sm-3 ">
+<div class="col-sm-2 " align="right">
 <form action="<?= site_url('Order/order_shop');?>" method="post">
 <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
 <button type="submit" class="btn btn-primary">ดูอาหารที่ลูกค้าสั่ง</button>
 </form>
 </div>
 <?php } ?>
-<div class="col-sm-6" align="">
+<?php foreach ($viewS as $x){ ?>
+<div class="col-sm-2 "align="left">
+<form action="<?= site_url('Order/view_slippay');?>" method="post">
+<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+<button type="submit" class="btn btn-info">ดูสลิปเงินที่ลูกค้าชำระ</button>
+</form>
+</div>
+<?php } ?>
+<div class="col-sm-4" align="">
 <h4>จัดการอาหารภายในร้าน</h4>
+</div>
+<div class="col-sm-2" align="right">
+<form action="<?= site_url('Shop/open');?>" method="post">
+<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+<button type="submit" class="btn btn-success">กดปุ่มเพื่อเปิดร้าน</button>
+</form>
+</div>
+<div class="col-sm-2" align="left">
+<form action="<?= site_url('Shop/close');?>" method="post">
+<input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
+<button type="submit" class="btn btn-danger">กดปุ่มเพื่อปิดร้าน</button>
+</form>
 </div>
 </div>
 
@@ -77,6 +97,11 @@
     <?php } ?>
   </div>
 </div>
+<?php foreach ($viewS as $x){ ?>
+<h5 align="end">สถานะร้าน : <?php echo $x->status_work; ?>
+ <img src="<?php echo base_url('img'); ?>/<?php echo $x->img_status;?>" alt="..."style="width: 15px; max-hight: 15px"> .
+</h5>
+<?php } ?>
 </div>
 <img  src="../../img/unnamed.gif"  style="width: 170px; height: 250px;" alt="..." >
 </div>

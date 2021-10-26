@@ -150,7 +150,7 @@
   </div>
   
   <div class="col-1">
-  <form method="post" action="<?php echo site_url('...'); ?>" > 
+  <form method="post" action="<?php echo site_url('Order/check_status'); ?>" > 
   <input type="submit" class="btn btn-secondary" name="secondary" value="ย้อนกลับ">
   </form>
 </div>

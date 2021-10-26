@@ -124,13 +124,23 @@
         <div class="form-group col  col-md-5">
           <label>ภาพสลิปโอนเงิน</label><br>
           <h5>เลขบัญชีทางร้าน : <?php echo $x->number_bank; ?><h5>
+          <h5 class="text-dark">ธนาคาร : <?php echo $x->nameBank; ?><h5>
+          <input type="text" name="id_shop" value=" <?php echo $x->id_shops?>" hidden>
+          <input type="text" name="id_customer" value=" <?php echo $x->id?>" hidden>
+          <input type="text" name="id_Set" value=" <?php echo $x->id_set?>" hidden>
+          <input type="text" name="id_payment" value=" <?php echo $x->id_p?>" hidden>
+          <?php foreach ($conn as $x){?>
+          <input type="text" name="id_conn" value=" <?php echo $x->id_conn?>" hidden>
+          <?php } ?>
+          <input type="datetime-local" name="date_shop" class="form-control" required>
+          <br>
           <input type="file" name="P_img_shop" class="form-control"  accept="image/*" required>
         </div>
         <div class="form-group col col-md-5">
         <?php foreach ($query as $x){ ?>
         <input type="int" name="id" value="<?php echo $x->id_p; ?>" hidden>
-        <button type="submit" class="btn btn-success" >SAVE</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success" >โอนเงินให้ทางร้าน</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
         <?php } ?>
         </div>
       </form>

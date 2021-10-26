@@ -160,4 +160,41 @@ class Order extends CI_Controller {
                
 
     }
+
+    function up_conn()
+    {
+        $id_conn = $this->input->post('id_conn');
+        $status_customer = "รับสินค้าแล้ว";
+        $this->db->set('status_customer', $status_customer);
+        $this->db->where('id_conn', $id_conn);
+        $this->db->update('confirmation');
+
+        $idcut = $this->session->userdata['id'];
+        $data["Order"] = $this->ffc_confirmation->view_comm($idcut); 
+        $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
+        $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
+        $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+        $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "ยืนยันการรับอาหารเรียบร้อย",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
+        $this->load->view("view_oderstatus",$data);
+
+    }
+
+    function view_slippay()
+    {
+        $id_shop = $this->input->post('id');
+        $data['slippay'] = $this->ffc_shop->view_slippay($id_shop);
+        $this->load->view("view_slippay",$data);
+    }
+
 }

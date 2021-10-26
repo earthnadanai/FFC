@@ -43,6 +43,15 @@
           <?php foreach ($ve as $x){ ?>
           <h5 class="text-dark">เลขบัญชีทางร้าน : <?php echo $x->number_bank; ?><h5>
           <h5 class="text-dark">ธนาคาร : <?php echo $x->nameBank; ?><h5>
+          <input type="text" name="id_shop" value=" <?php echo $x->id_shops?>" hidden>
+          <?php } ?>
+          <?php foreach ($query as $x){?>
+          <input type="text" name="id_customer" value=" <?php echo $x->id?>" hidden>
+          <input type="text" name="id_Set" value=" <?php echo $x->id_set?>" hidden>
+          <input type="text" name="id_payment" value=" <?php echo $x->id_p?>" hidden>
+          <?php } ?>
+          <?php foreach ($conn as $x){?>
+          <input type="text" name="id_conn" value=" <?php echo $x->id_conn?>" hidden>
           <?php } ?>
           <input type="datetime-local" name="date_shop" class="form-control" required>
           <br>

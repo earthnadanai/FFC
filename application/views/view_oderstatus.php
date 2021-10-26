@@ -168,10 +168,10 @@
       
       </div> 
       <div class="col">
-      
-    
-      <button type="button" class="btn btn-success">ฉันได้ตรวจสอบและยอมรับอาหาร</button>
-      
+      <form action="<?= site_url('Order/up_conn');?>" method="post">
+      <input type="text" name="id_conn" value=" <?php echo $xx->id_conn;?>" hidden>
+      <button type="summit" class="btn btn-success">ฉันได้ตรวจสอบและยอมรับอาหาร</button>
+      </form>
       </div> 
 
   </div>   

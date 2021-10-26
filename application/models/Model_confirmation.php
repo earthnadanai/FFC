@@ -67,12 +67,14 @@ class Model_confirmation extends CI_Model
     function view_comaccept($idcut)
     {
         $status_accept = "ส่ง";
+        $status_customer = "รอการนำเนิดการ";
         $this->db->select('*')
         ->from('confirmation')
         ->join('product_set', 'confirmation.id_sett  = product_set.id_set ')
         ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
         ->where('id_customer', $idcut)
-        ->where('status_shop', $status_accept);
+        ->where('status_shop', $status_accept)
+        ->where('status_customer', $status_customer);
         $query = $this->db->get();
         return $query->result();
     }
@@ -175,5 +177,11 @@ class Model_confirmation extends CI_Model
         $this->db->where('id_conn',$id_con);
         $query = $this->db->get('confirmation');
         return $query->result();
+    }
+
+    function delete_confirmation($id_conn)
+    {
+        $this->db->where('id_conn', $id_conn);
+        $this->db->delete('confirmation');
     }
 }
