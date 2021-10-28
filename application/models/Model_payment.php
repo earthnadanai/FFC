@@ -21,6 +21,19 @@ class Model_payment extends CI_Model
         return $query->result();
     }
 
+    function refund_admin($id_con)
+    {
+        $this->db->select('*')
+        ->from('payment')
+        ->join('user', ' payment.id_cuss = user.id ')
+        ->join('shop', 'payment.id_shopsp = shop.id_shops')
+        //->join('confirmation','payment.id_p = confirmation.id_pay')
+        ->join('product_set','payment.id_sset = product_set.id_set')
+        ->where('id_con',$id_con);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function tradings_admin1($a)
     {
         $this->db->select('*')
@@ -75,4 +88,14 @@ class Model_payment extends CI_Model
             return $message;
         } 
     }
+
+    function refunds_admin()
+    {
+        $status_admin = "ขอเงินคืน";
+        $this->db->where('status_admin',$status_admin);
+        $query = $this->db->get('payment');
+        return $query->result();
+    }
+
+
 }

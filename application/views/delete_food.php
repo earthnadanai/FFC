@@ -76,6 +76,7 @@
   <div class="card-body">
     <h5 class="card-title"><?php echo $x->name_set; ?></h5>
     <p class="card-text">
+    สถานะ : <?php echo $x->status_set; ?> <br>
     ขนาด : <?php echo $x->size; ?> <br>
     ราคา : <?php echo $x->price; ?>
     </p>
@@ -83,15 +84,29 @@
     <form action="<?= site_url('Product/pege_deletefood');?>" method="post">
     <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
     <input type="text" name="id" value="<?php echo $x->id_set_shop; ?>" hidden>
-    <button type="submit" class="btn btn-success" >ดูอาหาร</button>
+    <button type="submit" class="btn btn-info" >ดูอาหาร</button>
     </form>
 
-    <form action="<?= site_url('Product/delete_menuset');?>" method="post">
+    <?php 
+    $a = $x->status_set;
+    $b = "ปิดใช้งาน";
+    if((!strcmp($a,$b)))  { ?>
+
+    <form action="<?= site_url('Product/open');?>" method="post">
     <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
     <input type="text" name="id" value="<?php echo $x->id_set_shop; ?>" hidden>
-    <button type="submit" class="btn btn-danger" onclick="myFunction()">ลบชุดอาหาร</button>
+    <button type="submit" class="btn btn-success" onclick="myFunction()">เปิดใช้งานชุดอาหาร</button>
     </form>
 
+    <?php }else{ ?>
+      
+    <form action="<?= site_url('Product/close');?>" method="post">
+    <input type="text" name="id_set" value="<?php echo $x->id_set; ?>" hidden>
+    <input type="text" name="id" value="<?php echo $x->id_set_shop; ?>" hidden>
+    <button type="submit" class="btn btn-secondary" onclick="myFunction()">ปิดใช้งานชุดอาหาร</button>
+    </form>
+
+    <?php } ?>
   </div>
 </div>
     <br>
@@ -144,6 +159,7 @@
     <button type="submit" class="btn btn-secondary" >ย้อนกลับ</button>
     </form>
 </div>
+
 
 <br>
 </body>

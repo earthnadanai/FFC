@@ -297,7 +297,7 @@ class Product extends CI_Controller {
                             type : "success",
                             timer: 5000
                         })
-                    };
+                    });
                     </script>';
             $this->load->view('set_n1meal',$data);
         }
@@ -590,6 +590,55 @@ class Product extends CI_Controller {
                 </script>';
         $this->load->view('delete_food',$data);
     }
+}
+
+function open ()
+{
+    $id_set = $this->input->post("id_set");
+    $a = $this->input->post('id');
+    $this->db->set('status_set', "เปิดใช้งาน");
+    $this->db->where('id_set', $id_set);
+    $this->db->update('product_set');
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "คุณเปิดใช้งานชุดอาหารเรียบร้อย",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
+    
+    $data['viewShop'] = $this->ffc_shop->view_shop($a);
+    $data['viewProset'] = $this->ffc_product->view_sets($a);
+    $data['viewPro'] = $this->ffc_product->view_pro($a);
+    $this->load->view('delete_food',$data);
+}
+
+function close()
+{
+    $id_set = $this->input->post("id_set");
+    $a = $this->input->post('id');
+    $this->db->set('status_set', "ปิดใช้งาน");
+    $this->db->where('id_set', $id_set);
+    $this->db->update('product_set');
+        echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+        echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+        echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+        echo '<script> setTimeout(function() {
+                    swal({
+                        title : "ข้อมูลถูกต้อง",
+                        text : "คุณปิดใช้งานชุดอาหารเรียบร้อย",
+                        type : "success"
+                    })
+                }, 1000);
+                </script>';
+    $data['viewShop'] = $this->ffc_shop->view_shop($a);
+    $data['viewProset'] = $this->ffc_product->view_sets($a);
+    $data['viewPro'] = $this->ffc_product->view_pro($a);
+    $this->load->view('delete_food',$data);
 }
 
 }

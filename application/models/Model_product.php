@@ -201,6 +201,7 @@ class Model_product extends CI_Model
     function showproduct_cus($a)
     {
       $this->db->where('id_set_shop',$a);
+      $this->db->where('status_set','เปิดใช้งาน');
       $query = $this->db->get('product_set');
       return $query->result();
        

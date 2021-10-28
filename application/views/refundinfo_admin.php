@@ -44,8 +44,7 @@
       <th scope="col"><div align="center">ชื่อร้าน</div> </th>
       <th scope="col"><div align="center">สถานะ</div> </th>
       <th scope="col"><div align="center">ดูรายละเอียดการชำระเงิน</div> </th>
-      <th scope="col"><div align="center">ดูรายละเอียดอาหาร</div> </th>
-      <th scope="col"><div align="center">โอนเงินให้ทางร้าน</div> </th>
+      <th scope="col"><div align="center">โอนเงินให้ลูกค้า</div> </th>
     </tr>
   </thead>
  
@@ -88,28 +87,12 @@
     </div>
   </div>
 </div>
-      </td>
-      <td align="center">
-      <form action="<?php echo site_url('Admin/tradingfood_admin'); ?>" method="POST">
-      <?php foreach ($conn as $x){ ?>
-    <input type="text" name="id_conn" value="<?php echo $x->id_conn; ?>" hidden>
-    <?php } ?>
-    <?php foreach ($query as $x){ ?>
-    <input type="text" name="id_p" value="<?php echo $x->id_p; ?>" hidden>
-    <?php } ?>
-    <?php foreach ($conn as $x){ ?>
-    <input type="text" name="id_shop" value="<?php echo $x->id_shop; ?>" hidden>
-    <?php } ?>
-    <?php foreach ($query as $x){ ?>
-    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
-    <?php } ?>
-    <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียดอาหาร"></form>
-      </td>
+
 
       <td align="center">
     <!-- Button trigger modal -->
 <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModal1">
-โอนเงินให้ทางร้าน
+โอนเงินให้ลูกค้า
 </button>
 
 <!-- Modal -->
@@ -125,8 +108,8 @@
       <form action="<?= site_url('Payment/adding');?>" method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group col  col-md-5">
           <label>ภาพสลิปโอนเงิน</label><br>
-          <h5>เลขบัญชีทางร้าน : <?php echo $x->number_bank; ?><h5>
-          <h5 class="text-dark">ธนาคาร : <?php echo $x->nameBank; ?><h5>
+          <h5>เลขบัญชีลูกค้า : <?php echo $x->num_bank; ?><h5>
+          <h5 class="text-dark">ธนาคาร : <?php echo $x->nameBang; ?><h5>
           <input type="text" name="id_shop" value=" <?php echo $x->id_shops?>" hidden>
           <input type="text" name="id_customer" value=" <?php echo $x->id?>" hidden>
           <input type="text" name="id_Set" value=" <?php echo $x->id_set?>" hidden>
@@ -134,14 +117,14 @@
           <?php foreach ($conn as $x){?>
           <input type="text" name="id_conn" value=" <?php echo $x->id_conn?>" hidden>
           <?php } ?>
-          <input type="datetime-local" name="date_shop" class="form-control" required>
+          <input type="datetime-local" name="date_cus" class="form-control" required>
           <br>
-          <input type="file" name="P_img_shop" class="form-control"  accept="image/*" required>
+          <input type="file" name="P_img_cus" class="form-control"  accept="image/*" required>
         </div>
         <div class="form-group col col-md-5">
         <?php foreach ($query as $x){ ?>
         <input type="int" name="id" value="<?php echo $x->id_p; ?>" hidden>
-        <button type="submit" class="btn btn-success" >โอนเงินให้ทางร้าน</button>
+        <button type="submit" class="btn btn-success" >โอนเงินให้ลูกค้า</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
         <?php } ?>
         </div>

@@ -99,6 +99,12 @@ class Admin extends CI_Controller {
         $this->load->view('trading_admin', $data);
     }
 
+    function refund_admin()
+    {
+        $data['query'] = $this->ffc_payment->refunds_admin();
+        $this->load->view('refund_admin', $data);
+    }
+
     function tradinginfo_admin()
     {
         $a = $this->input->post('id');
@@ -106,6 +112,15 @@ class Admin extends CI_Controller {
         $data['query'] = $this->ffc_payment->tradings_admin1($a);
         $data['conn'] = $this->ffc_confirmation->tradings_adminconn($id_con);
         $this->load->view('tradinginfo_admin', $data);
+    }
+
+    function refundinfo_admin()
+    {
+        $a = $this->input->post('id');
+        $id_con = $this->input->post('id_con');
+        $data['query'] = $this->ffc_payment->refund_admin($id_con);
+        $data['conn'] = $this->ffc_confirmation->tradings_adminconn($id_con);
+        $this->load->view('refundinfo_admin', $data);
     }
 
     function tradingfood_admin()
