@@ -61,7 +61,7 @@
     <div class="row">
     <div class="col-9" align="right">
       
-    <input type="submit" class="btn btn-success" name="success" value="สั่งซื้อ.">
+    <input type="submit" class="btn btn-success" id="buy_ok" name="success" value="สั่งซื้อ.">
     </form>
 </div>
 <div class="col" align="lift">

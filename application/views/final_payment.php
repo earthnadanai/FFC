@@ -26,7 +26,7 @@
   <div class="card-body">
     <h5 class="card-title"> <br><br><br><br><img src="../../img/tiktook.jpg" class="w3-hover-opacity" alt="Norway" style="width:25%"> </h5>
     <p class="card-text">
-    <p class="w3-xxlarge">ดำเนินการเสร็จสิ้น</p>
+    <p name="success"class="w3-xxlarge">ดำเนินการเสร็จสิ้น</p>
     <form action="<?= site_url('Customer/index');?>" method="POST">
     <button type="submit" class="btn btn-secondary btn-lg" name="submit">กลับไปยังหน้าแรก</button>
     </p>

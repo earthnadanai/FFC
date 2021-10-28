@@ -21,7 +21,7 @@
 
   <?php if ($error = $this->session->flashdata('error_msg')): ?>
     <div class="alert alert-danger  alert-dismissible fade show" role="alert">
-    <i class="bi bi-exclamation-circle-fill"> <strong>ข้อมูลผิดพลาด!</strong> <?php echo $this->session->flashdata('error_msg'); ?>
+    <i name="alert"class="bi bi-exclamation-circle-fill"> <strong>ข้อมูลผิดพลาด!</strong> <?php echo $this->session->flashdata('error_msg'); ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></i>
     </div>
   <?php endif ;?>

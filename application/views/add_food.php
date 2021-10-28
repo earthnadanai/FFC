@@ -26,7 +26,7 @@
     <div class="col-sm"> 
     <form action="<?= site_url('Product/pege_addfood');?>" method="post">
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-    <button type="submit" class="btn btn-success " style="width: 230px; height: 70px;">เพิ่มอาหาร</button>
+    <button id="insert_food" type="submit" class="btn btn-success " style="width: 230px; height: 70px;">เพิ่มอาหาร</button>
     </form>
     </div>
     <?php } ?>
@@ -72,7 +72,7 @@
 
   <?php if ($success = $this->session->flashdata('success_msg')): ?>
     <div class="alert alert-success  alert-dismissible fade show" role="alert">
-    <i class="bi bi-check-circle-fill"> <strong>ข้อมูลถูกต้อง!</strong> <?php echo $this->session->flashdata('success_msg'); ?>
+    <i name = "success_insertfood"class="bi bi-check-circle-fill"> <strong>ข้อมูลถูกต้อง!</strong> <?php echo $this->session->flashdata('success_msg'); ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></i>
     </div>
   <?php endif ;?>
@@ -85,14 +85,14 @@
     <h6 align="left">เพิ่มรูปอาหาร<h6>
     <div class="col">
     <div class="col-sm-12">
-    <input type="file" name="img_pro" class="form-control"  accept="image/*" required>
+    <input type="file" id="img" name="img_pro" class="form-control"  accept="image/*" required>
     </div>
     </div>
     <br>
     <h6 align="left">กรอกชื่ออาหาร<h6>
     <div class="col">
     <div class="col-sm-12">
-      <input type="text" name="nameProduct"  class="form-control" placeholder="กรอกชื่ออาหาร" required>
+      <input type="text" id="nameProduct" name="nameProduct"  class="form-control" placeholder="กรอกชื่ออาหาร" required>
     </div>
     </div>
     <br>
@@ -136,7 +136,7 @@
 <br>
 <div class="row">
     <div class="col-sm"> 
-    <button type="submit" class="btn btn-success" >ยืนยัน</button>
+    <button type="submit" name="ok"class="btn btn-success" >ยืนยัน</button>
     </form>
     </div>
     <div class="col-sm"> 

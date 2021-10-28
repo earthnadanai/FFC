@@ -60,10 +60,10 @@
 
 
     <?php if (isset($this->session->userdata['firstname'])) { ?>
-    <a class="active" href="<?php echo site_url('Customer/page_edit'); ?>"><i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata['firstname'];?></a>
+    <a class="active" name = "customer" href="<?php echo site_url('Customer/page_edit'); ?>"><i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata['firstname'];?></a>
     <a href="<?php echo site_url('User/logout'); ?>"><i class="fa fa-sign-in"></i> ออกจากระบบ</a>
     <?php } else{ ?>
-        <a href="<?php echo site_url('User/page_login'); ?>"><i class="fa fa-fw fa-user"></i> เข้าสู่ระบบ</a>
+        <a name="login" href="<?php echo site_url('User/page_login'); ?>"><i class="fa fa-fw fa-user"></i> เข้าสู่ระบบ</a>
     <?php } ?>
 
     

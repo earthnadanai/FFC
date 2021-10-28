@@ -69,7 +69,7 @@
         <input type="text" name="id_sets" value="<?php echo $x->id_set; ?>" hidden>
         <?php foreach ($viewShop as $xx){ ?> 
     <?php if (isset($this->session->userdata['firstname'])) { ?>
-    <input type="submit" class="btn btn-success <?php echo $x->id_set; ?>" name="success" value="สั่งเลย!!">
+    <input type="submit" class="btn btn-success " name="success" id="<?php echo $x->id_set; ?>"value="สั่งเลย!!">
     <?php } else{ ?>
         <a href="<?php echo site_url('User/page_login'); ?>" class="btn btn-success"> สั่งเลย!!</a>
     <?php } ?>

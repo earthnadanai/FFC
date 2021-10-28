@@ -67,7 +67,7 @@
     <div class="col-sm"> 
     <form action="<?= site_url('Product/pege_addfood');?>" method="post">
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-    <button type="submit" class="btn btn-outline-success " style="width: 230px; height: 150px;">เพิ่มอาหาร</button>
+    <button name="insertfood"type="submit" class="btn btn-outline-success " style="width: 230px; height: 150px;">เพิ่มอาหาร</button>
     </form>
     </div>
     <?php } ?>

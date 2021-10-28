@@ -75,7 +75,7 @@
     <div class="card" style="width: 11rem;">
     <img  src="<?php echo base_url('img'); ?>/<?php echo $x->img_set;?>"  alt="..." style="width: 174px; height: 100px;">
   <div class="card-body">
-    <h5 class="card-title"><?php echo $x->name_set; ?></h5>
+    <h5 name="foodname" class="card-title"><?php echo $x->name_set; ?></h5>
     <p class="card-text">
     ขนาด : <?php echo $x->size; ?> <br>
     ราคา : <?php echo $x->price; ?>
