@@ -59,8 +59,8 @@
     </div>
   </div>
   <form action="<?= site_url('Product/pege_status');?>" method="post" >
-    <?php foreach ($slippay as $x){ ?>
-    <input type="text" name="id" value="<?php echo $x->id_shopsp; ?>" hidden>
+    <?php foreach ($shop as $x){ ?>
+    <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
     <button type="submit" class="btn btn-secondary" >ย้อนกลับ</button>
   </form>

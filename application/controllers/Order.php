@@ -130,6 +130,7 @@ class Order extends CI_Controller {
         $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
         $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
         $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+        $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
         $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
         $this->load->view("view_oderstatus",$data);
     }
@@ -144,6 +145,7 @@ class Order extends CI_Controller {
         $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
         $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
         $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+        $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
         $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
             echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
             echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
@@ -174,6 +176,7 @@ class Order extends CI_Controller {
         $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
         $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
         $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+        $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
         $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
         echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
         echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
@@ -194,6 +197,7 @@ class Order extends CI_Controller {
     {
         $id_shop = $this->input->post('id');
         $data['slippay'] = $this->ffc_shop->view_slippay($id_shop);
+        $data['shop'] = $this->ffc_shop->product_search($id_shop);
         $this->load->view("view_slippay",$data);
     }
 

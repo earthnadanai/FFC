@@ -176,6 +176,7 @@ class Payment extends CI_Controller {
                 $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
                 $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
                 $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+                $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
                 $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
                 $this->load->view("view_oderstatus",$data);
                 /*$data['query'] = $this->ffc_confirmation->order_palment($id_conn);
@@ -229,5 +230,108 @@ class Payment extends CI_Controller {
         $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
         $this->load->view("view_oderstatus",$data);
     }*/
+
+    function refunds()
+    {
+        $num_bank = $this->input->post("num_bank");
+        $status_admin = $this->input->post("status_admin");
+        $id_conn = $this->input->post("id_conn");
+
+        $this->db->set('status_admin', $status_admin);
+        $this->db->set('num_bank', $num_bank);
+        $this->db->where('id_con', $id_conn);
+        $result = $this->db->update('payment');
+
+        if($result){
+            $this->db->set('status_pay', $status_admin);
+            $this->db->where('id_conn', $id_conn);
+		    $this->db->update('confirmation');
+            echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+            echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+            echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+            echo '<script> setTimeout(function() {
+                        swal({
+                            title : "ข้อมูลถูกต้อง",
+                            text : "ขอเงินคืนแล้ว",
+                            type : "success"
+                        })
+                    }, 1000);
+                    </script>';
+            $idcut = $this->session->userdata['id'];
+            $data["Order"] = $this->ffc_confirmation->view_comm($idcut); 
+            $data["Order_status"] = $this->ffc_confirmation->view_comstatus($idcut); 
+            $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
+            $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
+            $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
+            $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+            $this->load->view("view_oderstatus",$data);
+        }
+
+
+    }
+
+    public function refund()
+	{
+              $a = $this->input->post('id');
+              $id_conn = $this->input->post('id_conn');
+			  $data = array();
+			  $config['upload_path'] = 'img_bank/';
+			  $config['allowed_types'] = 'jpg|png';
+			  $config['max_size'] = 5024;
+			  $config['encrypt_name'] = true;  
+
+			  $this->load->library('upload', $config);
+
+			//img1
+			  if (!$this->upload->do_upload('P_img_cus')) {
+			      $P_img_cus='';
+			  } else {
+			    $fileData = $this->upload->data();
+			    $P_img_cus= $data['P_img_cus'] = $fileData['file_name'];
+			  }
+
+
+              $date_cus = $this->input->post("date_cus");
+
+              $this->db->set('status_admin', "คืนเงินแล้ว");
+              $this->db->set('date_cus', $date_cus);
+              $this->db->set('P_img_cus', $P_img_cus);
+              $this->db->where('id_p', $a);
+              $result = $this->db->update('payment');
+
+            if ($result) {
+                echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลถูกต้อง",
+                                text : "อับโหลดสำเร็จ",
+                                type : "success"
+                            })
+                        }, 1000);
+                        </script>';
+                //$this->ffc_order->add_orderhistory($data_add);
+                $this->ffc_confirmation->delete_confirmation($id_conn);
+                $data1['query'] = $this->ffc_payment->tradings_admin();
+                $this->load->view('trading_admin', $data1);
+			  } else {
+                echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
+                echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
+                echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
+                echo '<script> setTimeout(function() {
+                            swal({
+                                title : "ข้อมูลผิดพลาด",
+                                text : "อับโหลดไม่สำเร็จ",
+                                type : "warning"
+                            })
+                        }, 1000);
+                        </script>';
+                $data['query'] = $this->ffc_payment->tradings_admin1();
+                $this->load->view('tradinginfo_admin', $data);
+			  }
+
+              
+	}
     
 }

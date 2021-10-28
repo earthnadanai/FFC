@@ -22,6 +22,8 @@
   <a href="<?php echo site_url('Admin/showshop_admin'); ?>" class="btn btn-light">ข้อมูลร้านค้า</a>
   <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
   <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
+  <a href="<?php echo site_url('Admin/refund_admin'); ?>" class="btn btn-light">ขอคืนเงินจากของที่ถูกยกเลิก</a>
+
   -------------
   <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModal1">
   โอนเงินให้ทางร้าน

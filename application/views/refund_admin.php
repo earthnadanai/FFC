@@ -1,12 +1,16 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
       $this->load->view('bootstap');  
       $this->load->view('navbar.php');  
+     
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>view Admin</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อนุมัติการซื้อขาย</title>
 </head>
-
 <body>
   <br>
     <div class="container">
@@ -22,6 +26,7 @@
   <a href="<?php echo site_url('Admin/showapproval_shop'); ?>" class="btn btn-light">รอการอนุมัติเปิดร้านค้า</a>
   <a href="<?php echo site_url('Admin/trading_admin'); ?>" class="btn btn-light">อนุมัติการซื้อขาย</a>
   <a href="<?php echo site_url('Admin/refund_admin'); ?>" class="btn btn-light">ขอคืนเงินจากของที่ถูกยกเลิก</a>
+
   </div>
   </div>
 </div>
@@ -29,52 +34,51 @@
     <div class="col-sm-9">
     <div class="card text-white bg-danger mb-3">
   <div class="card-body" align="center">
-    <h1>ลูกค้า</h1>
+    <h1>ขอคืนเงินจากของที่ถูกยกเลิก</h1>
     <br>
     
-    <div class="row">
-    <?php foreach ($query as $x){ ?>
-    <div class="col-6">
-    <div class="card mb-3" style="max-width: 900px;">
   
-  <div class="row g-0">
-  
-    <div class="col-md-3">
-      <img src="<?php echo base_url('img'); ?>/<?php echo $x->img;?>" style="width: 160px; height: 170px; alt="..." >
-    </div>
-    <div class="col-md-8">
-      <div class="card-body text-dark">
-      <br><br>
-        <h5 class="card-title"><?php echo $x->username;?></h5>
-        <br>
-    <form action="<?php echo site_url('Admin/info_customer'); ?>" method="POST">
-    <input type="text" name="id" value="<?php echo $x->id; ?>" hidden>
+    <table class="table table-hover table-light" >
+    <thead>
+    <tr>
+
+      <th scope="col"><div align="center">#</div> </th>
+      <th scope="col"><div align="center">วันที่ชำระเงิน</div> </th>
+      <th scope="col"><div align="center">ข้อมูลสำคัญ</div> </th>
+    </tr>
+  </thead>
+ 
+    
+  <tbody>
+  <?php foreach ($query as $x){ ?>
+    <tr>
+
+      <td align="center"><?php echo $x->id_p;?></td>
+      <td align="center"><?php echo $x->date_cus;?></td>
+
+      <td align="center">
+      <form action="<?= site_url('Admin/refundinfo_admin');?>" method="POST">
+    <input type="text" name="id" value="<?php echo $x->id_cuss; ?>" hidden>
+    <input type="text" name="id_con" value="<?php echo $x->id_con; ?>" hidden>
     <input type="submit" class="btn btn-primary" name="primary" value="ดูรายละเอียด"></form>
-    
-    
-      </div>
-      
-    </div>
-    <br>
-  </div>
-  
-</div>
+    </td>
+    </tr>
+    <?php } ?>
+  </tbody>
+  </table>
 
-    </div>
-    
-    <?php }; ?>
-  </div>
-  
-  </div>
-  
-</div>
 
-    </div>
-    
+ 
   </div>
-  
+</div>
     </div>
+  </div>
+    </div>
+    <br> <br> 
 </body>
+<br> <br> <br> <br> 
 <?php $this->load->view('footer'); ?>
 </html>
+
+
 

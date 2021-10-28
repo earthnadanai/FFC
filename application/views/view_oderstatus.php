@@ -38,6 +38,9 @@
     <button class="nav-link" id="pills-finish-tab" data-bs-toggle="pill" data-bs-target="#pills-finish" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">สำเร็จแล้ว</button>
   </li>
   <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-cancel-tab" data-bs-toggle="pill" data-bs-target="#pills-cancel" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ของที่ถูกยกเลิก</button>
+  </li>
+  <li class="nav-item" role="presentation">
     <button class="nav-link" id="pills-history-tab" data-bs-toggle="pill" data-bs-target="#pills-history" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ประวัติการสั่ง</button>
   </li>
 
@@ -180,6 +183,40 @@
   ...</div>
 
 
+  <div class="tab-pane fade" id="pills-cancel" role="tabpanel" aria-labelledby="pills-cancel-tab">
+  <?php foreach ($Order_cancel as $xx){ ?>
+    <div class="card-body" align="left">
+  <div class="row">  
+  <div class="col">
+  <form action="<?= site_url('Payment/refunds');?>" method="post">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
+      </div>
+      <div class="col">
+      <?php echo $xx->name_set;?> 
+      </div>
+      <div class="col">
+      <h5 >฿ <?php echo $xx->price;?>.-</h5>
+      </div> 
+      <div class="col">
+      <h5 ><?php echo $xx->date_shop;?></h5>
+      </div> 
+      <div class="col">
+      <h5 ><input type="text" name="num_bank" placeholder="เลขบัญชี" class="form-control" required></h5>
+      <input type="text" name="status_admin" value="ขอเงินคืน" hidden>
+      </div> 
+
+      <div class="col">
+      <input type="text" name="id_conn" value=" <?php echo $xx->id_conn;?>" hidden>
+      <button type="summit" class="btn btn-success">ขอรับเงินที่ชำระไปแล้ว</button> 
+      </div> 
+      </form>  
+  </div>
+   
+  </div>
+  <?php };?> 
+  ...</div>
+
+
   <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
   <?php foreach ($Order_history as $xx){ ?>
   <div class="card-body" align="left">
@@ -196,14 +233,6 @@
       <div class="col">
       <h5 ><?php echo $xx->date;?></h5>
       </div>  
-
-
-
-
-
-
-
-
   </div>   
   </div> 
   <?php };?>   

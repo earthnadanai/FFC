@@ -88,7 +88,7 @@
     <div class="col-6"><input type="submit" class="btn btn-success" name="status_shop" value="ยอมรับ"> </div>
     </div>
   </div>
-    <div class="col-7"><input type="submit" class="btn btn-danger" name="status_shop" value="ไม่ยอมรับ"></div>
+    <div class="col-7"><input type="submit" class="btn btn-danger" name="status_shop" value="ยกเลิก"></div>
   </div>
   </form>
       </td>
