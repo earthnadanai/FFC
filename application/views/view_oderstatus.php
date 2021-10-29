@@ -43,6 +43,9 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="pills-history-tab" data-bs-toggle="pill" data-bs-target="#pills-history" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ประวัติการสั่ง</button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-checkcancel-tab" data-bs-toggle="pill" data-bs-target="#pills-checkcancel" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ดูสถานะการคืนเงิน</button>
+  </li>
 
 </ul>
 <div class="tab-content" id="pills-tabContent">
@@ -55,7 +58,7 @@
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
-      <?php echo $xx->name_set;?> 
+      <h5 ><?php echo $xx->name_set;?> </h5 >
       </div>
       <div class="col">
       <h5 >฿ <?php echo $xx->price;?>.- </h5>
@@ -95,7 +98,7 @@
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
-      <?php echo $xx->name_set;?> 
+      <h5 ><?php echo $xx->name_set;?> </h5 >
       </div>
       <div class="col">
       <h5 >฿ <?php echo $xx->price;?>.-</h5>
@@ -131,7 +134,7 @@
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
-      <?php echo $xx->name_set;?> 
+      <h5 ><?php echo $xx->name_set;?> </h5 >
       </div>
       <div class="col">
       <h5 >฿ <?php echo $xx->price;?>.-</h5>
@@ -159,7 +162,7 @@
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
-      <?php echo $xx->name_set;?> 
+      <h5 ><?php echo $xx->name_set;?> </h5 >
       </div>
       <div class="col">
       <h5 >฿ <?php echo $xx->price;?>.-</h5>
@@ -192,7 +195,7 @@
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
-      <?php echo $xx->name_set;?> 
+      <h5 ><?php echo $xx->name_set;?> </h5 >
       </div>
       <div class="col">
       <h5 >฿ <?php echo $xx->price;?>.-</h5>
@@ -225,7 +228,7 @@
       <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
       </div>
       <div class="col">
-      <?php echo $xx->name_set;?> 
+      <h5 ><?php echo $xx->name_set;?> </h5 >
       </div>
       <div class="col">
       <h5 >฿ <?php echo $xx->price;?>.-</h5>
@@ -239,6 +242,31 @@
   ...</div>
   
 
+  <div class="tab-pane fade" id="pills-checkcancel" role="tabpanel" aria-labelledby="pills-checkcancel-tab">
+  <?php foreach ($Order_checkcancel as $xx){ ?>
+    <div class="card-body" align="left">
+  <div class="row">  
+  <div class="col">
+      <img src="<?php echo base_url('img'); ?>/<?php echo $xx->img_set;?>" alt="..."style="width: 150px; max-hight: 150px">
+      </div>
+      <div class="col">
+      <h5 ><?php echo $xx->name_set;?> </h5 >
+      </div>
+      <div class="col">
+      <h5 >฿ <?php echo $xx->price;?>.-</h5>
+      </div> 
+      <div class="col">
+      <h5 ><?php echo $xx->date_cus;?></h5>
+      </div> 
+      <div class="col">
+      <h5 class="text-warning"><?php echo $xx->status_pay;?></h5>
+      </div> 
+       
+  </div>
+   
+  </div>
+  <?php };?> 
+  ...</div>
 
 
 

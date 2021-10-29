@@ -62,6 +62,7 @@
       
   <div class="card-header"align="left">
   <?php echo $x->nameShop;?>
+  (เบอร์ติดต่อ : <?php echo $this->session->userdata('tell'); ?>)
   </div>
   
   <div class="card-body" align="left">

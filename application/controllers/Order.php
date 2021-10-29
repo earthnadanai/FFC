@@ -12,6 +12,7 @@ class Order extends CI_Controller {
         $this->load->model('Model_shop', 'ffc_shop');
         $this->load->model('Model_user', 'ffc_user');
         $this->load->model('Model_confirmation', 'ffc_confirmation');
+        $this->load->model('Model_payment', 'ffc_payment');
         $this->load->helper(array('form', 'url')); 
         
     }
@@ -131,7 +132,8 @@ class Order extends CI_Controller {
         $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
         $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
         $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
-        $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+        $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut);
+        $data["Order_checkcancel"] = $this->ffc_confirmation->view_checkcancel($idcut); 
         $this->load->view("view_oderstatus",$data);
     }
 
