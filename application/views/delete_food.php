@@ -137,8 +137,8 @@
     <?php foreach ($viewShop as $x){ ?>
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
     <?php } ?>
-
-<button type="submit" class="btn btn-danger" onclick="myFunction()">ลบอาหาร</button>
+    
+<button type="submit"  id="" name="delete"class="btn btn-danger" onclick="myFunction()">ลบอาหาร</button>
     </form>
 
 </div>

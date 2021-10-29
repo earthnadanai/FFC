@@ -91,7 +91,7 @@
     <div class="col-sm ">
     <form action="<?= site_url('Product/pege_deletefoodset');?>" method="post">
     <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
-    <button type="submit" class="btn btn-outline-danger" style="width: 230px; height: 150px;">ลบอาหาร/ลบชุดอาหาร</button>
+    <button type="submit" class="btn btn-outline-danger" name="deletefood" style="width: 230px; height: 150px;">ลบอาหาร/ลบชุดอาหาร</button>
     </form>
     </div>
     <?php } ?>
