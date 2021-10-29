@@ -17,8 +17,9 @@
     <br>
     <div class="container" align="center">
     <?php foreach ($viewShop as $x){ ?>
-      <div class="ex1"><font color= "white"><?php echo $x->nameShop; ?></font></div><br>
+      <div class="ex1"><font color= "white"><?php echo $x->nameShop; ?></font></div>
     <?php };?>
+    <font color= "white">(เบอร์ติดต่อ : <?php echo $this->session->userdata('tell'); ?>)</font><br><br>
   <div class="row">
 
   <?php foreach ($re as $x){ ?>

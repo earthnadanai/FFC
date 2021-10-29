@@ -97,5 +97,18 @@ class Model_payment extends CI_Model
         return $query->result();
     }
 
-
+    function view_checkcancel($id_con)
+    {
+        $status_admin = "ขอเงินคืน";
+        $this->db->select('*')
+        ->from('payment')
+        ->join('user', ' payment.id_cuss = user.id ')
+        ->join('shop', 'payment.id_shopsp = shop.id_shops')
+        //->join('confirmation','payment.id_p = confirmation.id_pay')
+        ->join('product_set','payment.id_sset = product_set.id_set')
+        ->where('id_con',$id_con)
+        ->where('status_admin',$status_admin);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

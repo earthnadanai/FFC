@@ -19,7 +19,7 @@
     <div class="col">
     <br>
     <div class="row">
-    <?php foreach ($slippay as $x){ ?>
+    <?php foreach ($shop as $x){ ?>
 <div class="col-sm-2 " >
 <form action="<?= site_url('Order/order_shop');?>" method="post">
 <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>
@@ -27,7 +27,7 @@
 </form>
 </div>
 <?php } ?>
-<?php foreach ($slippay as $x){ ?>
+<?php foreach ($shop as $x){ ?>
 <div class="col-sm-2 "align="left">
 <form action="<?= site_url('Order/view_slippay');?>" method="post">
 <input type="text" name="id" value="<?php echo $x->id_shops; ?>" hidden>

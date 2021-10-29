@@ -177,7 +177,8 @@ class Payment extends CI_Controller {
                 $data["Order_receive"] = $this->ffc_confirmation->view_comreceive($idcut);
                 $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
                 $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
-                $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+                $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut);
+                $data["Order_checkcancel"] = $this->ffc_confirmation->view_checkcancel($idcut);  
                 $this->load->view("view_oderstatus",$data);
                 /*$data['query'] = $this->ffc_confirmation->order_palment($id_conn);
                 $this->load->view("confirmation", $data);*/
@@ -264,6 +265,7 @@ class Payment extends CI_Controller {
             $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
             $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
             $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+            $data["Order_checkcancel"] = $this->ffc_confirmation->view_checkcancel($idcut); 
             $this->load->view("view_oderstatus",$data);
         }
 

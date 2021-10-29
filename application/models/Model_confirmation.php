@@ -95,6 +95,20 @@ class Model_confirmation extends CI_Model
         return $query->result();
     }
 
+    function view_checkcancel($idcut)
+    {
+        $status_pay = "ขอเงินคืน";
+        $this->db->select('*')
+        ->from('confirmation')
+        ->join('product_set', 'confirmation.id_sett  = product_set.id_set ')
+        ->join('shop', 'confirmation.id_shop  = shop.id_shops ')
+        ->join('payment', 'confirmation.id_pay  = payment.id_con ')
+        ->where('id_customer', $idcut)
+        ->where('status_pay', $status_pay);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function order_cus($a)
     {
         $status_shop = "ยอมรับ";
