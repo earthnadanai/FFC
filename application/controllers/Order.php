@@ -149,6 +149,7 @@ class Order extends CI_Controller {
         $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
         $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
         $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+        $data["Order_checkcancel"] = $this->ffc_confirmation->view_checkcancel($idcut); 
             echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
             echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
             echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';
@@ -180,6 +181,7 @@ class Order extends CI_Controller {
         $data["Order_accept"] = $this->ffc_confirmation->view_comaccept($idcut);
         $data["Order_cancel"] = $this->ffc_confirmation->view_comcancel($idcut);
         $data["Order_history"] = $this->ffc_order->view_orderhistory($idcut); 
+        $data["Order_checkcancel"] = $this->ffc_confirmation->view_checkcancel($idcut); 
         echo '<script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>';
         echo '<script src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"> </script>';
         echo '<link rel="stylesheet" href  ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />';

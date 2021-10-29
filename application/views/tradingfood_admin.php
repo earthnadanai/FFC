@@ -93,7 +93,7 @@
   <br>ราคา : <?php echo $row->price;?> บาท  <?php foreach ($conn as $row) { ?> ("สถานะ : <?php echo $row->status_pay;?>") <?php } ?> <?php foreach ($query as $row) { ?> เวลาที่ชำระ <?php echo $row->date_cus;?> 
     <?php } ?>
   <br>เวลาที่ส่งอาหาร <?php echo $row->date_shop;?>  <?php foreach ($conn as $row) { ?>("สถานะของร้าน : กำลัง<?php echo $row->status_shop;?>") <?php } ?>
-  <br>เวลาที่ต้องได้รับ <?php echo $row->date_customer;?>  <?php foreach ($conn as $row) { ?> ("สถานะของร้าน : กำลัง<?php echo $row->status_customer;?>")<?php } ?>
+  <br>เวลาที่ต้องได้รับ <?php echo $row->date_customer;?>  <?php foreach ($conn as $row) { ?> <font class="text-decoration-underline" color= "red">("สถานะของร้าน : กำลัง<?php echo $row->status_customer;?>")</font><?php } ?>
   </h5></p>
     
 

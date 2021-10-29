@@ -44,6 +44,7 @@ class Product extends CI_Controller {
           'id_cus'=> $this->input->post("id_cus"),
           'nameShop'=> $this->input->post("nameShop"),
           'img_shop'=> $img_shop,
+          'nameBank'=> $this->input->post("nameBank"),
           'number_bank'=> $this->input->post("number_bank")
       );
 

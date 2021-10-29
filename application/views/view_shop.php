@@ -73,6 +73,12 @@ if ((!strcmp($a,$b))) { ?>
       <input type="text" name="nameShop"  class="form-control" placeholder="กรอกชื่อร้าน" required>
     </div>
     </div>
+    <h6 align="left">ชื่อบัญชี<h6>
+    <div class="col">
+    <div class="col-sm-12">
+      <input type="text" name="nameBank"  class="form-control" placeholder="ชื่อบัญชี" required>
+    </div>
+    </div>
     <h6 align="left">เลขบัญชี<h6>
     <div class="col">
     <div class="col-sm-12">
@@ -81,7 +87,7 @@ if ((!strcmp($a,$b))) { ?>
     </div>
     </div>
     <button type="submit" class="btn btn-success" >ยืนยันการเปิดร้าน</button>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
     </form>
 
 
